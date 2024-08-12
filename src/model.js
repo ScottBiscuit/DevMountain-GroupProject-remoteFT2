@@ -3,7 +3,10 @@ import util from "util";
 import connectToDB from "./db.js";
 import { type } from "os";
 
-export const db = await connectToDB("");
+//change to your own database file path
+export const db = await connectToDB(
+  "postgres://josep:admin@localhost:5432/travelBlog"
+);
 
 export class User extends Model {
   [util.inspect.custom]() {

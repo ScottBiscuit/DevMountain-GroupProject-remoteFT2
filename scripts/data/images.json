@@ -1,0 +1,12 @@
+[
+  {
+    "imageName": "Image 1",
+    "imageSrc": "someurl",
+    "imageDesc": "An image that I found on the internet"
+  },
+  {
+    "imageName": "Image 2",
+    "imageSrc": "someurl",
+    "imageDesc": "A second image that I found on the internet"
+  }
+]
