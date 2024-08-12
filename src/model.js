@@ -32,6 +32,12 @@ export class Image extends Model {
   }
 }
 
+export class WishlistItem extends Model {
+  [util.inspect.custom]() {
+    return this.toJSON();
+  }
+}
+
 User.init(
   {
     userId: {
@@ -151,8 +157,41 @@ Image.init(
   }
 );
 
+WishlistItem.init(
+  {
+    itemId: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    country: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    state: {
+      type: DataTypes.STRING,
+    },
+    city: {
+      type: DataTypes.STRING,
+    },
+    streetAddress: {
+      type: DataTypes.STRING,
+    },
+  },
+  {
+    modelName: "wishlistItem",
+    sequelize: db,
+  }
+);
+
 User.hasMany(Review, { foreignKey: "reviewId" });
 Review.belongsTo(User, { foreignKey: "userId" });
+
+User.hasMany(WishlistItem, { foreignKey: "itemId" });
+WishlistItem.belongsTo(User, { foreignKey: "userId" });
+
+WishlistItem.hasMany(Review, { foreignKey: "reviewId" });
+Review.belongsTo(WishlistItem, { foreignKey: "itemId" });
 
 Review.hasMany(Tag, { foreignKey: "tagId" });
 Tag.belongsTo(Review, { foreignKey: "reviewId" });
