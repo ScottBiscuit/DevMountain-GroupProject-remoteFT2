@@ -1,0 +1,30 @@
+[
+  {
+    "locationName": "Barcelona",
+    "reviewContent": "I went to Barcelona and it was amazing. Blah, blah blah. Spansh words!",
+    "markReview": false,
+    "country": "Spain",
+    "city": "Barcelona"
+  },
+  {
+    "locationName": "Museum in Barcelona",
+    "reviewContent": "I went to this museum in Barcelona and it was amazing. Blah, blah blah. Spansh words!",
+    "markReview": false,
+    "country": "Spain",
+    "city": "Barcelona"
+  },
+  {
+    "locationName": "Restaurant in Barcelona",
+    "reviewContent": "I went to this restaurant in Barcelona and it was amazing. Blah, blah blah. Spansh words!",
+    "markReview": false,
+    "country": "Spain",
+    "city": "Barcelona"
+  },
+  {
+    "locationName": "Public Bathroom in Barcelona",
+    "reviewContent": "I went to this public bathroom in Barcelona and it was amazing. Blah, blah blah. Spansh words!",
+    "markReview": false,
+    "country": "Spain",
+    "city": "Barcelona"
+  },
+]
