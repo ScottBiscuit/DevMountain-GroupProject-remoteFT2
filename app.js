@@ -49,11 +49,11 @@ app.post("/api/user", async (req, res) => {
     where: { email: email },
   });
 
-  const username = await User.findOne({
+  const userUsername = await User.findOne({
     where: { username: username },
   });
 
-  if (!userEmail && !username) {
+  if (!userEmail && !userUsername) {
     const user = await User.create({
       username: username,
       email: email,
