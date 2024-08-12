@@ -8,8 +8,7 @@ console.log("Seeding database...");
 
 const usersToCreate = [
   User.create({
-    fname: `john`,
-    lname: `doe`,
+    userName: `johndoe`,
     email: `user@test.com`,
     password: "test",
   }),
