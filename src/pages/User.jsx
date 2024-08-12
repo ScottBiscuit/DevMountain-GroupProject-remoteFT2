@@ -1,7 +1,13 @@
-import React from 'react'
+import React from 'react';
+import MyReviewsCards from '../components/MyReviewsCards';
+import MyWishlist from '../components/MyWishlist';
 
 export default function User() {
+  
   return (
-    <div>UserInfo</div>
+   <>
+    <MyReviewsCards />
+    <MyWishlist />
+   </>
   )
 }
