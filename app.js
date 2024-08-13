@@ -87,8 +87,8 @@ app.post("/api/user", async (req, res) => {
 
 //find random reviews
 app.get("/api/reviews/random/:limit", async (req, res) => {
-  const limit = req.limit;
-  const reviews = Review.findAll({
+  const { limit } = req.params;
+  const reviews = await Review.findAll({
     order: Sequelize.literal("rand()"),
     limit: limit,
   });
@@ -97,8 +97,8 @@ app.get("/api/reviews/random/:limit", async (req, res) => {
 
 //find most recently updated reviews
 app.get("/api/reviews/recentUpdated/:limit", async (req, res) => {
-  const limit = req.limit;
-  const reviews = Review.findAll({
+  const { limit } = req.params;
+  const reviews = await Review.findAll({
     order: [["updatedAt", "DESC"]],
     limit: limit,
   });
@@ -107,8 +107,8 @@ app.get("/api/reviews/recentUpdated/:limit", async (req, res) => {
 
 //find most recently created reviews
 app.get("/api/reviews/recentCreated/:limit", async (req, res) => {
-  const limit = req.limit;
-  const reviews = Review.findAll({
+  const { limit } = req.params;
+  const reviews = await Review.findAll({
     order: [["createdAt", "DESC"]],
     limit: limit,
   });
@@ -117,8 +117,8 @@ app.get("/api/reviews/recentCreated/:limit", async (req, res) => {
 
 //find most popular reviews
 app.get("/api/reviews/popular/:limit", async (req, res) => {
-  const limit = req.limit;
-  const reviews = Review.findAll({
+  const { limit } = req.params;
+  const reviews = await Review.findAll({
     order: [["likeCount", "DESC"]],
     limit: limit,
   });
@@ -127,8 +127,8 @@ app.get("/api/reviews/popular/:limit", async (req, res) => {
 
 //find reviews from a certain user
 app.get("/api/reviews/:userId", async (req, res) => {
-  const userId = req.userId;
-  const reviews = Review.findAll({
+  const { userId } = req.params;
+  const reviews = await Review.findAll({
     where: {
       userId: userId,
     },
@@ -139,8 +139,8 @@ app.get("/api/reviews/:userId", async (req, res) => {
 
 //find reviews based on the country
 app.get("/api/reviews/:country", async (req, res) => {
-  const country = req.country;
-  const reviews = Review.findAll({
+  const { country } = req.params;
+  const reviews = await Review.findAll({
     where: {
       country: country,
     },
@@ -151,8 +151,8 @@ app.get("/api/reviews/:country", async (req, res) => {
 
 //find reviews based on the city
 app.get("/api/reviews/:city", async (req, res) => {
-  const city = req.city;
-  const reviews = Review.findAll({
+  const { city } = req.params;
+  const reviews = await Review.findAll({
     where: {
       city: city,
     },
@@ -163,8 +163,8 @@ app.get("/api/reviews/:city", async (req, res) => {
 
 //find reviews based on tag
 app.get("/api/reviews/:tagName", async (req, res) => {
-  const tagName = req.tagName;
-  const reviews = Review.findAll({
+  const { tagName } = req.params;
+  const reviews = await Review.findAll({
     include: [
       {
         model: Tag,
@@ -181,8 +181,8 @@ app.get("/api/reviews/:tagName", async (req, res) => {
 
 //find imaged associated with a review
 app.get("/api/images/:reviewId", async (req, res) => {
-  const reviewId = req.reviewId;
-  const images = Image.findAll({
+  const { reviewId } = req.params;
+  const images = await Image.findAll({
     where: {
       reviewId: reviewId,
     },
@@ -196,13 +196,46 @@ app.get("/api/images/:reviewId", async (req, res) => {
 //__________Reviews__________//
 
 //create a review
-app.post("/api/reviews", async (req, res) => {});
+app.post("/api/reviews", async (req, res) => {
+  const { locationName, reviewContent, country, state, city, streetAddress } =
+    req.body;
+  const review = await Review.create({
+    locationName: locationName,
+    reviewContent: reviewContent,
+    likeCount: 0,
+    markReview: false,
+    country: country,
+    state: state,
+    city: city,
+    streetAdress: streetAddress,
+  });
+  res.json(review);
+});
 
-//edit a review
-app.put("/api/reviews/:reviewId", async (req, res) => {});
+//edit a review content
+app.put("/api/reviews/:reviewId", async (req, res) => {
+  const { reviewId } = req.params;
+  const { reviewContent } = req.body;
+  const review = await Review.findByPk(reviewId);
+
+  review.reviewContent = reviewContent;
+  await review.save();
+  res.json(review);
+});
 
 //delete a review
-app.delete("/api/reviews/:reviewId", async (req, res) => {});
+app.delete("/api/reviews/:reviewId", async (req, res) => {
+  const { userId } = req.session;
+  const { reviewId } = req.params;
+  const review = await Review.findByPk(reviewId);
+
+  if (review.userId === userId) {
+    await review.destroy();
+    res.json({ success: true });
+  } else {
+    res.json({ success: false });
+  }
+});
 
 //__________Images__________//
 
