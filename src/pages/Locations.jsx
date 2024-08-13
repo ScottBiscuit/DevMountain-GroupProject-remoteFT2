@@ -9,6 +9,7 @@ export default function Locations() {
     {/* TODO decide what happens when you click on search from location form - load below? Does that replace Highlighted cities or bump down? Go to new page? */}
     <h2>Locations</h2>
     <Row>
+      
       <LocationsForm />
     </Row>
 
