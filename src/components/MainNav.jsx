@@ -28,7 +28,7 @@ export default function MainNav({ brand }) {
   }
   return user ? (
   // return (
-    <Navbar expand="lg" className="bg-success navbar-dark" sticky='top'>
+    <Navbar expand="lg" className="bg-primary navbar-dark" sticky='top'>
       <Container fluid>
         <Navbar.Brand href='/'>{brand}</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -48,7 +48,7 @@ export default function MainNav({ brand }) {
       </Container>
     </Navbar>
   ):(
-    <Navbar expand="lg" className="bg-success navbar-dark" sticky='top'>
+    <Navbar expand="lg" className="bg-primary navbar-dark" sticky='top'>
     <Container fluid>
       <Navbar.Brand href='/'>{brand}</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
