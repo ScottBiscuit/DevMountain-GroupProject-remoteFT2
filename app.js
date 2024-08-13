@@ -85,32 +85,111 @@ app.post("/api/user", async (req, res) => {
 
 //__________Finding Reviews__________//
 
-//find random review
-app.get("/api/reviews", async (req, res) => {
-  const review = Review.findAll({
+//find random reviews
+app.get("/api/reviews/random/:limit", async (req, res) => {
+  const limit = req.limit;
+  const reviews = Review.findAll({
     order: Sequelize.literal("rand()"),
-    limit: 1,
+    limit: limit,
   });
-  res.json({ review });
+  res.json({ reviews });
+});
+
+//find most recently updated reviews
+app.get("/api/reviews/recentUpdated/:limit", async (req, res) => {
+  const limit = req.limit;
+  const reviews = Review.findAll({
+    order: [["updatedAt", "DESC"]],
+    limit: limit,
+  });
+  res.json({ reviews });
+});
+
+//find most recently created reviews
+app.get("/api/reviews/recentCreated/:limit", async (req, res) => {
+  const limit = req.limit;
+  const reviews = Review.findAll({
+    order: [["createdAt", "DESC"]],
+    limit: limit,
+  });
+  res.json({ reviews });
 });
 
 //find most popular reviews
-app.get("/api/reviews/popular", async (req, res) => {});
+app.get("/api/reviews/popular/:limit", async (req, res) => {
+  const limit = req.limit;
+  const reviews = Review.findAll({
+    order: [["likeCount", "DESC"]],
+    limit: limit,
+  });
+  res.json({ reviews });
+});
 
 //find reviews from a certain user
-app.get("/api/reviews/:userId", async (req, res) => {});
+app.get("/api/reviews/:userId", async (req, res) => {
+  const userId = req.userId;
+  const reviews = Review.findAll({
+    where: {
+      userId: userId,
+    },
+    order: [["likeCount", "DESC"]],
+  });
+  res.json({ reviews });
+});
 
 //find reviews based on the country
-app.get("/api/reviews/:country", async (req, res) => {});
+app.get("/api/reviews/:country", async (req, res) => {
+  const country = req.country;
+  const reviews = Review.findAll({
+    where: {
+      country: country,
+    },
+    order: [["likeCount", "DESC"]],
+  });
+  res.json({ reviews });
+});
 
 //find reviews based on the city
-app.get("/api/reviews/:city", async (req, res) => {});
+app.get("/api/reviews/:city", async (req, res) => {
+  const city = req.city;
+  const reviews = Review.findAll({
+    where: {
+      city: city,
+    },
+    order: [["likeCount", "DESC"]],
+  });
+  res.json({ reviews });
+});
 
 //find reviews based on tag
-app.get("/api/reviews/:tagName", async (req, res) => {});
+app.get("/api/reviews/:tagName", async (req, res) => {
+  const tagName = req.tagName;
+  const reviews = Review.findAll({
+    include: [
+      {
+        model: Tag,
+        required: true,
+        where: {
+          tagName: tagName,
+        },
+      },
+    ],
+    order: [["likeCount", "DESC"]],
+  });
+  res.json({ reviews });
+});
 
-//view review and associated images
-app.get("/api/images/:reviewId", async (req, res) => {});
+//find imaged associated with a review
+app.get("/api/images/:reviewId", async (req, res) => {
+  const reviewId = req.reviewId;
+  const images = Image.findAll({
+    where: {
+      reviewId: reviewId,
+    },
+    order: [["createdAt", "DESC"]],
+  });
+  res.json({ images });
+});
 
 //----------Creating, editing, and deleting---------//
 
@@ -127,7 +206,7 @@ app.delete("/api/reviews/:reviewId", async (req, res) => {});
 
 //__________Images__________//
 
-//link an image
+//post an image
 app.post("/api/images", async (req, res) => {});
 
 //delete an image
