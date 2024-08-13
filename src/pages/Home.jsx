@@ -6,7 +6,7 @@ import RecentReviewsCards from '../components/RecentReviewsCards';
 export default function Home() {
   return (
     <>
-      <Card className="text-center">
+      <Card>
         {/* TODO add BG img */}
       <Card.Img src="../images/game_background.jpg" alt="Card image" className='opacity-50'/>
       <Card.ImgOverlay>
