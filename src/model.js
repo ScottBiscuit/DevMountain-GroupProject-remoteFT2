@@ -38,6 +38,12 @@ export class WishlistItem extends Model {
   }
 }
 
+export class WishlistReview extends Model {
+  [util.inspect.custom]() {
+    return this.toJSON();
+  }
+}
+
 User.init(
   {
     userId: {
@@ -94,7 +100,6 @@ Review.init(
     },
     markReview: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
     },
     country: {
       type: DataTypes.STRING,
@@ -159,6 +164,20 @@ Image.init(
 
 WishlistItem.init(
   {
+    wishId: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+  },
+  {
+    modelName: "wishlistReview",
+    sequelize: db,
+  }
+);
+
+WishlistReview.init(
+  {
     itemId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -188,17 +207,20 @@ WishlistItem.init(
   }
 );
 
-User.hasMany(Review, { foreignKey: "reviewId" });
+User.hasMany(Review, { foreignKey: "userId" });
 Review.belongsTo(User, { foreignKey: "userId" });
 
-User.hasMany(WishlistItem, { foreignKey: "itemId" });
+User.hasMany(WishlistItem, { foreignKey: "userId" });
 WishlistItem.belongsTo(User, { foreignKey: "userId" });
 
-WishlistItem.hasMany(Review, { foreignKey: "reviewId" });
-Review.belongsTo(WishlistItem, { foreignKey: "itemId" });
+Review.hasMany(WishlistReview, { foreignKey: "reviewId" });
+WishlistReview.belongsTo(Review, { foreignKey: "reviewId" });
 
-Review.hasMany(Tag, { foreignKey: "tagId" });
+WishlistItem.hasMany(WishlistReview, { foreignKey: "itemId" });
+WishlistReview.belongsTo(WishlistItem, { foreignKey: "itemId" });
+
+Review.hasMany(Tag, { foreignKey: "reviewId" });
 Tag.belongsTo(Review, { foreignKey: "reviewId" });
 
-Review.hasMany(Image, { foreignKey: "imageId" });
+Review.hasMany(Image, { foreignKey: "reviewId" });
 Image.belongsTo(Review, { foreignKey: "reviewId" });

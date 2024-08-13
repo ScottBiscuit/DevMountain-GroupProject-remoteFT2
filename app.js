@@ -25,7 +25,7 @@ function loginRequired(req, res, next) {
   }
 }
 
-//____________________________START API Endpoints__________________________//
+//*********************************START API Endpoints*********************************//
 
 //login
 app.post("/api/auth", async (req, res) => {
@@ -66,3 +66,9 @@ app.post("/api/user", async (req, res) => {
     res.json({ error: "Username already in use." });
   }
 });
+
+//*********************************END API Endpoints*********************************//
+
+ViteExpress.listen(app, port, () =>
+  console.log(`Server is listening on http://localhost:${port}`)
+);

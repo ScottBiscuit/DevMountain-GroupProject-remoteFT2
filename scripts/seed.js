@@ -8,21 +8,19 @@ await db.sync({ force: true });
 
 console.log("Seeding database...");
 
-// const usersToCreate = [
-//   User.create({
-//     userName: `johndoe`,
-//     email: `user@test.com`,
-//     password: "test",
-//   }),
-// ];
+const usersToCreate = [];
+for (let i = 1; i < 3; i++) {
+  const email = `user${i}@test.com`;
+  usersToCreate.push(
+    User.create({
+      username: `johndoe${i}`,
+      email,
+      password: "test",
+    })
+  );
+}
 
-const usersInDb = await Promise.all(
-  User.create({
-    userName: `johndoe`,
-    email: `user@test.com`,
-    password: "test",
-  })
-);
+const usersInDB = await Promise.all(usersToCreate);
 
 const reviewsInDb = await Promise.all(
   reviewData.map((review) => {
@@ -35,6 +33,7 @@ const reviewsInDb = await Promise.all(
       city: city,
       userId: 1,
     });
+    return newReview;
   })
 );
 
@@ -46,6 +45,7 @@ const imagesInDb = await Promise.all(
       imageSrc: imageSrc,
       imageDesc: imageDesc,
     });
+    return newImage;
   })
 );
 
@@ -55,5 +55,8 @@ const tagsInDb = await Promise.all(
     const newTag = Tag.create({
       tagName: tagName,
     });
+    return newTag;
   })
 );
+
+await db.close(console.log("Finished seeding database!"));
