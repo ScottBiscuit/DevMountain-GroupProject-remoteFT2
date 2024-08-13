@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
-import ReviewCarousel from '../components/ReviewCarousel'
+import ReviewCarousel from '../components/ReviewCarousel';
+import RecentReviewsCards from '../components/RecentReviewsCards';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         {/* TODO pull top rated reviews into ReviewCarousel */}
         <ReviewCarousel />
         {/* TODO add Most Recent Posts Cards */}
+        <RecentReviewsCards />
       </Card.ImgOverlay>
       </Card>
     </>
