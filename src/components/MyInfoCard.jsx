@@ -6,12 +6,12 @@ export default function MyInfoCard() {
   return (
     <>
     <div>MyInfo</div>
-    <>{userImageSrc}</>
+    <>userImageSrc</>
     {/* TODO do we need userImageDesc? the alt text should just show that it's a user profile pic */}
-    <>{username}</>
-    <>{email}</>
+    <>username</>
+    <>email</>
     <>Change password?</>
-    <>Number of reviews: {reviewNum}</>
+    <>Number of reviews: reviewNum</>
 
     </>
   )
