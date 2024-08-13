@@ -41,6 +41,20 @@ app.post("/api/auth", async (req, res) => {
   }
 });
 
+//session user
+app.get("/api/auth", async (req, res) => {
+  const userId = req.session.userId;
+  const user = await User.findByPk(userId);
+  const { username } = user;
+  res.json({ userId: userId, username: username });
+});
+
+//logout
+app.post("/api/logout", loginRequired, (req, res) => {
+  req.session.destroy();
+  res.json({ success: true });
+});
+
 //create new user
 app.post("/api/user", async (req, res) => {
   const { username, email, password } = req.body;
@@ -65,6 +79,11 @@ app.post("/api/user", async (req, res) => {
   } else {
     res.json({ error: "Username already in use." });
   }
+});
+
+//get random review
+app.get("/api/reviews", async (req,res) => {
+  const review =
 });
 
 //*********************************END API Endpoints*********************************//
