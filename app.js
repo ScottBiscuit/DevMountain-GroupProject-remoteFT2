@@ -3,7 +3,7 @@ import session from "express-session";
 import morgan from "morgan";
 import ViteExpress from "vite-express";
 import { User, Review, Tag, Image, WishlistItem } from "./src/model.js";
-import { Op } from "sequelize";
+import { Op, Sequelize } from "sequelize";
 
 const app = express();
 const port = 8000;
@@ -26,6 +26,8 @@ function loginRequired(req, res, next) {
 }
 
 //*********************************START API Endpoints*********************************//
+
+//__________login, logout, register, and user info__________//
 
 //login
 app.post("/api/auth", async (req, res) => {
@@ -81,10 +83,83 @@ app.post("/api/user", async (req, res) => {
   }
 });
 
-//get random review
-app.get("/api/reviews", async (req,res) => {
-  const review =
+//__________Finding Reviews__________//
+
+//find random review
+app.get("/api/reviews", async (req, res) => {
+  const review = Review.findAll({
+    order: Sequelize.literal("rand()"),
+    limit: 1,
+  });
+  res.json({ review });
 });
+
+//find most popular reviews
+app.get("/api/reviews/popular", async (req, res) => {});
+
+//find reviews from a certain user
+app.get("/api/reviews/:userId", async (req, res) => {});
+
+//find reviews based on the country
+app.get("/api/reviews/:country", async (req, res) => {});
+
+//find reviews based on the city
+app.get("/api/reviews/:city", async (req, res) => {});
+
+//find reviews based on tag
+app.get("/api/reviews/:tagName", async (req, res) => {});
+
+//view review and associated images
+app.get("/api/images/:reviewId", async (req, res) => {});
+
+//----------Creating, editing, and deleting---------//
+
+//__________Reviews__________//
+
+//create a review
+app.post("/api/reviews", async (req, res) => {});
+
+//edit a review
+app.put("/api/reviews/:reviewId", async (req, res) => {});
+
+//delete a review
+app.delete("/api/reviews/:reviewId", async (req, res) => {});
+
+//__________Images__________//
+
+//link an image
+app.post("/api/images", async (req, res) => {});
+
+//delete an image
+app.delete("/api/images/:imageId", async (req, res) => {});
+
+//__________Wishlist__________//
+
+//create a wishlist item
+app.post("/api/wishlist", async (req, res) => {});
+
+//view wishlist
+app.get("/api/wishlist", async (req, res) => {});
+
+//edit a wishlist item
+app.put("/api/wishlist/:itemId", async (req, res) => {});
+
+//delete a wishlist item
+app.delete("/api/wishlist/:itemId", async (req, res) => {});
+
+//link a review to a wishlist item
+app.post("/api/wishlist/:reviewId", async (req, res) => {});
+
+//remove a review from a wishlist item
+app.delete("/api/wishlist/:reviewId", async (req, res) => {});
+
+//__________Tags__________//
+
+//create a tag
+app.post("/api/tag/:reviewId", async (req, res) => {});
+
+//delete a tag
+app.delete("/api/tag/:tagId", async (req, res) => {});
 
 //*********************************END API Endpoints*********************************//
 
