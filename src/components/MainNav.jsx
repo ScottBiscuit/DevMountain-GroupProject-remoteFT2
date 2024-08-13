@@ -5,17 +5,29 @@ import { useState, useEffect } from 'react';
 
 export default function MainNav({ brand }) {
   const navigate = useNavigate();
-  // const [user, setUser] = useState
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    getUser();
+  });
+
+  const getUser = async () => {
+    if (!user) {
+      const res = await axios.get("/api/auth");
+      setUser(res.data.user);
+    }
+  };
 
   const handleLogout = async (e) => {
     e.preventDefault();
     const res= await axios.post('/api/logout');
     if (res.data.success){
+      setUser(null)
       navigate('/')
     }
   }
-  // return user ? (
-  return (
+  return user ? (
+  // return (
     <Navbar expand="lg" className="bg-success navbar-dark" sticky='top'>
       <Container fluid>
         <Navbar.Brand href='/'>{brand}</Navbar.Brand>
@@ -35,21 +47,22 @@ export default function MainNav({ brand }) {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  // ):(
-  //   <Navbar expand="lg" className="bg-success navbar-dark" sticky='top'>
-  //   <Container fluid>
-  //     <Navbar.Brand href='/'>{brand}</Navbar.Brand>
-  //     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-  //     <Navbar.Collapse id="basic-navbar-nav">
-  //       <Nav className="justify-content-end ms-auto text-end">
-  //         <Nav.Link href="/locations">Locations</Nav.Link>
-  //         <NavDropdown title="User" id="basic-nav-dropdown">
-  //           <NavDropdown.Item href="/login" >Log In</NavDropdown.Item>
-  //           <NavDropdown.Item href="/register" >Register</NavDropdown.Item> 
-  //         </NavDropdown>
-  //       </Nav>
-  //     </Navbar.Collapse>
-  //   </Container>
-  // </Navbar>
+  ):(
+    <Navbar expand="lg" className="bg-success navbar-dark" sticky='top'>
+    <Container fluid>
+      <Navbar.Brand href='/'>{brand}</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="justify-content-end ms-auto text-end">
+          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link href="/locations">Locations</Nav.Link>
+          <NavDropdown title="User" id="basic-nav-dropdown">
+            <NavDropdown.Item href="/login" >Log In</NavDropdown.Item>
+            <NavDropdown.Item href="/register" >Register</NavDropdown.Item> 
+          </NavDropdown>
+        </Nav>
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>
   )
 }
