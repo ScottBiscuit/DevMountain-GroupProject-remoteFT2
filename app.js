@@ -93,14 +93,14 @@ app.post("/api/user", async (req, res) => {
 //__________Finding Reviews__________//
 
 //find random reviews *** fix find random code
-// app.get("/api/reviews/random/:limit", async (req, res) => {
-//   const { limit } = req.params;
-//   const reviews = await Review.findAll({
-//     order: sequelize.random(),
-//     limit: limit,
-//   });
-//   res.json({ reviews });
-// });
+app.get("/api/reviews/random/:limit", async (req, res) => {
+  const { limit } = req.params;
+  const reviews = await Review.findAll({
+    order: Sequelize.literal("random()"),
+    limit: limit,
+  });
+  res.json({ reviews });
+});
 
 //find most recently updated reviews
 app.get("/api/reviews/recentUpdated/:limit", async (req, res) => {
@@ -224,7 +224,8 @@ app.post("/api/reviews", async (req, res) => {
 //edit a review content
 app.put("/api/reviews/:reviewId", async (req, res) => {
   const { reviewId } = req.params;
-  const { reviewContent, locationName, country, state, city, streetAddress } = req.body;
+  const { reviewContent, locationName, country, state, city, streetAddress } =
+    req.body;
   const review = await Review.findByPk(reviewId);
 
   review.locationName = locationName || review.locationName;
