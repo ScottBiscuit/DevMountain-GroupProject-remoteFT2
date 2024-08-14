@@ -3,8 +3,8 @@ import { Card, CardGroup, Col, Row} from 'react-bootstrap';
 
 export default function RecentReviewsCards() {
   return (
-    <CardGroup>
-      <Card>
+    <CardGroup className='p-2'>
+      <Card className='p-3'>
         <Card.Img variant="top" src="../images/hot_air_balloons.jpg" />
         <Card.Body>
           <Card.Title>Have to see the balloons!</Card.Title>
@@ -16,7 +16,7 @@ export default function RecentReviewsCards() {
           <small className="text-muted">Last updated 3 mins ago</small>
         </Card.Footer>
       </Card>
-      <Card>
+      <Card className='p-3'>
         <Card.Img variant="top" src="../images/calm_lake_boat.jpg" />
         <Card.Body>
           <Card.Title>Amazing boat ride!</Card.Title>
@@ -28,7 +28,7 @@ export default function RecentReviewsCards() {
           <small className="text-muted">Last updated 3 mins ago</small>
         </Card.Footer>
       </Card>
-      <Card>
+      <Card className='p-3'>
         <Card.Img variant="top" src="../images/paris_eiffel_tower_2.jpg" />
         <Card.Body>
           <Card.Title>Eiffel Tower, Paris</Card.Title>

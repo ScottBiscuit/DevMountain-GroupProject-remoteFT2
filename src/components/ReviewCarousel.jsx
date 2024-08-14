@@ -1,25 +1,24 @@
-import Carousel from 'react-bootstrap/Carousel';
-// import ExampleCarouselImage from 'components/ExampleCarouselImage';
+import { Carousel, Image } from 'react-bootstrap';
 
 export default function ReviewCarousel() {
   return (
-    <Carousel>
+    <Carousel className='bg-dark-subtle opacity-75'>
       <Carousel.Item>
-        {/* <ExampleCarouselImage text="First slide" /> */}
+        <Image src='../images/new_york_times_square.jpg'/>
         <Carousel.Caption>
           <h3>First slide label</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        {/* <ExampleCarouselImage text="Second slide" /> */}
+      <Image src='../images/new_york_times_square.jpg'/>
         <Carousel.Caption>
           <h3>Second slide label</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        {/* <ExampleCarouselImage text="Third slide" /> */}
+      <Image src='../images/new_york_times_square.jpg'/>
         <Carousel.Caption>
           <h3>Third slide label</h3>
           <p>
