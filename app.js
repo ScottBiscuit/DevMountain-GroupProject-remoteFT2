@@ -54,8 +54,7 @@ app.post("/api/auth", async (req, res) => {
 app.get("/api/auth", async (req, res) => {
   const userId = req.session.userId;
   const user = await User.findByPk(userId);
-  const { username } = user;
-  res.json({ userId: userId, username: username });
+  res.json({ user: user});
 });
 
 //logout

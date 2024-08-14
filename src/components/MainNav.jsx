@@ -37,9 +37,9 @@ export default function MainNav({ brand }) {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/locations">Locations</Nav.Link>
             <NavDropdown title="User" id="basic-nav-dropdown">
-              <NavDropdown.Item href="user" >My Info</NavDropdown.Item>
-              <NavDropdown.Item href="user" >My Reviews</NavDropdown.Item> 
-              <NavDropdown.Item href="user" >Wislist</NavDropdown.Item>  
+              <NavDropdown.Item href="/user" >My Info</NavDropdown.Item>
+              <NavDropdown.Item href="/user" >My Reviews</NavDropdown.Item> 
+              <NavDropdown.Item href="/user" >Wislist</NavDropdown.Item>  
               <NavDropdown.Divider />
               <NavDropdown.Item onClick={handleLogout} >Log Out?</NavDropdown.Item>
             </NavDropdown>
