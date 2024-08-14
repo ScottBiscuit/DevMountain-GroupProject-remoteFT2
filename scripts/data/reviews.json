@@ -4,27 +4,34 @@
     "reviewContent": "I went to Barcelona and it was amazing. Blah, blah blah. Spanish words!",
     "markReview": false,
     "country": "Spain",
-    "city": "Barcelona"
+    "city": "Barcelona",
+    "userId": 1,
+    "likeCount": 2
   },
   {
-    "locationName": "Museum in Barcelona",
-    "reviewContent": "I went to this museum in Barcelona and it was amazing. Blah, blah blah. Spanish words!",
+    "locationName": "Museum in Marseille",
+    "reviewContent": "I went to this museum in Marseille and it was amazing. Blah, blah blah. French words!",
     "markReview": false,
-    "country": "Spain",
-    "city": "Barcelona"
+    "country": "France",
+    "city": "Marseille",
+    "userId": 2,
+    "likeCount": 23
   },
   {
-    "locationName": "Restaurant in Barcelona",
-    "reviewContent": "I went to this restaurant in Barcelona and it was amazing. Blah, blah blah. Spanish words!",
+    "locationName": "Restaurant in Paris",
+    "reviewContent": "I went to this restaurant in Barcelona and it was amazing. Blah, blah blah. French words!",
     "markReview": false,
-    "country": "Spain",
-    "city": "Barcelona"
+    "country": "France",
+    "city": "Paris",
+    "userId": 2,
+    "likeCount": 14
   },
   {
     "locationName": "Public Bathroom in Barcelona",
     "reviewContent": "I went to this public bathroom in Barcelona and it was amazing. Blah, blah blah. Spanish words!",
     "markReview": false,
     "country": "Spain",
-    "city": "Barcelona"
+    "city": "Barcelona",
+    "userId": 1
   }
 ]

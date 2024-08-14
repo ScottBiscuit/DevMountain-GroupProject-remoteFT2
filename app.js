@@ -122,7 +122,8 @@ app.get("/api/reviews/recentCreated/:limit", async (req, res) => {
   res.json({ reviews });
 });
 
-//find most popular reviews ***don't display is likeCount is null
+//find most popular reviews
+// TODO fix - remove "null" from results
 app.get("/api/reviews/popular/:limit", async (req, res) => {
   const { limit } = req.params;
   const reviews = await Review.findAll({
@@ -145,6 +146,7 @@ app.get("/api/reviews/:userId", async (req, res) => {
 });
 
 //find reviews based on the country
+
 app.post("/api/reviews/country", async (req, res) => {
   const { country } = req.body;
   const reviews = await Review.findAll({
