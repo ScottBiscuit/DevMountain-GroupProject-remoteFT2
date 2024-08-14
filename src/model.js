@@ -120,6 +120,8 @@ Review.init(
   {
     modelName: "review",
     sequelize: db,
+    timestamps: true,
+    updatedAt: true,
   }
 );
 
@@ -165,20 +167,6 @@ Image.init(
 
 WishlistItem.init(
   {
-    wishId: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-  },
-  {
-    modelName: "wishlistReview",
-    sequelize: db,
-  }
-);
-
-WishlistReview.init(
-  {
     itemId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -208,11 +196,34 @@ WishlistReview.init(
   }
 );
 
+WishlistReview.init(
+  {
+    wishId: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+  },
+  {
+    modelName: "wishlistReview",
+    sequelize: db,
+  }
+);
+
 User.hasMany(Review, { foreignKey: "userId" });
 Review.belongsTo(User, { foreignKey: "userId" });
 
 User.hasMany(WishlistItem, { foreignKey: "userId" });
 WishlistItem.belongsTo(User, { foreignKey: "userId" });
+
+User.hasMany(Image, { foreignKey: "userId" });
+Image.belongsTo(User, { foreignKey: "userId" });
+
+User.hasMany(Tag, { foreignKey: "userId" });
+Tag.belongsTo(User, { foreignKey: "userId" });
+
+User.hasMany(WishlistReview, { foreignKey: "userId" });
+WishlistReview.belongsTo(User, { foreignKey: "userId" });
 
 Review.hasMany(WishlistReview, { foreignKey: "reviewId" });
 WishlistReview.belongsTo(Review, { foreignKey: "reviewId" });
