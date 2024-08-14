@@ -86,6 +86,7 @@ app.post("/api/user", async (req, res) => {
 //__________Finding Reviews__________//
 
 //find random reviews
+// TODO fix - error: function rand() does not exist
 app.get("/api/reviews/random/:limit", async (req, res) => {
   const { limit } = req.params;
   const reviews = await Review.findAll({
@@ -116,6 +117,7 @@ app.get("/api/reviews/recentCreated/:limit", async (req, res) => {
 });
 
 //find most popular reviews
+// TODO fix - remove "null" from results
 app.get("/api/reviews/popular/:limit", async (req, res) => {
   const { limit } = req.params;
   const reviews = await Review.findAll({
@@ -138,6 +140,8 @@ app.get("/api/reviews/:userId", async (req, res) => {
 });
 
 //find reviews based on the country
+//TODO fix - error: invalid input syntax for type integer: "Spain"
+//Does this need to be a POST with country as an input?
 app.get("/api/reviews/:country", async (req, res) => {
   const { country } = req.params;
   const reviews = await Review.findAll({
@@ -150,6 +154,8 @@ app.get("/api/reviews/:country", async (req, res) => {
 });
 
 //find reviews based on the city
+//TODO fix - error: invalid input syntax for type integer: "Barcelona"
+//Does this need to be a POST with city as an input?
 app.get("/api/reviews/:city", async (req, res) => {
   const { city } = req.params;
   const reviews = await Review.findAll({
@@ -162,6 +168,7 @@ app.get("/api/reviews/:city", async (req, res) => {
 });
 
 //find reviews based on tag
+// TODO fix same syntax error
 app.get("/api/reviews/:tagName", async (req, res) => {
   const { tagName } = req.params;
   const reviews = await Review.findAll({

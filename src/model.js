@@ -5,8 +5,8 @@ import { type } from "os";
 
 //change to your own database file path
 export const db = await connectToDB(
-  "postgres://josep:admin@localhost:5432/travelBlog"
-  // "postgres://scottjohnstone:admin@localhost:5432/travelBlog"
+  // "postgres://josep:admin@localhost:5432/travelBlog"
+  "postgres://scottjohnstone:admin@localhost:5432/travelBlog"
 );
 
 export class User extends Model {
@@ -120,6 +120,8 @@ Review.init(
   {
     modelName: "review",
     sequelize: db,
+    timestamps: true,
+    updatedAt: true
   }
 );
 
@@ -160,6 +162,8 @@ Image.init(
   {
     modelName: "image",
     sequelize: db,
+    timestamps: true,
+    updatedAt: true
   }
 );
 

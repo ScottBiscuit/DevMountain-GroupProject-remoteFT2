@@ -24,14 +24,15 @@ const usersInDB = await Promise.all(usersToCreate);
 
 const reviewsInDb = await Promise.all(
   reviewData.map((review) => {
-    const { locationName, reviewContent, markReview, country, city } = review;
+    const { locationName, reviewContent, markReview, country, city, userId, likeCount } = review;
     const newReview = Review.create({
       locationName: locationName,
       reviewContent: reviewContent,
       markReview: markReview,
       country: country,
       city: city,
-      userId: 1,
+      userId: userId,
+      likeCount: likeCount
     });
     return newReview;
   })
@@ -39,11 +40,12 @@ const reviewsInDb = await Promise.all(
 
 const imagesInDb = await Promise.all(
   imageData.map((image) => {
-    const { imageName, imageSrc, imageDesc } = image;
+    const { imageName, imageSrc, imageDesc, reviewId } = image;
     const newImage = Image.create({
       imageName: imageName,
       imageSrc: imageSrc,
       imageDesc: imageDesc,
+      reviewId: reviewId
     });
     return newImage;
   })
