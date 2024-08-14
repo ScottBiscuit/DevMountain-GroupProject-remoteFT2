@@ -32,6 +32,7 @@
     "markReview": false,
     "country": "Spain",
     "city": "Barcelona",
-    "userId": 1
+    "userId": 1,
+    "likeCount": 0
   }
 ]
