@@ -2,18 +2,21 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
-import LoginForm from "../components/LoginForm";
+import RegisterForm from "../components/RegisterForm";
 
-export default function Login() {
+export default function Register() {
   const navigate = useNavigate();
 
-  const handleLogin = async (event, formData) => {
+  const handleSignup = async (event, formData) => {
     event.preventDefault();
 
-    const res = await axios.post("/api/auth", formData);
+    const res = await axios.post("/api/user", formData);
 
-    if (res.data.success) {
-      navigate("/user");
+    if (!res.data.error) {
+      navigate("/login");
+      // alert('New user added - click OK to do cool stuff!')
+    } else {
+      alert(res.data.error);
     }
   };
 
@@ -28,21 +31,21 @@ export default function Login() {
         <Card.ImgOverlay>
           <CardGroup>
             <Card>
-              <Card.Body>
-                <Card.Title className="bg-success-subtle p-2">
-                  Log In
-                </Card.Title>
-                <Card.Text className="p-2">
-                  <LoginForm onLogin={handleLogin} />
-                </Card.Text>
-              </Card.Body>
-            </Card>
-            <Card>
               <Card.Img
                 variant="top"
                 src="../images/world_map_pins.png"
                 className="opacity-75"
               />
+            </Card>
+            <Card>
+              <Card.Body>
+                <Card.Title className="bg-success-subtle p-2">
+                  Register
+                </Card.Title>
+                <Card.Text className="p-2">
+                  <RegisterForm onSignup={handleSignup} />
+                </Card.Text>
+              </Card.Body>
             </Card>
           </CardGroup>
         </Card.ImgOverlay>
