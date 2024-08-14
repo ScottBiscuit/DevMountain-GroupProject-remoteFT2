@@ -123,7 +123,6 @@ app.get("/api/reviews/recentCreated/:limit", async (req, res) => {
 });
 
 //find most popular reviews
-// TODO fix - remove "null" from results
 app.get("/api/reviews/popular/:limit", async (req, res) => {
   const { limit } = req.params;
   const reviews = await Review.findAll({
@@ -146,7 +145,6 @@ app.get("/api/reviews/:userId", async (req, res) => {
 });
 
 //find reviews based on the country
-
 app.post("/api/reviews/country", async (req, res) => {
   const { country } = req.body;
   const reviews = await Review.findAll({
@@ -226,10 +224,15 @@ app.post("/api/reviews", async (req, res) => {
 //edit a review content
 app.put("/api/reviews/:reviewId", async (req, res) => {
   const { reviewId } = req.params;
-  const { reviewContent } = req.body;
+  const { reviewContent, locationName, country, state, city, streetAddress } = req.body;
   const review = await Review.findByPk(reviewId);
 
-  review.reviewContent = reviewContent;
+  review.locationName = locationName || review.locationName;
+  review.reviewContent = reviewContent || review.reviewContent;
+  review.country = country || review.country;
+  review.state = state || review.state;
+  review.city = city || review.city;
+  review.streetAddress = streetAddress || review.streetAddress;
   await review.save();
   res.json(review);
 });
