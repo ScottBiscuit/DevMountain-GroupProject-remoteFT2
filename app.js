@@ -54,7 +54,7 @@ app.post("/api/auth", async (req, res) => {
 app.get("/api/auth", async (req, res) => {
   const userId = req.session.userId;
   const user = await User.findByPk(userId);
-  res.json({ user: user});
+  res.json({ user: user });
 });
 
 //logout
@@ -185,7 +185,7 @@ app.post("/api/reviews/tagName", async (req, res) => {
   res.json({ reviews });
 });
 
-//find imaged associated with a review
+//find images associated with a review
 app.get("/api/images/:reviewId", async (req, res) => {
   const { reviewId } = req.params;
   const images = await Image.findAll({
