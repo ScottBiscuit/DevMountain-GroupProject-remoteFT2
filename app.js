@@ -251,14 +251,16 @@ app.delete("/api/reviews/:reviewId", async (req, res) => {
 //__________Images__________//
 
 //post an image
-app.post("/api/images", async (req, res) => {
+app.post("/api/images/:reviewId", async (req, res) => {
   const { userId } = req.session;
+  const { reviewId } = req.params;
   const { imageSrc, imageName, imageDesc } = req.body;
   const image = await Image.create({
     imageSrc: imageSrc,
     imageName: imageName,
     imageDesc: imageDesc,
     userId: userId,
+    reviewId: reviewId,
   });
   res.json(image);
 });
@@ -309,11 +311,11 @@ app.put("/api/wishlist/:itemId", async (req, res) => {
   const { country, itemName, state, city, streetAddress } = req.body;
 
   const wishlistItem = await WishlistItem.findByPk(itemId);
-  wishlistItem.country = country;
-  wishlistItem.itemName = itemName;
-  wishlistItem.state = state;
-  wishlistItem.city = city;
-  wishlistItem.streetAddress = streetAddress;
+  wishlistItem.country = country || wishlistItem.country;
+  wishlistItem.itemName = itemName || wishlistItem.itemName;
+  wishlistItem.state = state || wishlistItem.state;
+  wishlistItem.city = city || wishlistItem.city;
+  wishlistItem.streetAddress = streetAddress || wishlistItem.streetAddress;
   await wishlistItem.save();
   res.json(wishlistItem);
 });
@@ -347,7 +349,7 @@ app.post("/api/wishlist/:reviewId", async (req, res) => {
 });
 
 //remove a review from a wishlist item
-app.delete("/api/wishlist/:wishId", async (req, res) => {
+app.delete("/api/wishlist/review/:wishId", async (req, res) => {
   const { userId } = req.session;
   const { wishId } = req.params;
   const wish = await WishlistReview.findByPk(wishId);

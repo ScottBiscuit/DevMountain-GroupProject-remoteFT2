@@ -1,23 +1,37 @@
 [
   {
-    "tagName": "Food"
+    "tagName": "Food",
+    "reviewId": "3",
+    "userId": "1"
   },
   {
-    "tagName": "Art"
+    "tagName": "Art",
+    "reviewId": "2",
+    "userId": "1"
   },
   {
-    "tagName": "Music"
+    "tagName": "Music",
+    "reviewId": "1",
+    "userId": "1"
   },
   {
-    "tagName": "Historical Site"
+    "tagName": "Historical Site",
+    "reviewId": "1",
+    "userId": "1"
   },
   {
-    "tagName": "Vista"
+    "tagName": "Vista",
+    "reviewId": "1",
+    "userId": "1"
   },
   {
-    "tagName": "Entertainment"
+    "tagName": "Entertainment",
+    "reviewId": "1",
+    "userId": "1"
   },
   {
-    "tagName": "Outdoor Recreation"
+    "tagName": "Outdoor Recreation",
+    "reviewId": "4",
+    "userId": "1"
   }
 ]
