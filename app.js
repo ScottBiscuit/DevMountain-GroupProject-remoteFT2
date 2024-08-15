@@ -54,6 +54,8 @@ app.post("/api/auth", async (req, res) => {
 app.get("/api/auth", async (req, res) => {
   const userId = req.session.userId;
   const user = await User.findByPk(userId);
+  console.log(user);
+
   res.json({ user: user });
 });
 
@@ -108,7 +110,7 @@ app.get("/api/reviews/recentUpdated/:limit", async (req, res) => {
     order: [["updatedAt", "DESC"]],
     limit: limit,
   });
-  res.json({ reviews });
+  res.json(reviews);
 });
 
 //find most recently created reviews
@@ -118,7 +120,7 @@ app.get("/api/reviews/recentCreated/:limit", async (req, res) => {
     order: [["createdAt", "DESC"]],
     limit: limit,
   });
-  res.json({ reviews });
+  res.json(reviews);
 });
 
 //find most popular reviews
@@ -128,7 +130,7 @@ app.get("/api/reviews/popular/:limit", async (req, res) => {
     order: [["likeCount", "DESC"]],
     limit: limit,
   });
-  res.json({ reviews });
+  res.json(reviews);
 });
 
 //find reviews from a certain user
@@ -140,7 +142,7 @@ app.get("/api/reviews/:userId", async (req, res) => {
     },
     order: [["likeCount", "DESC"]],
   });
-  res.json({ reviews });
+  res.json(reviews);
 });
 
 //find reviews based on the country
@@ -152,7 +154,7 @@ app.post("/api/reviews/country", async (req, res) => {
     },
     order: [["likeCount", "DESC"]],
   });
-  res.json({ reviews });
+  res.json(reviews);
 });
 
 //find reviews based on the city
@@ -164,7 +166,7 @@ app.post("/api/reviews/city", async (req, res) => {
     },
     order: [["likeCount", "DESC"]],
   });
-  res.json({ reviews });
+  res.json(reviews);
 });
 
 //find reviews based on tag
@@ -182,7 +184,7 @@ app.post("/api/reviews/tagName", async (req, res) => {
     ],
     order: [["likeCount", "DESC"]],
   });
-  res.json({ reviews });
+  res.json(reviews);
 });
 
 //find images associated with a review
@@ -194,7 +196,7 @@ app.get("/api/images/:reviewId", async (req, res) => {
     },
     order: [["createdAt", "DESC"]],
   });
-  res.json({ images });
+  res.json(images);
 });
 
 //----------Creating, editing, and deleting---------//

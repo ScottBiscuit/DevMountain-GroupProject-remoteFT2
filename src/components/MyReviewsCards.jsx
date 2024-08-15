@@ -1,25 +1,39 @@
-import React from 'react'
-import {Card, Col, Row} from 'react-bootstrap';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Row } from "react-bootstrap";
+import ReviewCard from "./ReviewCard";
+import { useNavigate } from "react-router-dom";
 
-export default function MyReviewsCards() {
+export default function MyReviewsCards({ user }) {
+  const [reviews, setReviews] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    generateReviews();
+  }, []);
+
+  const generateReviews = async () => {
+    const res = await axios.get(`/api/reviews/${user.userId}`);
+    // setIsLoading(false);
+    console.log(res.data);
+
+    setReviews(res.data);
+  };
+
+  const reviewCards = reviews.map((review) => (
+    <ReviewCard key={review.reviewId} review={review} />
+  ));
 
   return (
-    <Row xs={1} md={2} className="g-4">
-      {Array.from({ length: 4 }).map((_, idx) => (
-        <Col key={idx}>
-          <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-    </Row>
+    user &&
+    reviews && (
+      // (!isLoading ? (
+      <Row xs={1} md={2} className="g-4">
+        {reviewCards}
+      </Row>
+      // ) : (
+      //   <Row>...Loading Data</Row>
+      // )
+    )
   );
 }
