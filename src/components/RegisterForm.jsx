@@ -11,19 +11,38 @@ export default function RegisterForm({ onSignup }) {
   const [passwordValue, setPasswordValue] = useState("");
   const [passwordValue2, setPasswordValue2] = useState("");
   const [username, setUsername] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  const isEmailValid = (email) => {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(email);
+  };
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmailValue(value);
+
+    if (!isEmailValid(value)) {
+      setEmailError("Invalid email format.");
+    } else {
+      setEmailError("");
+    }
+  };
 
   return (
     <Form
       onSubmit={(e) => {
         event.preventDefault();
-        if (passwordValue === passwordValue2) {
+        if (!emailError && passwordValue === passwordValue2) {
           onSignup(e, {
             username: username,
             email: emailValue,
             password: passwordValue,
           });
-        } else {
+        } else if (passwordValue !== passwordValue2) {
           alert("Make sure that your password is the same in both fields!");
+        } else {
+          alert(emailError);
         }
       }}
     >
@@ -35,7 +54,7 @@ export default function RegisterForm({ onSignup }) {
             id="emailSignup"
             type="email"
             placeholder="name@example.com"
-            onChange={(e) => setEmailValue(e.target.value)}
+            onChange={handleEmailChange}
           />
         </Form.Group>
       </Row>
