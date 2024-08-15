@@ -5,7 +5,7 @@ export default function RecentReviewsCards() {
   return (
     <CardGroup className='p-2'>
       <Card className='p-3'>
-        <Card.Img variant="top" src="../images/hot_air_balloons.jpg" />
+        <Card.Img variant="top" src="../images/hot_air_balloons.jpg" class="rounded"/>
         <Card.Body>
           <Card.Title>Have to see the balloons!</Card.Title>
           <Card.Text>
@@ -17,7 +17,7 @@ export default function RecentReviewsCards() {
         </Card.Footer>
       </Card>
       <Card className='p-3'>
-        <Card.Img variant="top" src="../images/calm_lake_boat.jpg" />
+        <Card.Img variant="top" src="../images/calm_lake_boat.jpg" class="rounded"/>
         <Card.Body>
           <Card.Title>Amazing boat ride!</Card.Title>
           <Card.Text>
@@ -29,7 +29,7 @@ export default function RecentReviewsCards() {
         </Card.Footer>
       </Card>
       <Card className='p-3'>
-        <Card.Img variant="top" src="../images/paris_eiffel_tower_2.jpg" />
+        <Card.Img variant="top" src="../images/paris_eiffel_tower_2.jpg" class="rounded"/>
         <Card.Body>
           <Card.Title>Eiffel Tower, Paris</Card.Title>
           <Card.Text>
