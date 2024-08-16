@@ -114,21 +114,21 @@ app.get("/api/reviews/recentUpdated/:limit", async (req, res) => {
 //find most recently created reviews
 app.get("/api/reviews/recentCreated/:limit", async (req, res) => {
   const { limit } = req.params;
-  const reviews = await Review.findAll({
+  const reviewsRecCr = await Review.findAll({
     order: [["createdAt", "DESC"]],
     limit: limit,
   });
-  res.json({ reviews });
+  res.json({ reviewsRecCr });
 });
 
 //find most popular reviews
 app.get("/api/reviews/popular/:limit", async (req, res) => {
   const { limit } = req.params;
-  const reviews = await Review.findAll({
+  const reviewsPop = await Review.findAll({
     order: [["likeCount", "DESC"]],
     limit: limit,
   });
-  res.json({ reviews });
+  res.json({ reviewsPop });
 });
 
 //find reviews from a certain user

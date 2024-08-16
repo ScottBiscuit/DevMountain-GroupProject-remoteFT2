@@ -26,8 +26,8 @@ const router = createBrowserRouter(
       <Route index element={<Home />} 
         loader={async () => {
         const res = await axios.get(`/api/reviews/popular/3`)
-        console.log(res.data)
-        return {reviews: res.data.reviews}
+        const res2 = await axios.get(`/api/reviews/recentCreated/3`)
+        return {reviewsPop: res.data.reviewsPop, reviewsRecCr: res2.data.reviewsRecCr}
         }}
       />
       <Route path="/locations" element={<Locations />} />
