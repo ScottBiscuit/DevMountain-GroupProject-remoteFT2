@@ -93,6 +93,15 @@ app.post("/api/user", async (req, res) => {
 
 //__________Finding Reviews__________//
 
+//find a review based on reviewId
+app.get("/api/reviews/thisreview/:reviewId", async (req, res) => {
+  const { reviewId } = req.params;
+  const reviews = await Review.findOne({
+    where: { reviewId: reviewId },
+  });
+  res.json({ reviews });
+});
+
 //find random reviews *** fix find random code
 app.get("/api/reviews/random/:limit", async (req, res) => {
   const { limit } = req.params;
@@ -358,8 +367,19 @@ app.post("/api/wishlist/:reviewId", async (req, res) => {
 app.get("/api/wishlist/reviews/:itemId", async (req, res) => {
   const { itemId } = req.params;
 
-  const item = await WishlistReview.findAll({ where: { itemId: itemId } });
-  res.json(item);
+  const reviews = await Review.findAll({
+    include: [
+      {
+        model: WishlistReview,
+        required: true,
+        where: {
+          itemId: itemId,
+        },
+      },
+    ],
+  });
+
+  res.json(reviews);
 });
 
 //remove a review from a wishlist item

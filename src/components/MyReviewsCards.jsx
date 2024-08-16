@@ -21,7 +21,7 @@ export default function MyReviewsCards({ user }) {
   };
 
   const reviewCards = reviews.map((review) => (
-    <ReviewCard key={review.reviewId} review={review} />
+    <ReviewCard key={review.reviewId} review={review} user={user} />
   ));
 
   return (
