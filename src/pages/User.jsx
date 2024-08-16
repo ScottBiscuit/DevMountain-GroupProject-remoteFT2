@@ -22,7 +22,7 @@ export default function User() {
   return (
     user && (
       <Container>
-        {/* <MyInfoCard /> */}
+        <MyInfoCard user={user} />
         <MyReviewsCards user={user} />
         {/* <MyWishlist /> */}
       </Container>

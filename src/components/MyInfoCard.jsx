@@ -1,18 +1,35 @@
-import React from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Col, Row, Card } from "react-bootstrap";
 
-export default function MyInfoCard() {
-  // TODO function reviewNum that pulls number of reviews made by user
+export default function MyInfoCard({ user }) {
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    generateReviews();
+  }, []);
+
+  const generateReviews = async () => {
+    const res = await axios.get(`/api/reviews/${user.userId}`);
+    console.log(res.data);
+
+    setReviews(res.data);
+  };
 
   return (
-    <>
-    <div>MyInfo</div>
-    <>userImageSrc</>
-    {/* TODO do we need userImageDesc? the alt text should just show that it's a user profile pic */}
-    <>username</>
-    <>email</>
-    <>Change password?</>
-    <>Number of reviews: reviewNum</>
-
-    </>
-  )
+    reviews &&
+    user && (
+      <Row>
+        <Col>MyInfo</Col>
+        <Card>
+          <Card.Img>{user.userImgSrc}</Card.Img>
+          <Card.Body>
+            <Card.Title>{user.username}</Card.Title>
+            <Card.Subtitle>{user.email}</Card.Subtitle>
+            <Card.Text>My Review Total: {reviews.length}</Card.Text>
+          </Card.Body>
+        </Card>
+      </Row>
+    )
+  );
 }
