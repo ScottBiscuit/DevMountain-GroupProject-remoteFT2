@@ -11,14 +11,12 @@ function ReviewCard({ review }) {
         <Card.Body>
           <Card.Title>{review.locationName}</Card.Title>
           <Card.Subtitle className="text-muted">
-            {review.country}
-            {review.state}
-            {review.city}
+            {review.city}, {review.state} {review.country}
           </Card.Subtitle>
-          <Card.Text>{review.reviewContent}</Card.Text>
           <Card.Subtitle className="text-muted">
             {review.streetAddress}
           </Card.Subtitle>
+          <Card.Text>{review.reviewContent}</Card.Text>
           <Card.Text>{review.likeCount}</Card.Text>
         </Card.Body>
       </Card>

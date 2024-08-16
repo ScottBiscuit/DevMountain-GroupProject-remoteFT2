@@ -353,8 +353,16 @@ app.post("/api/wishlist/:reviewId", async (req, res) => {
   res.json(link);
 });
 
+//view all wishlist reviews
+app.get("/api/wishlist/reviews/:itemId", async (req, res) => {
+  const { itemId } = req.params;
+
+  const item = await WishlistReview.findAll({ where: { itemId: itemId } });
+  res.json(item);
+});
+
 //remove a review from a wishlist item
-app.delete("/api/wishlist/review/:wishId", async (req, res) => {
+app.delete("/api/wishlist/reviews/:wishId", async (req, res) => {
   const { userId } = req.session;
   const { wishId } = req.params;
   const wish = await WishlistReview.findByPk(wishId);

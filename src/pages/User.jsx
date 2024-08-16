@@ -24,7 +24,7 @@ export default function User() {
       <Container>
         <MyInfoCard user={user} />
         <MyReviewsCards user={user} />
-        {/* <MyWishlist /> */}
+        <MyWishlist user={user} />
       </Container>
     )
   );
