@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, Container } from "react-bootstrap";
 import ReviewCarousel from "../components/ReviewCarousel";
-import RecentReviewsCards from "../components/RecentReviewsCards";
+import HomeReviewsCards from "../components/HomeReviewsCards";
 import { useLoaderData } from "react-router-dom";
 
 export default function Home() {
@@ -11,17 +11,19 @@ export default function Home() {
   );
 
   return (
-    <Card className="h-100">
+    <Card className="vh-100">
       <Card.Img
-        src="../images/world_map_pins.jpg"
+        src="../images/bgportrait_beach.jpg"
         alt="World map with location pins"
         className="opacity-50 vh-100"
       />
       <Card.ImgOverlay>
         <ReviewCarousel reviewsPop={reviewsPop} setPeviewsPop={setPeviewsPop} />
-        <RecentReviewsCards
+        <HomeReviewsCards
           reviewsRecCr={reviewsRecCr}
           setReviewsRecCr={setReviewsRecCr}
+          reviewsPop={reviewsPop} 
+          setPeviewsPop={setPeviewsPop}
         />
       </Card.ImgOverlay>
     </Card>

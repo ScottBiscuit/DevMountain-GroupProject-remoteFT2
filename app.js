@@ -94,21 +94,21 @@ app.post("/api/user", async (req, res) => {
 //find random reviews *** fix find random code
 app.get("/api/reviews/random/:limit", async (req, res) => {
   const { limit } = req.params;
-  const reviews = await Review.findAll({
+  const reviewsRand = await Review.findAll({
     order: Sequelize.literal("random()"),
     limit: limit,
   });
-  res.json({ reviews });
+  res.json({ reviewsRand });
 });
 
 //find most recently updated reviews
 app.get("/api/reviews/recentUpdated/:limit", async (req, res) => {
   const { limit } = req.params;
-  const reviews = await Review.findAll({
+  const reviewsRecUp = await Review.findAll({
     order: [["updatedAt", "DESC"]],
     limit: limit,
   });
-  res.json({ reviews });
+  res.json({ reviewsRecUp });
 });
 
 //find most recently created reviews
