@@ -14,7 +14,6 @@ export default function Register() {
 
     if (!res.data.error) {
       navigate("/login");
-      // alert('New user added - click OK to do cool stuff!')
     } else {
       alert(res.data.error);
     }
