@@ -54,6 +54,8 @@ app.post("/api/auth", async (req, res) => {
 app.get("/api/auth", async (req, res) => {
   const userId = req.session.userId;
   const user = await User.findByPk(userId);
+  console.log(user);
+
   res.json({ user: user });
 });
 
@@ -90,6 +92,15 @@ app.post("/api/user", async (req, res) => {
 });
 
 //__________Finding Reviews__________//
+
+//find a review based on reviewId
+app.get("/api/reviews/thisreview/:reviewId", async (req, res) => {
+  const { reviewId } = req.params;
+  const reviews = await Review.findOne({
+    where: { reviewId: reviewId },
+  });
+  res.json({ reviews });
+});
 
 //find random reviews *** fix find random code
 app.get("/api/reviews/random/:limit", async (req, res) => {
@@ -128,6 +139,7 @@ app.get("/api/reviews/popular/:limit", async (req, res) => {
     order: [["likeCount", "DESC"]],
     limit: limit,
   });
+  res.json(reviews);
   res.json({ reviewsPop });
 });
 
@@ -140,7 +152,7 @@ app.get("/api/reviews/:userId", async (req, res) => {
     },
     order: [["likeCount", "DESC"]],
   });
-  res.json({ reviews });
+  res.json(reviews);
 });
 
 //find reviews based on the country
@@ -152,7 +164,7 @@ app.post("/api/reviews/country", async (req, res) => {
     },
     order: [["likeCount", "DESC"]],
   });
-  res.json({ reviews });
+  res.json(reviews);
 });
 
 //find reviews based on the city
@@ -164,7 +176,7 @@ app.post("/api/reviews/city", async (req, res) => {
     },
     order: [["likeCount", "DESC"]],
   });
-  res.json({ reviews });
+  res.json(reviews);
 });
 
 //find reviews based on tag
@@ -182,7 +194,7 @@ app.post("/api/reviews/tagName", async (req, res) => {
     ],
     order: [["likeCount", "DESC"]],
   });
-  res.json({ reviews });
+  res.json(reviews);
 });
 
 //find images associated with a review
@@ -194,7 +206,7 @@ app.get("/api/images/:reviewId", async (req, res) => {
     },
     order: [["createdAt", "DESC"]],
   });
-  res.json({ images });
+  res.json(images);
 });
 
 //----------Creating, editing, and deleting---------//
@@ -351,8 +363,27 @@ app.post("/api/wishlist/:reviewId", async (req, res) => {
   res.json(link);
 });
 
+//view all wishlist reviews
+app.get("/api/wishlist/reviews/:itemId", async (req, res) => {
+  const { itemId } = req.params;
+
+  const reviews = await Review.findAll({
+    include: [
+      {
+        model: WishlistReview,
+        required: true,
+        where: {
+          itemId: itemId,
+        },
+      },
+    ],
+  });
+
+  res.json(reviews);
+});
+
 //remove a review from a wishlist item
-app.delete("/api/wishlist/review/:wishId", async (req, res) => {
+app.delete("/api/wishlist/reviews/:wishId", async (req, res) => {
   const { userId } = req.session;
   const { wishId } = req.params;
   const wish = await WishlistReview.findByPk(wishId);
