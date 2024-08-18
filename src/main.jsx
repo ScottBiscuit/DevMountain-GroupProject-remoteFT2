@@ -27,6 +27,7 @@ const router = createBrowserRouter(
         loader={async () => {
         const res = await axios.get(`/api/reviews/popular/3`)
         const res2 = await axios.get(`/api/reviews/recentCreated/3`)
+        // const res3 = await axios.post(`/api/reviews/city`)
         return {reviewsPop: res.data.reviewsPop, reviewsRecCr: res2.data.reviewsRecCr}
         }}
       />
