@@ -42,7 +42,7 @@ export default function ReviewCarousel({ reviewsPop, setPeviewsPop }) {
                     Thank you for visiting our happy travel site. Our mission is to help travelers like you realize their travel dreams!
                   </div>
                   <div>
-                    Our community have traveled all over the world and shared their amazing adventures so you can know before you go!
+                    Our community are traveling all over the world and sharing their amazing adventures so you can know before you go!
                   </div>
                 </Card.Text>
               </Card.Body>
@@ -54,10 +54,10 @@ export default function ReviewCarousel({ reviewsPop, setPeviewsPop }) {
                 <Card.Title>Let's Find Some Inspiration</Card.Title>
                 <Card.Text>
                   <div className="mb-3">
-                    Planing a vacation can sometimes be a daunting task. Lucky for you, thousands of other people have already done the hard work for you.
+                    Planing a vacation can sometimes be a daunting task. Lucky for you, thousands of other people have already done most of the hard work for you.
                   </div>
                   <div>
-                    Click below to search some locations and see what your fellow travels have done there!
+                    Click below to search some locations and see what your fellow travelers have done there!
                   </div>
                 </Card.Text>
                 <Link to="/locations" className="btn btn-primary">Locations</Link>
