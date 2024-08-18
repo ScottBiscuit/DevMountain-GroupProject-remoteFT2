@@ -139,7 +139,6 @@ app.get("/api/reviews/popular/:limit", async (req, res) => {
     order: [["likeCount", "DESC"]],
     limit: limit,
   });
-  res.json(reviews);
   res.json({ reviewsPop });
 });
 
