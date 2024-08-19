@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Row } from "react-bootstrap";
+import { Card, CardGroup, Row } from "react-bootstrap";
 import ReviewCard from "./ReviewCard";
 import { useNavigate } from "react-router-dom";
 
@@ -28,9 +28,15 @@ export default function MyReviewsCards({ user }) {
     user &&
     reviews && (
       // (!isLoading ? (
-      <Row xs={1} md={2} className="g-4">
+      <Card className="m-2">
+        <Card.Title className="p-3">My Reviews</Card.Title>
+      <CardGroup >
+        
+      {/* <Row xs={1} md={2} className="g-4"> */}
         {reviewCards}
-      </Row>
+      {/* </Row> */}
+      </CardGroup>
+      </Card>
       // ) : (
       //   <Row>...Loading Data</Row>
       // )
