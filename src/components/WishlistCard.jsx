@@ -22,7 +22,7 @@ function WishlistCard({ wish }) {
 
   return (
     <>
-      <Col>
+      {/* <Col> */}
         <Card>
           <Card.Img variant="top" src="holder.js/100px160" />
           <Card.Body>
@@ -35,7 +35,7 @@ function WishlistCard({ wish }) {
             </Card.Subtitle>
           </Card.Body>
         </Card>
-      </Col>
+      {/* </Col> */}
       {wishlistReviews}
     </>
   );
