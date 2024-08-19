@@ -5,7 +5,6 @@ import ReviewCard from "./ReviewCard";
 
 function WishlistCard({ wish }) {
   const [wishReviews, setWishReviews] = useState([]);
-  console.log(wish);
 
   useEffect(() => {
     generateWishReviews();

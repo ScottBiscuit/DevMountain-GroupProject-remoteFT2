@@ -15,8 +15,6 @@ export default function MyReviewsCards({ user }) {
   const generateReviews = async () => {
     const res = await axios.get(`/api/reviews/${user.userId}`);
     // setIsLoading(false);
-    console.log(res.data);
-
     setReviews(res.data);
   };
 

@@ -2,8 +2,6 @@ import React from "react";
 import { Card, Col, Button } from "react-bootstrap";
 
 function ReviewCard({ review, user }) {
-  console.log(review);
-
   return user && user.userId === review.userId ? (
     <Col>
       <Card>
