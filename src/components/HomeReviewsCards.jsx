@@ -57,7 +57,7 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
 
   return (
 
-    <Card className="p-3">
+    <Card className="p-3 m-2">
       <Tabs
         defaultActiveKey="featured"
         id="uncontrolled-tab-example"
