@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import MyReviewsCards from "../components/MyReviewsCards";
 import MyWishlist from "../components/MyWishlist";
 import MyInfoCard from "../components/MyInfoCard";
-import { Container } from "react-bootstrap";
+import { Container, Card } from "react-bootstrap";
 import CreateReview from "../components/CreateReview";
 
 export default function User() {
@@ -22,12 +22,19 @@ export default function User() {
 
   return (
     user && (
-      <Container>
-        <CreateReview user={user} />
-        <MyInfoCard user={user} />
-        <MyReviewsCards user={user} />
-        <MyWishlist user={user} />
-      </Container>
+    <Card className="vh-100">
+      <Card.Img
+        src="../images/bgportrait_beach.jpg"
+        alt="World map with location pins"
+        className="opacity-50 vh-100"
+      />
+      <Card.ImgOverlay>
+      <MyInfoCard user={user} />
+      <CreateReview user={user} />
+      <MyReviewsCards user={user} />
+      <MyWishlist user={user} />
+      </Card.ImgOverlay>
+    </Card>
     )
   );
 }

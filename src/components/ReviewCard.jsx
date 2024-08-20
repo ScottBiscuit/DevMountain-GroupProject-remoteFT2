@@ -3,8 +3,8 @@ import { Card, Col, Button } from "react-bootstrap";
 
 function ReviewCard({ review, user }) {
   return user && user.userId === review.userId ? (
-    <Col>
-      <Card>
+
+      <Card className="p-3">
         <Card.Img variant="top" src="holder.js/100px160" />
         <Card.Body>
           <Card.Title>{review.locationName}</Card.Title>
@@ -15,13 +15,13 @@ function ReviewCard({ review, user }) {
             {review.streetAddress}
           </Card.Subtitle>
           <Card.Text>{review.reviewContent}</Card.Text>
-          <Card.Text>{review.likeCount}</Card.Text>
+          <Card.Text>Likes: {review.likeCount}</Card.Text>
           <Button>Edit Review</Button>
         </Card.Body>
       </Card>
-    </Col>
+
   ) : (
-    <Col>
+
       <Card>
         <Card.Img variant="top" src="holder.js/100px160" />
         <Card.Body>
@@ -33,10 +33,9 @@ function ReviewCard({ review, user }) {
             {review.streetAddress}
           </Card.Subtitle>
           <Card.Text>{review.reviewContent}</Card.Text>
-          <Card.Text>{review.likeCount}</Card.Text>
+          <Card.Text>Likes: {review.likeCount}</Card.Text>
         </Card.Body>
       </Card>
-    </Col>
   );
 }
 
