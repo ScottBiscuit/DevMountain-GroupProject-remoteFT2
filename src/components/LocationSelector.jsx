@@ -3,8 +3,13 @@ import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 
 function LocationSelector() {
-  const [countriesList, setCountriesList] = useState(null);
   const [countriesDropdown, setCountriesDropdown] = useState(null);
+  const [statesDropdown, setStatesDropdown] = useState(null);
+  const [citiesDropdown, setCitiesDropdown] = useState(null);
+  const [country, setCountry] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+
   useEffect(() => {
     countrySelector();
   }, []);
@@ -13,46 +18,99 @@ function LocationSelector() {
     const countries = await axios.get(
       "https://countriesnow.space/api/v0.1/countries"
     );
-    // setCountriesList(countries.data.data);
-    console.log(countries.data.data[0]);
-
-    const dropdownList = countries.data.data.map((country) => {
+    const countriesDropdownList = countries.data.data.map((country) => {
       return (
         <option key={country.iso2} value={country.country}>
           {country.country}
         </option>
       );
     });
-    console.log(dropdownList);
-    setCountriesDropdown(dropdownList);
+    setCountriesDropdown(countriesDropdownList);
   };
+
+  // const changeCountry = (e) => setCountry(e.target.value);
+
+  const changeCountry = async (e) => {
+    setCountry(e.target.value);
+    const states = await axios.post(
+      "https://countriesnow.space/api/v0.1/countries/states",
+      {
+        country: e.target.value,
+      }
+    );
+    const statesDropdownList = states.data.data.states.map((state) => {
+      return (
+        <option key={state.state_code} value={state.name}>
+          {state.name}
+        </option>
+      );
+    });
+    setStatesDropdown(statesDropdownList);
+
+    const cities = await axios.post(
+      "https://countriesnow.space/api/v0.1/countries/cities",
+      {
+        country: e.target.value,
+      }
+    );
+    console.log(cities);
+
+    const citiesDropdownList = cities.data.data.map((city) => {
+      return (
+        <option key={city} value={city}>
+          {city}
+        </option>
+      );
+    });
+    setCitiesDropdown(citiesDropdownList);
+  };
+
+  const changeState = async (e) => {
+    setState(e.target.value);
+    const cities = await axios.post(
+      "https://countriesnow.space/api/v0.1/countries/state/cities",
+      {
+        country: country,
+        state: e.target.value,
+      }
+    );
+    console.log(cities);
+
+    const citiesDropdownList = cities.data.data.map((city) => {
+      return (
+        <option key={city} value={city}>
+          {city}
+        </option>
+      );
+    });
+    setCitiesDropdown(citiesDropdownList);
+  };
+
+  const changeCity = (e) => setCity(e.target.value);
+  console.log(country, state, city);
 
   return (
     // countriesList &&
     <>
       <Form.Group>
         <Form.Label>Country</Form.Label>
-        <Form.Select>
+        <Form.Select onChange={changeCountry}>
           <option>Choose a Country</option>
           {countriesDropdown}
         </Form.Select>
       </Form.Group>
       <Form.Group>
         <Form.Label>State</Form.Label>
-        <Form.Select>
+        <Form.Select onChange={changeState}>
           <option>Choose a State</option>
-          <option value="State 1">State 1</option>
-          <option value="State 2"></option>
-          <option value="State 3"></option>
+          {statesDropdown}
         </Form.Select>
       </Form.Group>
       <Form.Group>
         <Form.Label>City</Form.Label>
-        <Form.Select>
+        <Form.Select onChange={changeCity}>
           <option>Choose a City</option>
-          <option value="City 1"></option>
-          <option value="City 2"></option>
-          <option value="City 3"></option>
+          {citiesDropdown}
         </Form.Select>
       </Form.Group>
     </>
