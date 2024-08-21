@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Card, CardGroup, Row } from "react-bootstrap";
 import ReviewCard from "./ReviewCard";
-import { useNavigate } from "react-router-dom";
+import CreateReview from "./CreateReview";
 
 export default function MyReviewsCards({ user }) {
   const [reviews, setReviews] = useState([]);
@@ -22,10 +22,14 @@ export default function MyReviewsCards({ user }) {
     <ReviewCard key={review.reviewId} review={review} user={user} />
   ));
 
+  console.log(user);
+
   return (
     user &&
     reviews && (
+      <>
       // (!isLoading ? (
+      <CreateReview user={user} reviews={reviews} setReviews={setReviews} />
       <Card className="m-2">
         <Card.Title className="p-3">My Reviews</Card.Title>
       <CardGroup >
@@ -38,6 +42,7 @@ export default function MyReviewsCards({ user }) {
       // ) : (
       //   <Row>...Loading Data</Row>
       // )
+      </>
     )
   );
 }
