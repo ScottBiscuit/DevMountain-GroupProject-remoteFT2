@@ -38,9 +38,6 @@ function CreateReview({ user, reviews, setReviews }) {
 
     handleClose();
   };
-  console.log(reviews);
-
-  console.log(title, content, country, state, city, userId);
 
   return (
     <>
@@ -60,10 +57,9 @@ function CreateReview({ user, reviews, setReviews }) {
           />
         </Modal.Body>
         <Modal.Footer>
-          {/* {errors && <div className="error">{`Please include: ${errors}`}</div>} */}
           <Button onClick={handleClose}>Cancel</Button>
           <Button type="submit" onClick={handleSubmit}>
-            Save Changes
+            Create Review
           </Button>
         </Modal.Footer>
       </Modal>

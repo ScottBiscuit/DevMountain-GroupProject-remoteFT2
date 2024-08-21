@@ -19,7 +19,13 @@ export default function MyReviewsCards({ user }) {
   };
 
   const reviewCards = reviews.map((review) => (
-    <ReviewCard key={review.reviewId} review={review} user={user} />
+    <ReviewCard
+      key={review.reviewId}
+      review={review}
+      user={user}
+      reviews={reviews}
+      setReviews={setReviews}
+    />
   ));
 
   console.log(user);
@@ -28,20 +34,15 @@ export default function MyReviewsCards({ user }) {
     user &&
     reviews && (
       <>
-      // (!isLoading ? (
-      <CreateReview user={user} reviews={reviews} setReviews={setReviews} />
-      <Card className="m-2">
-        <Card.Title className="p-3">My Reviews</Card.Title>
-      <CardGroup >
-        
-      {/* <Row xs={1} md={2} className="g-4"> */}
-        {reviewCards}
-      {/* </Row> */}
-      </CardGroup>
-      </Card>
-      // ) : (
-      //   <Row>...Loading Data</Row>
-      // )
+        <CreateReview user={user} reviews={reviews} setReviews={setReviews} />
+        <Card className="m-2">
+          <Card.Title className="p-3">My Reviews</Card.Title>
+          <CardGroup>
+            {/* <Row xs={1} md={2} className="g-4"> */}
+            {reviewCards}
+            {/* </Row> */}
+          </CardGroup>
+        </Card>
       </>
     )
   );
