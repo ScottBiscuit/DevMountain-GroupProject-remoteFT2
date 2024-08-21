@@ -2,16 +2,28 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 
-function LocationSelector() {
+function LocationSelector({
+  country,
+  city,
+  state,
+  title,
+  content,
+  setCity,
+  setCountry,
+  setState,
+  setTitle,
+  setContent,
+}) {
   const [countriesDropdown, setCountriesDropdown] = useState(null);
   const [statesDropdown, setStatesDropdown] = useState(null);
   const [citiesDropdown, setCitiesDropdown] = useState(null);
-  const [country, setCountry] = useState("");
-  const [state, setState] = useState("");
-  const [city, setCity] = useState("");
+
+  // console.log(country, state, city, title, content);
 
   useEffect(() => {
     countrySelector();
+    stateSelector();
+    citySelector();
   }, []);
 
   const countrySelector = async () => {
@@ -28,10 +40,69 @@ function LocationSelector() {
     setCountriesDropdown(countriesDropdownList);
   };
 
+  const stateSelector = async () => {
+    if (country) {
+      const states = await axios.post(
+        "https://countriesnow.space/api/v0.1/countries/states",
+        {
+          country: country,
+        }
+      );
+      const statesDropdownList = states.data.data.states.map((state) => {
+        return (
+          <option key={state.state_code} value={state.name}>
+            {state.name}
+          </option>
+        );
+      });
+      setStatesDropdown(statesDropdownList);
+    }
+  };
+
+  const citySelector = async () => {
+    if (country) {
+      if (!state) {
+        const cities = await axios.post(
+          "https://countriesnow.space/api/v0.1/countries/cities",
+          {
+            country: country,
+          }
+        );
+
+        const citiesDropdownList = cities.data.data.map((city) => {
+          return (
+            <option key={city} value={city}>
+              {city}
+            </option>
+          );
+        });
+        setCitiesDropdown(citiesDropdownList);
+      } else {
+        const cities = await axios.post(
+          "https://countriesnow.space/api/v0.1/countries/state/cities",
+          {
+            country: country,
+            state: state,
+          }
+        );
+
+        const citiesDropdownList = cities.data.data.map((city) => {
+          return (
+            <option key={city} value={city}>
+              {city}
+            </option>
+          );
+        });
+        setCitiesDropdown(citiesDropdownList);
+      }
+    }
+  };
+
   // const changeCountry = (e) => setCountry(e.target.value);
 
   const changeCountry = async (e) => {
     setCountry(e.target.value);
+    // console.log(e.target.value);
     const states = await axios.post(
       "https://countriesnow.space/api/v0.1/countries/states",
       {
@@ -53,7 +124,7 @@ function LocationSelector() {
         country: e.target.value,
       }
     );
-    console.log(cities);
+    // console.log(cities);
 
     const citiesDropdownList = cities.data.data.map((city) => {
       return (
@@ -74,7 +145,6 @@ function LocationSelector() {
         state: e.target.value,
       }
     );
-    console.log(cities);
 
     const citiesDropdownList = cities.data.data.map((city) => {
       return (
@@ -87,33 +157,45 @@ function LocationSelector() {
   };
 
   const changeCity = (e) => setCity(e.target.value);
-  console.log(country, state, city);
+  const changeTitle = (e) => setTitle(e.target.value);
+  const changeContent = (e) => setContent(e.target.value);
 
   return (
     // countriesList &&
-    <>
+    <Form>
+      <Form.Group>
+        <Form.Label>Title your review</Form.Label>
+        <Form.Control onChange={changeTitle} value={title} />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>What do you want to say about this place?</Form.Label>
+        <Form.Control onChange={changeContent} value={content} />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Where did you go?</Form.Label>
+      </Form.Group>
       <Form.Group>
         <Form.Label>Country</Form.Label>
-        <Form.Select onChange={changeCountry}>
-          <option>Choose a Country</option>
+        <Form.Select onChange={changeCountry} value={country}>
+          <option value={null}>Choose a Country</option>
           {countriesDropdown}
         </Form.Select>
       </Form.Group>
       <Form.Group>
         <Form.Label>State</Form.Label>
-        <Form.Select onChange={changeState}>
-          <option>Choose a State</option>
+        <Form.Select onChange={changeState} value={state}>
+          <option value={null}>Choose a State</option>
           {statesDropdown}
         </Form.Select>
       </Form.Group>
       <Form.Group>
         <Form.Label>City</Form.Label>
-        <Form.Select onChange={changeCity}>
-          <option>Choose a City</option>
+        <Form.Select onChange={changeCity} value={city}>
+          <option value={null}>Choose a City</option>
           {citiesDropdown}
         </Form.Select>
       </Form.Group>
-    </>
+    </Form>
   );
 }
 
