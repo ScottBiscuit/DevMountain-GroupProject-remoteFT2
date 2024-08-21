@@ -11,8 +11,6 @@ export default function MyInfoCard({ user }) {
 
   const generateReviews = async () => {
     const res = await axios.get(`/api/reviews/${user.userId}`);
-    console.log(res.data);
-
     setReviews(res.data);
   };
 

@@ -4,6 +4,7 @@ import MyReviewsCards from "../components/MyReviewsCards";
 import MyWishlist from "../components/MyWishlist";
 import MyInfoCard from "../components/MyInfoCard";
 import { Container, Card } from "react-bootstrap";
+import CreateReview from "../components/CreateReview";
 
 export default function User() {
   const [user, setUser] = useState(null);
@@ -29,6 +30,7 @@ export default function User() {
       />
       <Card.ImgOverlay>
       <MyInfoCard user={user} />
+      <CreateReview user={user} />
       <MyReviewsCards user={user} />
       <MyWishlist user={user} />
       </Card.ImgOverlay>

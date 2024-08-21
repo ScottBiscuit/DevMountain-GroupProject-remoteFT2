@@ -13,7 +13,6 @@ export default function MyWishlist({ user }) {
 
   const generateWishlist = async () => {
     const res = await axios.get(`/api/wishlist`);
-    console.log(res);
     setWishlist(res.data);
   };
 
