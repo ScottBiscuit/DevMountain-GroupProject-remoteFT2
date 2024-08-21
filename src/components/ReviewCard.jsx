@@ -48,8 +48,8 @@ function ReviewCard({ review, user }) {
   // console.log(title, content, country, state, city, user.userId);
 
   return user && user.userId === review.userId ? (
-    <Col>
-      <Card>
+
+      <Card className="p-3">
         <Card.Img variant="top" src="holder.js/100px160" />
         <Card.Body>
           <Card.Title>{currentReview.locationName}</Card.Title>
@@ -90,9 +90,9 @@ function ReviewCard({ review, user }) {
           </Modal>
         </Card.Body>
       </Card>
-    </Col>
+
   ) : (
-    <Col>
+
       <Card>
         <Card.Img variant="top" src="holder.js/100px160" />
         <Card.Body>
@@ -104,10 +104,9 @@ function ReviewCard({ review, user }) {
             {review.streetAddress}
           </Card.Subtitle>
           <Card.Text>{review.reviewContent}</Card.Text>
-          <Card.Text>{review.likeCount}</Card.Text>
+          <Card.Text>Likes: {review.likeCount}</Card.Text>
         </Card.Body>
       </Card>
-    </Col>
   );
 }
 

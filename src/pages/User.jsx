@@ -5,6 +5,7 @@ import MyWishlist from "../components/MyWishlist";
 import MyInfoCard from "../components/MyInfoCard";
 import { Container } from "react-bootstrap";
 
+
 export default function User() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,11 +21,18 @@ export default function User() {
 
   return (
     user && (
-      <Container>
-        <MyInfoCard user={user} />
-        <MyReviewsCards user={user} />
-        <MyWishlist user={user} />
-      </Container>
+    <Card className="vh-100">
+      <Card.Img
+        src="../images/bgportrait_beach.jpg"
+        alt="World map with location pins"
+        className="opacity-50 vh-100"
+      />
+      <Card.ImgOverlay>
+      <MyInfoCard user={user} />
+      <MyReviewsCards user={user} />
+      <MyWishlist user={user} />
+      </Card.ImgOverlay>
+    </Card>
     )
   );
 }
