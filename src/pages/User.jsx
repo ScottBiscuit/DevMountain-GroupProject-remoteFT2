@@ -3,12 +3,10 @@ import React, { useState, useEffect } from "react";
 import MyReviewsCards from "../components/MyReviewsCards";
 import MyWishlist from "../components/MyWishlist";
 import MyInfoCard from "../components/MyInfoCard";
-import { Container } from "react-bootstrap";
-
+import { Card } from "react-bootstrap";
 
 export default function User() {
   const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     getUser();
@@ -21,18 +19,18 @@ export default function User() {
 
   return (
     user && (
-    <Card className="vh-100">
-      <Card.Img
-        src="../images/bgportrait_beach.jpg"
-        alt="World map with location pins"
-        className="opacity-50 vh-100"
-      />
-      <Card.ImgOverlay>
-      <MyInfoCard user={user} />
-      <MyReviewsCards user={user} />
-      <MyWishlist user={user} />
-      </Card.ImgOverlay>
-    </Card>
+      <Card className="vh-100">
+        <Card.Img
+          src="../images/bgportrait_beach.jpg"
+          alt="World map with location pins"
+          className="opacity-50 vh-100"
+        />
+        <Card.ImgOverlay>
+          <MyInfoCard user={user} />
+          <MyReviewsCards user={user} />
+          <MyWishlist user={user} />
+        </Card.ImgOverlay>
+      </Card>
     )
   );
 }
