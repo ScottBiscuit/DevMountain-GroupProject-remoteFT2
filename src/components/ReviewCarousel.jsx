@@ -16,7 +16,7 @@ export default function ReviewCarousel({ reviewsPop, setPeviewsPop }) {
       <Image src="../images/new_york_times_square.jpg" />
       <Carousel.Caption>
         <h3>{review.locationName}</h3>
-        <p>{review.reviewContent}</p>
+        <div>{review.reviewContent}</div>
       </Carousel.Caption>
     </Carousel.Item>
   ));
@@ -37,7 +37,7 @@ export default function ReviewCarousel({ reviewsPop, setPeviewsPop }) {
             <Card>
               <Card.Body>
                 <Card.Title>Welcome!</Card.Title>
-                <Card.Text>
+                <Card.Text as='div'>
                   <div className="mb-3">
                     Thank you for visiting our happy travel site. Our mission is to help travelers like you realize their travel dreams!
                   </div>
@@ -52,7 +52,7 @@ export default function ReviewCarousel({ reviewsPop, setPeviewsPop }) {
             <Card>
               <Card.Body>
                 <Card.Title>Let's Find Some Inspiration</Card.Title>
-                <Card.Text>
+                <Card.Text as='div'>
                   <div className="mb-3">
                     Planing a vacation can sometimes be a daunting task. Lucky for you, thousands of other people have already done most of the hard work for you.
                   </div>
@@ -68,7 +68,7 @@ export default function ReviewCarousel({ reviewsPop, setPeviewsPop }) {
             <Card>
               <Card.Body>
                 <Card.Title>Join the Fun</Card.Title>
-                <Card.Text>
+                <Card.Text as='div'>
                   <div className="mb-3">
                     Travel smarter, adventure better. Join our community of travelers and get the latest reviews, travel tips and destination inspiration.
                   </div>

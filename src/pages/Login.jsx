@@ -21,9 +21,9 @@ export default function Login() {
     <>
       <Card className="text-center">
         <Card.Img
-          src="../images/world_map.jpg"
-          alt="Card image"
-          className="opacity-50"
+            src="../images/bgportrait_beach.jpg"
+            alt="beach with two sun umbrellas"
+            className="opacity-50 vh-100"
         />
         <Card.ImgOverlay>
           <CardGroup>
@@ -37,10 +37,10 @@ export default function Login() {
                 </Card.Text>
               </Card.Body>
             </Card>
-            <Card>
+            <Card className="p-3">
               <Card.Img
                 variant="top"
-                src="../images/world_map_pins.png"
+                src="../images/welcome_back.jpg"
                 className="opacity-75"
               />
             </Card>

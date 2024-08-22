@@ -3,16 +3,35 @@ import { Card, CardGroup, Col, Row, Tabs, Tab } from "react-bootstrap";
 
 export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, reviewsPop, setReviewsPop }) {
 
+  function addedWhen(reviewRecCr) {
+    for (let i = 0; i < reviewRecCr.length; i++) {
+
+    }
+    let today = new Date();
+    let createdOn = new Date(reviewsRecCr[i].createdAt);
+    let msInDay = 24 * 60 * 60 * 1000;
+    
+    createdOn.setHours(0,0,0,0);
+    today.setHours(0,0,0,0)
+    
+    let diff = (+today - +createdOn)/msInDay
+    console.log(reviewsRecCr[0].createdAt)
+    console.log(diff)
+    return diff
+  }
+
   const featuredReviews = reviewsRecCr.map((review) => (
     <Card className="p-3" key={review.reviewId}>
       <Card.Img
         variant="top"
         src="../images/hot_air_balloons.jpg"
-        class="rounded"
+        className="rounded"
       />
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
-        <Card.Text>{review.reviewContent}</Card.Text>
+        <Card.Text>{review.reviewContent}
+          
+        </Card.Text>
       </Card.Body>
       <Card.Footer>
         <small className="text-muted">Last updated 3 mins ago</small>
@@ -26,7 +45,7 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
       <Card.Img
         variant="top"
         src="../images/hot_air_balloons.jpg"
-        class="rounded"
+        className="rounded"
       />
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
@@ -43,14 +62,14 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
       <Card.Img
         variant="top"
         src="../images/hot_air_balloons.jpg"
-        class="rounded"
+        className="rounded"
       />
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
         <Card.Text>{review.reviewContent}</Card.Text>
       </Card.Body>
       <Card.Footer>
-        <small className="text-muted">Last updated 3 mins ago</small>
+        <small className="text-muted">Added 3 days ago</small>
       </Card.Footer>
     </Card>
   ));
