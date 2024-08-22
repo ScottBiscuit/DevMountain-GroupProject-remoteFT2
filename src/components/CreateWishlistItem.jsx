@@ -1,15 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-import ReviewModal from "./ReviewModal";
-
-function CreateReview({ user, reviews, setReviews }) {
+import WishlistModal from "./WishlistModal";
+useState;
+function CreateWishlistItem({ user, wishlist, setWishlist }) {
   const [show, setShow] = useState(false);
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [entryTitle, setEntryTitle] = useState("");
   const { userId } = user;
 
   const handleClose = () => {
@@ -17,43 +16,40 @@ function CreateReview({ user, reviews, setReviews }) {
     setCountry("");
     setState("");
     setCity("");
-    setTitle("");
-    setContent("");
+    setEntryTitle("");
   };
 
   const handleShow = () => setShow(true);
 
   const handleSubmit = async () => {
-    const newReview = await axios.post("/api/reviews", {
+    const newWishlistItem = await axios.post("/api/wishlist", {
       country: country,
+      itemName: entryTitle,
       state: state,
       city: city,
-      locationName: title,
-      reviewContent: content,
       userId: userId,
     });
-    console.log(newReview);
+    console.log(newWishlistItem);
 
-    setReviews([...reviews, newReview.data]);
+    setWishlist([...wishlist, newWishlistItem.data]);
 
     handleClose();
   };
 
   return (
     <>
-      <Button onClick={handleShow}>Create a new Review</Button>
+      <Button onClick={handleShow}>Make a new Wishlist Entry</Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
           <Modal.Title></Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ReviewModal
+          <WishlistModal
             country={country}
             setCity={setCity}
             setCountry={setCountry}
             setState={setState}
-            setTitle={setTitle}
-            setContent={setContent}
+            setEntryTitle={setEntryTitle}
           />
         </Modal.Body>
         <Modal.Footer>
@@ -67,4 +63,4 @@ function CreateReview({ user, reviews, setReviews }) {
   );
 }
 
-export default CreateReview;
+export default CreateWishlistItem;

@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Card, Button, Modal } from "react-bootstrap";
-import LocationSelector from "./LocationSelector";
+import ReviewModal from "./ReviewModal";
+import NewWishlistReviewModal from "./NewWishlistReviewModal";
 
 function ReviewCard({ review, user, reviews, setReviews }) {
   const [show, setShow] = useState(false);
@@ -11,7 +12,7 @@ function ReviewCard({ review, user, reviews, setReviews }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [currentReview, setCurrentReview] = useState(review);
-  const { reviewId } = review;
+  const { reviewId, userId } = review;
 
   const handleClose = () => {
     setShow(false);
@@ -75,7 +76,7 @@ function ReviewCard({ review, user, reviews, setReviews }) {
             <Modal.Title></Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <LocationSelector
+            <ReviewModal
               country={country}
               city={city}
               state={state}
@@ -111,6 +112,7 @@ function ReviewCard({ review, user, reviews, setReviews }) {
         </Card.Subtitle>
         <Card.Text>{review.reviewContent}</Card.Text>
         <Card.Text>Likes: {review.likeCount}</Card.Text>
+        <NewWishlistReviewModal userId={userId} reviewId={reviewId} />
       </Card.Body>
     </Card>
   );
