@@ -6,7 +6,6 @@ import CreateReview from "./CreateReview";
 
 export default function MyReviewsCards({ user }) {
   const [reviews, setReviews] = useState([]);
-  // const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     generateReviews();
@@ -14,7 +13,6 @@ export default function MyReviewsCards({ user }) {
 
   const generateReviews = async () => {
     const res = await axios.get(`/api/reviews/${user.userId}`);
-    // setIsLoading(false);
     setReviews(res.data);
   };
 
@@ -28,8 +26,6 @@ export default function MyReviewsCards({ user }) {
     />
   ));
 
-  console.log(user);
-
   return (
     user &&
     reviews && (
@@ -37,11 +33,7 @@ export default function MyReviewsCards({ user }) {
         <CreateReview user={user} reviews={reviews} setReviews={setReviews} />
         <Card className="m-2">
           <Card.Title className="p-3">My Reviews</Card.Title>
-          <CardGroup>
-            {/* <Row xs={1} md={2} className="g-4"> */}
-            {reviewCards}
-            {/* </Row> */}
-          </CardGroup>
+          <CardGroup>{reviewCards}</CardGroup>
         </Card>
       </>
     )
