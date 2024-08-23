@@ -14,11 +14,13 @@ export default function Home() {
     <Card className="vh-100">
       <Card.Img
         src="../images/bgportrait_beach.jpg"
-        alt="World map with location pins"
+        alt="beach with sun umbrellas"
         className="opacity-50 vh-100"
       />
       <Card.ImgOverlay>
-        <ReviewCarousel reviewsPop={reviewsPop} setPeviewsPop={setPeviewsPop} />
+        <ReviewCarousel 
+          reviewsPop={reviewsPop}   
+          setPeviewsPop={setPeviewsPop} />
         <HomeReviewsCards
           reviewsRecCr={reviewsRecCr}
           setReviewsRecCr={setReviewsRecCr}

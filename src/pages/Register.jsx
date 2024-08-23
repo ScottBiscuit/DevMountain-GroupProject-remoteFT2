@@ -23,19 +23,12 @@ export default function Register() {
     <>
       <Card className="text-center">
         <Card.Img
-          src="../images/world_map.jpg"
-          alt="Card image"
-          className="opacity-50"
+          src="../images/bgportrait_beach.jpg"
+          alt="beach with two sun umbrellas"
+          className="opacity-50 vh-100"
         />
         <Card.ImgOverlay>
           <CardGroup>
-            <Card>
-              <Card.Img
-                variant="top"
-                src="../images/world_map_pins.png"
-                className="opacity-75"
-              />
-            </Card>
             <Card>
               <Card.Body>
                 <Card.Title className="bg-success-subtle p-2">
@@ -45,6 +38,14 @@ export default function Register() {
                   <RegisterForm onSignup={handleSignup} />
                 </Card.Text>
               </Card.Body>
+            </Card>
+            <Card className="p-3">
+              <Card.Img
+                variant="top"
+                src="../images/welcome.jpg"
+                alt="Welcome to paradise sign"
+                className="opacity-75"
+              />
             </Card>
           </CardGroup>
         </Card.ImgOverlay>
