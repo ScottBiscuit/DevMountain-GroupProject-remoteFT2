@@ -14,6 +14,8 @@ function ReviewCard({ review, user, reviews, setReviews }) {
   const [currentReview, setCurrentReview] = useState(review);
   const { reviewId, userId } = review;
 
+  console.log(currentReview);
+
   const handleClose = () => {
     setShow(false);
     setCountry("");

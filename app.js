@@ -93,6 +93,12 @@ app.post("/api/user", async (req, res) => {
 
 //__________Finding Reviews__________//
 
+//find all reviews
+app.get("/api/reviews", async (req, res) => {
+  const reviews = await Review.findAll();
+  res.json({ reviews });
+});
+
 //find a review based on reviewId
 app.get("/api/reviews/thisreview/:reviewId", async (req, res) => {
   const { reviewId } = req.params;

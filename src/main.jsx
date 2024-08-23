@@ -23,15 +23,27 @@ import Register from "./pages/Register.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<ErrorPage />}>
-      <Route index element={<Home />} 
+      <Route
+        index
+        element={<Home />}
         loader={async () => {
-        const res = await axios.get(`/api/reviews/popular/3`)
-        const res2 = await axios.get(`/api/reviews/recentCreated/3`)
-        // const res3 = await axios.post(`/api/reviews/city`)
-        return {reviewsPop: res.data.reviewsPop, reviewsRecCr: res2.data.reviewsRecCr}
+          const res = await axios.get(`/api/reviews/popular/3`);
+          const res2 = await axios.get(`/api/reviews/recentCreated/3`);
+          // const res3 = await axios.post(`/api/reviews/city`)
+          return {
+            reviewsPop: res.data.reviewsPop,
+            reviewsRecCr: res2.data.reviewsRecCr,
+          };
         }}
       />
-      <Route path="/locations" element={<Locations />} />
+      <Route
+        path="/locations"
+        element={<Locations />}
+        loader={async () => {
+          const allReviews = await axios.get("/api/reviews");
+          return allReviews;
+        }}
+      />
       <Route path="/user" element={<User />} />
       <Route path="/userInfo" element={<MyInfoCard />} />
       <Route path="/userReviews" element={<MyReviewsCards />} />
