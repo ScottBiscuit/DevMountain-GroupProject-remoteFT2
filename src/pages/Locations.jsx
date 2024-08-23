@@ -1,21 +1,28 @@
-import React from 'react';
-import { Row } from 'react-bootstrap';
-import LocationsForm from '../components/LocationsForm';
-import HighlightedCitiesCards from '../components/HighlightedCitiesCards';
+import React, { useEffect, useState } from "react";
+import { Row } from "react-bootstrap";
+import LocationsForm from "../components/LocationsForm";
+import { useLoaderData } from "react-router-dom";
+import axios from "axios";
 
 export default function Locations() {
+  const allReviews = useLoaderData();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const getUser = async () => {
+    const res = await axios.get("/api/auth");
+    setUser(res.data.user);
+  };
+
   return (
     <>
-    {/* TODO decide what happens when you click on search from location form - load below? Does that replace Highlighted cities or bump down? Go to new page? */}
-    <h2>Locations</h2>
-    <Row>
-      
-      <LocationsForm />
-    </Row>
-
-    <Row>
-      <HighlightedCitiesCards />
-    </Row>
+      <h2>Locations</h2>
+      <Row>
+        <LocationsForm reviews={allReviews} user={user} />
+      </Row>
     </>
-  )
+  );
 }

@@ -129,6 +129,12 @@ app.post("/api/user", async (req, res) => {
 
 //__________Finding Reviews__________//
 
+//find all reviews
+app.get("/api/reviews", async (req, res) => {
+  const reviews = await Review.findAll();
+  res.json({ reviews });
+});
+
 //find a review based on reviewId
 app.get("/api/reviews/thisreview/:reviewId", async (req, res) => {
   const { reviewId } = req.params;
@@ -196,6 +202,18 @@ app.post("/api/reviews/country", async (req, res) => {
   const reviews = await Review.findAll({
     where: {
       country: country,
+    },
+    order: [["likeCount", "DESC"]],
+  });
+  res.json(reviews);
+});
+
+//find reviews based on the state
+app.post("/api/reviews/state", async (req, res) => {
+  const { state } = req.body;
+  const reviews = await Review.findAll({
+    where: {
+      state: state,
     },
     order: [["likeCount", "DESC"]],
   });
