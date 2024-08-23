@@ -75,7 +75,7 @@ function ReviewCard({ review, user, reviews, setReviews }) {
         <Button onClick={handleShow}>Edit Review</Button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header>
-            <Modal.Title></Modal.Title>
+            <Modal.Title>Edit/Delete Review</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <ReviewModal

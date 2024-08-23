@@ -27,13 +27,10 @@ const router = createBrowserRouter(
         index
         element={<Home />}
         loader={async () => {
-          const res = await axios.get(`/api/reviews/popular/3`);
-          const res2 = await axios.get(`/api/reviews/recentCreated/3`);
-          // const res3 = await axios.post(`/api/reviews/city`)
-          return {
-            reviewsPop: res.data.reviewsPop,
-            reviewsRecCr: res2.data.reviewsRecCr,
-          };
+        const res = await axios.get(`/api/reviews/popular/3`)
+        const res2 = await axios.get(`/api/reviews/recentCreated/3`)
+        const res3 = await axios.get(`/api/reviews/random/3`)
+        return {reviewsPop: res.data.reviewsPop, reviewsRecCr: res2.data.reviewsRecCr, reviewsRand: res3.data.reviewsRand}
         }}
       />
       <Route

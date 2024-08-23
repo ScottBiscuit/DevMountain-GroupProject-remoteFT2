@@ -36,15 +36,8 @@ export default function MainNav({ brand }) {
           <Nav className="justify-content-end ms-auto text-end">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/locations">Locations</Nav.Link>
-            <NavDropdown title="User" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/user" >My Info</NavDropdown.Item>
-              <NavDropdown.Item href="/user" >My Reviews</NavDropdown.Item> 
-              <NavDropdown.Item href="/user" >Wislist</NavDropdown.Item>  
-              <NavDropdown.Divider />
-              <NavDropdown.Item onClick={handleLogout}>
-                Log Out?
-              </NavDropdown.Item>
-            </NavDropdown>
+            <Nav.Link href="/user" >My Page</Nav.Link>
+            <Nav.Link onClick={handleLogout}>Log Out</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -58,10 +51,8 @@ export default function MainNav({ brand }) {
           <Nav className="justify-content-end ms-auto text-end">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/locations">Locations</Nav.Link>
-            <NavDropdown title="User" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/login">Log In</NavDropdown.Item>
-              <NavDropdown.Item href="/register">Register</NavDropdown.Item>
-            </NavDropdown>
+            <Nav.Link href="/login">Log In</Nav.Link>
+            <Nav.Link href="/register">Register</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

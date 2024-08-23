@@ -1,21 +1,23 @@
 import React from "react";
 import { Card, CardGroup, Col, Row, Tabs, Tab } from "react-bootstrap";
 
-export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, reviewsPop, setReviewsPop }) {
+export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, reviewsPop, setReviewsPop, reviewsRand, setReviewsRand }) {
 
-  const featuredReviews = reviewsRecCr.map((review) => (
+  const featuredReviews = reviewsRand.map((review) => (
     <Card className="p-3" key={review.reviewId}>
       <Card.Img
         variant="top"
         src="../images/hot_air_balloons.jpg"
-        class="rounded"
+        className="rounded"
       />
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
-        <Card.Text>{review.reviewContent}</Card.Text>
+        <Card.Text>{review.reviewContent}
+          
+        </Card.Text>
       </Card.Body>
       <Card.Footer>
-        <small className="text-muted">Last updated 3 mins ago</small>
+        <small className="text-muted">{review.city}, {review.country}</small>
       </Card.Footer>
     </Card>
   ));
@@ -26,14 +28,14 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
       <Card.Img
         variant="top"
         src="../images/hot_air_balloons.jpg"
-        class="rounded"
+        className="rounded"
       />
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
         <Card.Text>{review.reviewContent}</Card.Text>
       </Card.Body>
       <Card.Footer>
-        <small className="text-muted">Last updated 3 mins ago</small>
+        <small className="text-muted">{review.likeCount} likes</small>
       </Card.Footer>
     </Card>
   ));
@@ -43,14 +45,14 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
       <Card.Img
         variant="top"
         src="../images/hot_air_balloons.jpg"
-        class="rounded"
+        className="rounded"
       />
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
         <Card.Text>{review.reviewContent}</Card.Text>
       </Card.Body>
       <Card.Footer>
-        <small className="text-muted">Last updated 3 mins ago</small>
+        <small className="text-muted">Added on {review.createdAt.slice(0, 10)}</small>
       </Card.Footer>
     </Card>
   ));
