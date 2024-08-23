@@ -1,27 +1,9 @@
 import React from "react";
 import { Card, CardGroup, Col, Row, Tabs, Tab } from "react-bootstrap";
 
-export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, reviewsPop, setReviewsPop }) {
+export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, reviewsPop, setReviewsPop, reviewsRand, setReviewsRand }) {
 
-  // function addedWhen(reviewRecCr) {
-  //   for (let i = 0; i < reviewRecCr.length; i++) {
-
-  //   }
-  //   let today = new Date();
-  //   let createdOn = new Date(reviewsRecCr[i].createdAt);
-  //   let msInDay = 24 * 60 * 60 * 1000;
-    
-  //   createdOn.setHours(0,0,0,0);
-  //   today.setHours(0,0,0,0)
-    
-  //   let diff = (+today - +createdOn)/msInDay
-  //   console.log(reviewsRecCr[0].createdAt)
-  //   console.log(diff)
-  //   return diff
-  // }
-
-  const featuredReviews = reviewsRecCr.map((review) => (
-    // TODO Change to use random rather than featured
+  const featuredReviews = reviewsRand.map((review) => (
     <Card className="p-3" key={review.reviewId}>
       <Card.Img
         variant="top"
@@ -35,7 +17,7 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
         </Card.Text>
       </Card.Body>
       <Card.Footer>
-        <small className="text-muted">Last updated 3 mins ago</small>
+        <small className="text-muted">{review.city}, {review.country}</small>
       </Card.Footer>
     </Card>
   ));
@@ -53,8 +35,7 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
         <Card.Text>{review.reviewContent}</Card.Text>
       </Card.Body>
       <Card.Footer>
-        {/* TODO change to # of likes */}
-        <small className="text-muted">Last updated 3 mins ago</small>
+        <small className="text-muted">{review.likeCount} likes</small>
       </Card.Footer>
     </Card>
   ));
@@ -71,8 +52,7 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
         <Card.Text>{review.reviewContent}</Card.Text>
       </Card.Body>
       <Card.Footer>
-         {/* TODO change to date added */}
-        <small className="text-muted">Added 3 days ago</small>
+        <small className="text-muted">Added on {review.createdAt.slice(0, 10)}</small>
       </Card.Footer>
     </Card>
   ));

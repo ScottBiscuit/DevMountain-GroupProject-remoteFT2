@@ -7,8 +7,9 @@ import { useLoaderData } from "react-router-dom";
 export default function Home() {
   const [reviewsPop, setPeviewsPop] = useState(useLoaderData().reviewsPop);
   const [reviewsRecCr, setReviewsRecCr] = useState(
-    useLoaderData().reviewsRecCr
-  );
+    useLoaderData().reviewsRecCr);
+  const [reviewsRand, setReviewsRand] = useState(
+      useLoaderData().reviewsRand);
 
   return (
     <Card className="vh-100">
@@ -26,6 +27,8 @@ export default function Home() {
           setReviewsRecCr={setReviewsRecCr}
           reviewsPop={reviewsPop} 
           setPeviewsPop={setPeviewsPop}
+          reviewsRand={reviewsRand}
+          setReviewsRand={setReviewsRand}
         />
       </Card.ImgOverlay>
     </Card>
