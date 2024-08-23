@@ -164,12 +164,8 @@ function ReviewModal({
     // countriesList &&
     <Form>
       <Form.Group>
-        <Form.Label>Title your review</Form.Label>
+        <Form.Label>Title your review:</Form.Label>
         <Form.Control onChange={changeTitle} value={title} />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>What do you want to say about this place?</Form.Label>
-        <Form.Control onChange={changeContent} value={content} />
       </Form.Group>
       <Form.Group>
         <Form.Label>Where did you go?</Form.Label>
@@ -194,6 +190,10 @@ function ReviewModal({
           <option value={null}>Choose a City</option>
           {citiesDropdown}
         </Form.Select>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>What do you want to say about this place?</Form.Label>
+        <Form.Control onChange={changeContent} value={content} as='textarea' rows={6}/>
       </Form.Group>
     </Form>
   );

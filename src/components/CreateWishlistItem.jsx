@@ -41,7 +41,7 @@ function CreateWishlistItem({ user, wishlist, setWishlist }) {
       <Button onClick={handleShow}>Make a new Wishlist Entry</Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
-          <Modal.Title></Modal.Title>
+          <Modal.Title>Add New Wishlist Item</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <WishlistModal
@@ -55,7 +55,7 @@ function CreateWishlistItem({ user, wishlist, setWishlist }) {
         <Modal.Footer>
           <Button onClick={handleClose}>Cancel</Button>
           <Button type="submit" onClick={handleSubmit}>
-            Create Review
+            Add to Wishlist
           </Button>
         </Modal.Footer>
       </Modal>
