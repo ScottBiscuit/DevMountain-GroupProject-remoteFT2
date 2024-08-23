@@ -39,14 +39,15 @@ export default function ImageUploader() {
             >
               Click or Drop here
             </Button>
-            &nbsp;
             <Button onClick={onImageRemoveAll}>Remove all images</Button>
+            <Button >Save all images</Button>
             {imageList.map((image, index) => (
               <div key={index} className="image-item">
                 <img src={image['data_url']} alt="" width="100" />
                 <div className="image-item__btn-wrapper">
                   <Button onClick={() => onImageUpdate(index)}>Update</Button>
                   <Button onClick={() => onImageRemove(index)}>Remove</Button>
+                  <Button >Save</Button>
                 </div>
               </div>
             ))}

@@ -3,7 +3,6 @@ import { Card, Container } from "react-bootstrap";
 import ReviewCarousel from "../components/ReviewCarousel";
 import HomeReviewsCards from "../components/HomeReviewsCards";
 import { useLoaderData } from "react-router-dom";
-import ImageUploader from "../components/ImageUploader";
 
 export default function Home() {
   const [reviewsPop, setPeviewsPop] = useState(useLoaderData().reviewsPop);
@@ -28,7 +27,6 @@ export default function Home() {
           reviewsPop={reviewsPop} 
           setPeviewsPop={setPeviewsPop}
         />
-        <ImageUploader />
       </Card.ImgOverlay>
     </Card>
   );
