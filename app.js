@@ -172,6 +172,18 @@ app.post("/api/reviews/country", async (req, res) => {
   res.json(reviews);
 });
 
+//find reviews based on the state
+app.post("/api/reviews/state", async (req, res) => {
+  const { state } = req.body;
+  const reviews = await Review.findAll({
+    where: {
+      state: state,
+    },
+    order: [["likeCount", "DESC"]],
+  });
+  res.json(reviews);
+});
+
 //find reviews based on the city
 app.post("/api/reviews/city", async (req, res) => {
   const { city } = req.body;
