@@ -44,7 +44,7 @@ function CreateReview({ user, reviews, setReviews }) {
       <Button onClick={handleShow}>Create a new Review</Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
-          <Modal.Title></Modal.Title>
+          <Modal.Title>Create New Review</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <ReviewModal
