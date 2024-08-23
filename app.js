@@ -11,12 +11,14 @@ import {
   WishlistReview,
 } from "./src/model.js";
 import { Op, Sequelize } from "sequelize";
+import AWS from 'aws-sdk';
 
 const app = express();
 const port = 8000;
 
-const ACCESS = process.env.ACCESS
-const SECRET = process.env.SECRET
+const ACCESS = process.env.REACT_APP_ACCESS
+const SECRET = process.env.REACT_APP_SECRET
+
 const uploadFile = async () => {
   const S3_BUCKET = "bucket-name";
   const REGION = "region";
