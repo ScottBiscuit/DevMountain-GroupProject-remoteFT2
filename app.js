@@ -16,12 +16,15 @@ import AWS from 'aws-sdk';
 const app = express();
 const port = 8000;
 
+// AWS image hosting
+// TODO finish
+// Pulls access keys from .env file
 const ACCESS = process.env.REACT_APP_ACCESS
 const SECRET = process.env.REACT_APP_SECRET
 
 const uploadFile = async () => {
-  const S3_BUCKET = "bucket-name";
-  const REGION = "region";
+  const S3_BUCKET = "groupprojectdm";
+  const REGION = "us-east-2";
 
   AWS.config.update({
     accessKeyId: ACCESS,
@@ -52,6 +55,8 @@ const uploadFile = async () => {
     alert("File uploaded successfully.");
   });
 };
+// ***************** /AWS
+
 
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extend: false }));
