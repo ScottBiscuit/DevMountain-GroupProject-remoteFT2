@@ -20,15 +20,12 @@ export default function Home() {
       />
       <Card.ImgOverlay>
         <ReviewCarousel 
-          reviewsPop={reviewsPop}   
-          setPeviewsPop={setPeviewsPop} />
+          reviewsPop={reviewsPop} 
+        />
         <HomeReviewsCards
           reviewsRecCr={reviewsRecCr}
-          setReviewsRecCr={setReviewsRecCr}
           reviewsPop={reviewsPop} 
-          setPeviewsPop={setPeviewsPop}
           reviewsRand={reviewsRand}
-          setReviewsRand={setReviewsRand}
         />
       </Card.ImgOverlay>
     </Card>

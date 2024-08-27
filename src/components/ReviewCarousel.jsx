@@ -8,29 +8,28 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export default function ReviewCarousel({ reviewsPop, setPeviewsPop }) {
+export default function ReviewCarousel({ reviewsPop }) {
 
 
   const popReviews = reviewsPop.map((review) => (
     <Carousel.Item key={review.reviewId}>
-      <Image src="../images/new_york_times_square.jpg" />
-      <Carousel.Caption>
-        <h3>{review.locationName}</h3>
-        <div>{review.reviewContent}</div>
+      <Image src={review.image} className="h-100 w-100"/>
+      <Carousel.Caption className="bg-secondary opacity-75">
+        <div>{review.city}, {review.country} - {review.locationName}</div>
       </Carousel.Caption>
     </Carousel.Item>
   ));
 
   return (
-    <CardGroup className="m-2">
+    <CardGroup className="m-2" height='300px'>
       <Card>
-        <Carousel className="w-100 m-3 h-100">{popReviews}</Carousel>
+        <Carousel className="w-100 p-3">{popReviews}</Carousel>
       </Card>
 
       <Card className="p-3">
         <Tabs
           defaultActiveKey="welcome"
-          id="uncontrolled-tab-example"
+          id="welcome-tabs"
           className="mb-3"
         >
           <Tab eventKey="welcome" title="Welcome">
