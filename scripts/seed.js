@@ -28,7 +28,6 @@ const reviewsInDb = await Promise.all(
     const {
       locationName,
       reviewContent,
-      markReview,
       country,
       city,
       userId,

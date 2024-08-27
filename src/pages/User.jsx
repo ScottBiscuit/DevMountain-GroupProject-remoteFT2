@@ -4,7 +4,6 @@ import MyReviewsCards from "../components/MyReviewsCards";
 import MyWishlist from "../components/MyWishlist";
 import MyInfoCard from "../components/MyInfoCard";
 import { Card } from "react-bootstrap";
-import ImageUploader from "../components/ImageUploader";
 
 export default function User() {
   const [user, setUser] = useState(null);
@@ -30,7 +29,6 @@ export default function User() {
           <MyInfoCard user={user} />
           <MyReviewsCards user={user} />
           <MyWishlist user={user} />
-          <ImageUploader />
         </Card.ImgOverlay>
       </Card>
     )

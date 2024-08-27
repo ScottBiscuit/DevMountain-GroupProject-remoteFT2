@@ -5,8 +5,8 @@ import { type } from "os";
 
 //change to your own database file path
 export const db = await connectToDB(
-  "postgres://josep:admin@localhost:5432/travelBlog"
-  // "postgres://scottjohnstone:admin@localhost:5432/travelBlog"
+  // "postgres://josep:admin@localhost:5432/travelBlog"
+  "postgres://scottjohnstone:admin@localhost:5432/travelBlog"
 );
 
 export class User extends Model {
@@ -21,19 +21,7 @@ export class Review extends Model {
   }
 }
 
-export class Tag extends Model {
-  [util.inspect.custom]() {
-    return this.toJSON();
-  }
-}
-
 export class Like extends Model {
-  [util.inspect.custom]() {
-    return this.toJSON();
-  }
-}
-
-export class Image extends Model {
   [util.inspect.custom]() {
     return this.toJSON();
   }

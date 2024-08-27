@@ -2,7 +2,6 @@
   {
     "locationName": "Barcelona",
     "reviewContent": "I went to Barcelona and it was amazing. Blah, blah blah. Spanish words!",
-    "markReview": false,
     "country": "Spain",
     "city": "Barcelona",
     "userId": 1,
@@ -11,7 +10,6 @@
   {
     "locationName": "Museum in Marseille",
     "reviewContent": "I went to this museum in Marseille and it was amazing. Blah, blah blah. French words!",
-    "markReview": false,
     "country": "France",
     "city": "Marseille",
     "userId": 2,
@@ -20,7 +18,6 @@
   {
     "locationName": "Restaurant in Paris",
     "reviewContent": "I went to this restaurant in Barcelona and it was amazing. Blah, blah blah. French words!",
-    "markReview": false,
     "country": "France",
     "city": "Paris",
     "userId": 2,
@@ -29,7 +26,6 @@
   {
     "locationName": "Public Bathroom in Barcelona",
     "reviewContent": "I went to this public bathroom in Barcelona and it was amazing. Blah, blah blah. Spanish words!",
-    "markReview": false,
     "country": "Spain",
     "city": "Barcelona",
     "userId": 1,
