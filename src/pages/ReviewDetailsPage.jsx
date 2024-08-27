@@ -10,17 +10,20 @@ function ReviewDetailsPage({ review, userId, likes, setLikes, currentUser }) {
 
   useEffect(() => {
     retrieveUser();
-    checkLikeState();
+    // checkLikeState();
   }, []);
 
   const handleLike = async () => {
-    const like = await axios.post(`/api/like/${review.reviewId}`);
-    await axios.put(`/api/reviews/${review.reviewId}/like`);
-    let likeNum = +likes + 1;
-    console.log(likeNum);
-    setUserLike(true);
-    setLikes(likeNum);
-    setLikeId(like.data.likeId);
+    // checkLikeState();
+    if (!userLike) {
+      const like = await axios.post(`/api/like/${review.reviewId}`);
+      await axios.put(`/api/reviews/${review.reviewId}/like`);
+      let likeNum = +likes + 1;
+      console.log(likeNum);
+      setUserLike(true);
+      setLikes(likeNum);
+      setLikeId(like.data.likeId);
+    }
   };
 
   const handleUnlike = async () => {
@@ -55,6 +58,7 @@ function ReviewDetailsPage({ review, userId, likes, setLikes, currentUser }) {
   };
 
   const handleShow = () => {
+    checkLikeState();
     setShow(true);
   };
 
@@ -115,7 +119,7 @@ function ReviewDetailsPage({ review, userId, likes, setLikes, currentUser }) {
                   <Card.Text>{review.reviewContent}</Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                  <Card.Text>Likes: {review.likeCount}</Card.Text>
+                  <Card.Text>Likes: {likes}</Card.Text>
                   <Button onClick={handleUnlike}>Unlike</Button>
                 </Card.Footer>
               </Card>
@@ -152,7 +156,7 @@ function ReviewDetailsPage({ review, userId, likes, setLikes, currentUser }) {
                 <Card.Text>{review.reviewContent}</Card.Text>
               </Card.Body>
               <Card.Footer>
-                <Card.Text>Likes: {review.likeCount}</Card.Text>
+                <Card.Text>Likes: {likes}</Card.Text>
               </Card.Footer>
             </Card>
             <Card>

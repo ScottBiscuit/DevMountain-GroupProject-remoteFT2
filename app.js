@@ -288,6 +288,8 @@ app.get("/api/like/:reviewId", async (req, res) => {
       reviewId: reviewId,
     },
   });
+  console.log(like);
+
   if (like) {
     res.json({ status: true, likeId: like.likeId });
   } else {
@@ -299,6 +301,7 @@ app.get("/api/like/:reviewId", async (req, res) => {
 app.post("/api/like/:reviewId", async (req, res) => {
   const { userId } = req.session;
   const { reviewId } = req.params;
+  // check for existing like
   const like = await Like.create({
     userId: userId,
     reviewId: reviewId,
