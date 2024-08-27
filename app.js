@@ -315,6 +315,7 @@ app.put("/api/reviews/:reviewId/like", async (req, res) => {
     },
   });
   review.likeCount += 1;
+  await review.save();
   res.json({ success: true });
 });
 

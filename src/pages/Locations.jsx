@@ -8,6 +8,8 @@ export default function Locations() {
   const allReviews = useLoaderData();
   const [user, setUser] = useState(null);
 
+  console.log(allReviews);
+
   useEffect(() => {
     getUser();
   }, []);

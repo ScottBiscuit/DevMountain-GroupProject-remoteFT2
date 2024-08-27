@@ -1,7 +1,5 @@
 import { User, Image, Review, Tag, db } from "../src/model.js";
 import reviewData from "./data/reviews.json" assert { type: "json" };
-import imageData from "./data/images.json" assert { type: "json" };
-import tagData from "./data/tags.json" assert { type: "json" };
 
 console.log("syncing database...");
 await db.sync({ force: true });
@@ -25,15 +23,8 @@ const usersInDB = await Promise.all(usersToCreate);
 
 const reviewsInDb = await Promise.all(
   reviewData.map((review) => {
-    const {
-      locationName,
-      reviewContent,
-      markReview,
-      country,
-      city,
-      userId,
-      likeCount,
-    } = review;
+    const { locationName, reviewContent, country, city, userId, likeCount } =
+      review;
     const newReview = Review.create({
       locationName: locationName,
       reviewContent: reviewContent,

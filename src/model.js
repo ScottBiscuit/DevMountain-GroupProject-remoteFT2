@@ -21,19 +21,7 @@ export class Review extends Model {
   }
 }
 
-export class Tag extends Model {
-  [util.inspect.custom]() {
-    return this.toJSON();
-  }
-}
-
 export class Like extends Model {
-  [util.inspect.custom]() {
-    return this.toJSON();
-  }
-}
-
-export class Image extends Model {
   [util.inspect.custom]() {
     return this.toJSON();
   }
