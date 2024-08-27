@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import NewWishlistReviewModal from "./NewWishlistReviewModal";
 import ReviewDetailsPage from "../pages/ReviewDetailsPage";
-
+useState;
 function LocationsCards({ review, user }) {
-  const { reviewId, userId } = review;
+  const { reviewId, userId, reviewContent } = review;
+  const [likes, setLikes] = useState(review.likeCount);
 
   return user ? (
     <Card className="p-3">
@@ -14,15 +15,18 @@ function LocationsCards({ review, user }) {
         <Card.Subtitle className="text-muted">
           {review.city}, {review.state} {review.country}
         </Card.Subtitle>
-        <Card.Subtitle className="text-muted">
-          {review.streetAddress}
-        </Card.Subtitle>
-        {/* <Card.Text>{review.reviewContent}</Card.Text> */}
-        <Card.Text>{review.likeCount}</Card.Text>
+        <Card.Text>{reviewContent.slice(0, 50)}...</Card.Text>
+        <Card.Text>Likes: {likes}</Card.Text>
         <NewWishlistReviewModal userId={userId} reviewId={reviewId} />
       </Card.Body>
       <Card.Footer>
-        <ReviewDetailsPage review={review} userId={userId} />
+        <ReviewDetailsPage
+          currentUser={user}
+          review={review}
+          userId={userId}
+          likes={likes}
+          setLikes={setLikes}
+        />
       </Card.Footer>
     </Card>
   ) : (
@@ -33,14 +37,17 @@ function LocationsCards({ review, user }) {
         <Card.Subtitle className="text-muted">
           {review.city}, {review.state} {review.country}
         </Card.Subtitle>
-        <Card.Subtitle className="text-muted">
-          {review.streetAddress}
-        </Card.Subtitle>
-        <Card.Text>{review.reviewContent}</Card.Text>
-        <Card.Text>Likes: {review.likeCount}</Card.Text>
+        <Card.Text>{reviewContent.slice(0, 50)}...</Card.Text>
+        <Card.Text>Likes: {likes}</Card.Text>
       </Card.Body>
       <Card.Footer>
-        <ReviewDetailsPage review={review} userId={userId} />
+        <ReviewDetailsPage
+          currentUser={user}
+          review={review}
+          userId={userId}
+          likes={likes}
+          setLikes={setLikes}
+        />
       </Card.Footer>
     </Card>
   );
