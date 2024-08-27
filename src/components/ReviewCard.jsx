@@ -55,6 +55,7 @@ function ReviewCard({ review, user, reviews, setReviews }) {
       city: city || currentReview.city,
       locationName: title || currentReview.locationName,
       reviewContent: content || currentReview.reviewContent,
+      image: image || currentReview.image
     });
     setCurrentReview(updatedReview.data);
     handleClose();
@@ -62,7 +63,7 @@ function ReviewCard({ review, user, reviews, setReviews }) {
 
   return user && user.userId === review.userId ? (
     <Card className="p-3">
-      <Card.Img variant="top" src="holder.js/100px160" />
+      <Card.Img variant="top" src={currentReview.image} />
       <Card.Body>
         <Card.Title>{currentReview.locationName}</Card.Title>
         <Card.Subtitle className="text-muted">
@@ -71,7 +72,7 @@ function ReviewCard({ review, user, reviews, setReviews }) {
         <Card.Subtitle className="text-muted">
           {currentReview.streetAddress}
         </Card.Subtitle>
-        <Card.Text>{currentReview.reviewContent}</Card.Text>
+        <Card.Text>{currentReview.reviewContent.slice(0, 100)}...</Card.Text>
         <Card.Text>{currentReview.likeCount}</Card.Text>
         <Button onClick={handleShow}>Edit Review</Button>
         <Modal show={show} onHide={handleClose}>
@@ -93,8 +94,8 @@ function ReviewCard({ review, user, reviews, setReviews }) {
             />
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={handleDelete}>Delete Review</Button>
+            <Button onClick={handleClose} variant="secondary">Cancel</Button>
+            <Button onClick={handleDelete} variant="secondary">Delete Review</Button>
             <Button type="submit" onClick={handleSubmit}>
               Save Changes
             </Button>
@@ -104,7 +105,7 @@ function ReviewCard({ review, user, reviews, setReviews }) {
     </Card>
   ) : (
     <Card>
-      <Card.Img variant="top" src="holder.js/100px160" />
+      <Card.Img variant="top" src={review.image} />
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
         <Card.Subtitle className="text-muted">

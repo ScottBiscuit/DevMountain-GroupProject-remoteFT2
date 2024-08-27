@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row } from "react-bootstrap";
+import { Card, CardTitle } from "react-bootstrap";
 import LocationsForm from "../components/LocationsForm";
 import { useLoaderData } from "react-router-dom";
 import axios from "axios";
@@ -21,10 +21,10 @@ export default function Locations() {
 
   return (
     <>
-      <h2>Locations</h2>
-      <Row>
+      <Card>
+        <Card.Title className="text-center m-3">Locations</Card.Title>
         <LocationsForm reviews={allReviews} user={user} />
-      </Row>
+      </Card>
     </>
   );
 }
