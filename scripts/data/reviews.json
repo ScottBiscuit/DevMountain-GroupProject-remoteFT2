@@ -1,34 +1,66 @@
 [
   {
-    "locationName": "Barcelona",
-    "reviewContent": "I went to Barcelona and it was amazing. Blah, blah blah. Spanish words!",
-    "country": "Spain",
-    "city": "Barcelona",
+    "locationName": "Colesseum in Rome",
+    "reviewContent": "Visiting the Colosseum was awe-inspiring. Walking through its ancient arches, I marveled at the grandeur and historical significance of this iconic amphitheater. The rich history and impressive architecture made it a highlight of my Roman adventure. A truly unforgettable experience.",
+    "country": "Italy",
+    "city": "Rome",
     "userId": 1,
-    "likeCount": 2
+    "likeCount": 29,
+    "image": "https://groupprojectdm.s3.us-east-2.amazonaws.com/rome_colesseum.jpg"
   },
   {
-    "locationName": "Museum in Marseille",
-    "reviewContent": "I went to this museum in Marseille and it was amazing. Blah, blah blah. French words!",
-    "country": "France",
-    "city": "Marseille",
+    "locationName": "Bagpipes in Edinburgh",
+    "reviewContent": "Watching bagpipers perform in Edinburgh was mesmerizing. The soulful melodies echoed through the historic streets, adding a magical touch to the city's atmosphere. The traditional music and the performers’ skillful playing made it a memorable part of my Scottish visit.",
+    "country": "United Kingdom",
+    "city": "Edinburgh",
     "userId": 2,
-    "likeCount": 23
+    "likeCount": 23,
+    "image": "https://groupprojectdm.s3.us-east-2.amazonaws.com/scotland_piper.jpg"
   },
   {
-    "locationName": "Restaurant in Paris",
-    "reviewContent": "I went to this restaurant in Barcelona and it was amazing. Blah, blah blah. French words!",
+    "locationName": "Eiffel Tower is Amazing!",
+    "reviewContent": "Ascend the iconic Eiffel Tower for panoramic views of Paris that will leave you breathless. We explored its elegant levels, enjoyed world-class dining, and experienced the magic of Paris illuminated by night. An unforgettable highlight of our Parisian adventure!",
     "country": "France",
     "city": "Paris",
     "userId": 2,
-    "likeCount": 14
+    "likeCount": 34,
+    "image": "https://groupprojectdm.s3.us-east-2.amazonaws.com/paris_eiffel_tower.jpg"
   },
   {
-    "locationName": "Public Bathroom in Barcelona",
-    "reviewContent": "I went to this public bathroom in Barcelona and it was amazing. Blah, blah blah. Spanish words!",
-    "country": "Spain",
-    "city": "Barcelona",
+    "locationName": "Hot Air Balloons",
+    "reviewContent": "Experience a breathtaking spectacle as hundreds of vibrant hot air balloons fill the sky above majestic mountains. Drift amidst the clouds and revel in the serene beauty of this unforgettable aerial festival.",
+    "country": "Switzerland",
+    "city": "Lauterbrunnen",
     "userId": 1,
-    "likeCount": 0
+    "likeCount": 1,
+    "image": "https://groupprojectdm.s3.us-east-2.amazonaws.com/hot_air_balloons.jpg"
+  },
+  {
+    "locationName": "Eiffel Tower is must see!",
+    "reviewContent": "Visiting the Eiffel Tower was a dream come true. The views of Paris were breathtaking, and the evening lights turned the city into a magical spectacle. Exploring the levels and dining there made the experience truly unforgettable. Highly recommended!",
+    "country": "France",
+    "city": "Paris",
+    "userId": 1,
+    "likeCount": 22,
+    "image": "https://groupprojectdm.s3.us-east-2.amazonaws.com/paris_eiffel_tower_2.jpg"
+  },
+  {
+    "locationName": "Times Square",
+    "reviewContent": "Experiencing Times Square was exhilarating. The dazzling lights and vibrant energy of the crowds created an electric atmosphere. From the giant billboards to the bustling streets, it was a sensory overload in the best way possible. A must-see in New York City!",
+    "country": "United States",
+    "state": "New York",
+    "city": "New York City",
+    "userId": 1,
+    "likeCount": 17,
+    "image": "https://groupprojectdm.s3.us-east-2.amazonaws.com/new_york_times_square.jpg"
+  },
+  {
+    "locationName": "Loved the Louvre <3",
+    "reviewContent": "Exploring the Louvre Museum was an extraordinary experience. Marveling at masterpieces like the Mona Lisa and the Venus de Milo, I was captivated by the vast collection and stunning architecture. The museum’s rich history and art made it an unforgettable highlight of our Paris trip.",
+    "country": "France",
+    "city": "Paris",
+    "userId": 1,
+    "likeCount": 15,
+    "image": "https://groupprojectdm.s3.us-east-2.amazonaws.com/louvre_paris.jpg"
   }
 ]

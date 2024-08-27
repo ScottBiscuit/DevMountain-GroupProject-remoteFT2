@@ -5,8 +5,6 @@ import ViteExpress from "vite-express";
 import {
   User,
   Review,
-  Tag,
-  Image,
   WishlistItem,
   WishlistReview,
   Like,
@@ -206,36 +204,6 @@ app.post("/api/reviews/city", async (req, res) => {
   res.json(reviews);
 });
 
-//find reviews based on tag
-app.post("/api/reviews/tagName", async (req, res) => {
-  const { tagName } = req.body;
-  const reviews = await Review.findAll({
-    include: [
-      {
-        model: Tag,
-        required: true,
-        where: {
-          tagName: tagName,
-        },
-      },
-    ],
-    order: [["likeCount", "DESC"]],
-  });
-  res.json(reviews);
-});
-
-//find images associated with a review
-app.get("/api/images/:reviewId", async (req, res) => {
-  const { reviewId } = req.params;
-  const images = await Image.findAll({
-    where: {
-      reviewId: reviewId,
-    },
-    order: [["createdAt", "DESC"]],
-  });
-  res.json(images);
-});
-
 //check liked status
 app.get("/api/like/:reviewId", async (req, res) => {
   const { userId } = req.session;
@@ -324,37 +292,6 @@ app.delete("/api/reviews/:reviewId", async (req, res) => {
 
   if (review.userId === userId) {
     await review.destroy();
-    res.json({ success: true });
-  } else {
-    res.json({ success: false });
-  }
-});
-
-//__________Images__________//
-
-//post an image
-app.post("/api/images/:reviewId", async (req, res) => {
-  const { userId } = req.session;
-  const { reviewId } = req.params;
-  const { imageSrc, imageName, imageDesc } = req.body;
-  const image = await Image.create({
-    imageSrc: imageSrc,
-    imageName: imageName,
-    imageDesc: imageDesc,
-    userId: userId,
-    reviewId: reviewId,
-  });
-  res.json(image);
-});
-
-//delete an image
-app.delete("/api/images/:imageId", async (req, res) => {
-  const { userId } = req.session;
-  const { imageId } = req.params;
-  const image = await Image.findByPk(imageId);
-
-  if (image.userId === userId) {
-    await image.destroy();
     res.json({ success: true });
   } else {
     res.json({ success: false });
@@ -457,36 +394,6 @@ app.delete("/api/wishlist/reviews/:wishId", async (req, res) => {
 
   if (wish.userId === userId) {
     await wish.destroy();
-    res.json({ success: true });
-  } else {
-    res.json({ success: false });
-  }
-});
-
-//__________Tags__________//
-
-//create a tag
-app.post("/api/tag/:reviewId", async (req, res) => {
-  const { reviewId } = req.params;
-  const { tagName } = req.body;
-  const { userId } = req.session;
-
-  const link = await Tag.create({
-    tagName: tagName,
-    reviewId: reviewId,
-    userId: userId,
-  });
-  res.json(link);
-});
-
-//delete a tag
-app.delete("/api/tag/:tagId", async (req, res) => {
-  const { userId } = req.session;
-  const { tagId } = req.params;
-  const tag = await Tag.findByPk(tagId);
-
-  if (tag.userId === userId) {
-    await tag.destroy();
     res.json({ success: true });
   } else {
     res.json({ success: false });

@@ -61,7 +61,7 @@ User.init(
       allowNull: false,
     },
     bio: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
   },
@@ -83,7 +83,7 @@ Review.init(
       allowNull: false,
     },
     reviewContent: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     likeCount: {
@@ -101,7 +101,7 @@ Review.init(
       allowNull: false,
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
   },
   {

@@ -7,9 +7,10 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
     <Card className="p-3" key={review.reviewId}>
       <Card.Img
         variant="top"
-        src="../images/hot_air_balloons.jpg"
+        src={review.image}
+        
         className="rounded"
-      />
+        />
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
         <Card.Text>{review.reviewContent}
@@ -21,13 +22,14 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
       </Card.Footer>
     </Card>
   ));
+  console.log(...reviewsRand)
 
   
   const popularReviews = reviewsPop.map((review) => (
     <Card className="p-3" key={review.reviewId}>
       <Card.Img
         variant="top"
-        src="../images/hot_air_balloons.jpg"
+        src={review.image}
         className="rounded"
       />
       <Card.Body>
@@ -44,7 +46,7 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
     <Card className="p-3" key={review.reviewId}>
       <Card.Img
         variant="top"
-        src="../images/hot_air_balloons.jpg"
+        src={review.image}
         className="rounded"
       />
       <Card.Body>
