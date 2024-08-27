@@ -1,7 +1,6 @@
-import { User, Image, Review, Tag, db } from "../src/model.js";
+import { User, Review, WishlistItem, db } from "../src/model.js";
 import reviewData from "./data/reviews.json" assert { type: "json" };
-import imageData from "./data/images.json" assert { type: "json" };
-import tagData from "./data/tags.json" assert { type: "json" };
+import wishlistData from "./data/wishlists.json" assert { type: "json" };
 
 console.log("syncing database...");
 await db.sync({ force: true });
@@ -29,19 +28,43 @@ const reviewsInDb = await Promise.all(
       locationName,
       reviewContent,
       country,
+      state,
       city,
       userId,
       likeCount,
+      image
     } = review;
     const newReview = Review.create({
       locationName: locationName,
       reviewContent: reviewContent,
       country: country,
+      state: state,
       city: city,
       userId: userId,
       likeCount: likeCount,
+      image: image,
     });
     return newReview;
+  })
+);
+
+const wishlistsInDb = await Promise.all(
+  wishlistData.map((wishlist) => {
+    const {
+      itemId,
+      itemName,
+      country,
+      state,
+      city
+    } = wishlist;
+    const newWishlist = WishlistItem.create({
+      itemId: itemId,
+      itemName: itemName,
+      country: country,
+      state: state,
+      city: city,
+    });
+    return newWishlist;
   })
 );
 
