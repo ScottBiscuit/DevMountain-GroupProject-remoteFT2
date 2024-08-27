@@ -7,8 +7,6 @@ function NewWishlistReviewModal({ reviewId, userId }) {
   const [wishlistDropdown, setWishlistDropdown] = useState([]);
   const [wishId, setWishId] = useState([]);
 
-  console.log(userId);
-
   useEffect(() => {
     generateWishlist();
   }, []);
@@ -35,7 +33,7 @@ function NewWishlistReviewModal({ reviewId, userId }) {
   };
 
   const handleSubmit = async () => {
-    const newWishlistReview = await axios.post(`/api/wishlist/${reviewId}`, {
+    await axios.post(`/api/wishlist/${reviewId}`, {
       itemId: wishId,
       reviewId: reviewId,
       userId: userId,
@@ -44,8 +42,6 @@ function NewWishlistReviewModal({ reviewId, userId }) {
   };
 
   const changeWishId = (e) => setWishId(e.target.value);
-
-  console.log(reviewId, userId, wishId);
 
   return (
     <>

@@ -17,6 +17,8 @@ export default function Locations() {
     setUser(res.data.user);
   };
 
+  console.log(user);
+
   return (
     <>
       <h2>Locations</h2>
