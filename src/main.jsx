@@ -19,6 +19,7 @@ import MyReviewsCards from "./components/MyReviewsCards.jsx";
 import MyWishlist from "./components/MyWishlist.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+import ReviewDetailsPage from "./pages/ReviewDetailsPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,10 +28,14 @@ const router = createBrowserRouter(
         index
         element={<Home />}
         loader={async () => {
-        const res = await axios.get(`/api/reviews/popular/3`)
-        const res2 = await axios.get(`/api/reviews/recentCreated/3`)
-        const res3 = await axios.get(`/api/reviews/random/3`)
-        return {reviewsPop: res.data.reviewsPop, reviewsRecCr: res2.data.reviewsRecCr, reviewsRand: res3.data.reviewsRand}
+          const res = await axios.get(`/api/reviews/popular/3`);
+          const res2 = await axios.get(`/api/reviews/recentCreated/3`);
+          const res3 = await axios.get(`/api/reviews/random/3`);
+          return {
+            reviewsPop: res.data.reviewsPop,
+            reviewsRecCr: res2.data.reviewsRecCr,
+            reviewsRand: res3.data.reviewsRand,
+          };
         }}
       />
       <Route
@@ -44,6 +49,7 @@ const router = createBrowserRouter(
       <Route path="/user" element={<User />} />
       <Route path="/userInfo" element={<MyInfoCard />} />
       <Route path="/userReviews" element={<MyReviewsCards />} />
+      <Route path="/reviewDetails" element={<ReviewDetailsPage />} />
       <Route path="/userWishlist" element={<MyWishlist />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />

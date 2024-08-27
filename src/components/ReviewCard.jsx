@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Card, Button, Modal } from "react-bootstrap";
 import ReviewModal from "./ReviewModal";
 import NewWishlistReviewModal from "./NewWishlistReviewModal";
+import { Link } from "react-router-dom";
 
 function ReviewCard({ review, user, reviews, setReviews }) {
   const [show, setShow] = useState(false);
@@ -116,6 +117,15 @@ function ReviewCard({ review, user, reviews, setReviews }) {
         <Card.Text>Likes: {review.likeCount}</Card.Text>
         <NewWishlistReviewModal userId={userId} reviewId={reviewId} />
       </Card.Body>
+      <Card.Footer>
+        <Link
+          to="/reviewDetails"
+          className="btn btn-primary"
+          state={{ reviewId: reviewId, userId: userId }}
+        >
+          View Details
+        </Link>
+      </Card.Footer>
     </Card>
   );
 }

@@ -5,8 +5,8 @@ import { type } from "os";
 
 //change to your own database file path
 export const db = await connectToDB(
-  // "postgres://josep:admin@localhost:5432/travelBlog"
-  "postgres://scottjohnstone:admin@localhost:5432/travelBlog"
+  "postgres://josep:admin@localhost:5432/travelBlog"
+  // "postgres://scottjohnstone:admin@localhost:5432/travelBlog"
 );
 
 export class User extends Model {
@@ -22,6 +22,12 @@ export class Review extends Model {
 }
 
 export class Tag extends Model {
+  [util.inspect.custom]() {
+    return this.toJSON();
+  }
+}
+
+export class Like extends Model {
   [util.inspect.custom]() {
     return this.toJSON();
   }
@@ -66,11 +72,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    userImageSrc: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    userImageDesc: {
+    bio: {
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -99,9 +101,6 @@ Review.init(
     likeCount: {
       type: DataTypes.INTEGER,
     },
-    markReview: {
-      type: DataTypes.BOOLEAN,
-    },
     country: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -113,7 +112,7 @@ Review.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    streetAddress: {
+    image: {
       type: DataTypes.STRING,
     },
   },
@@ -125,45 +124,17 @@ Review.init(
   }
 );
 
-Tag.init(
+Like.init(
   {
-    tagId: {
+    likeId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    tagName: {
-      type: DataTypes.STRING,
-    },
   },
   {
-    modelName: "tag",
+    modelName: "like",
     sequelize: db,
-  }
-);
-
-Image.init(
-  {
-    imageId: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    imageSrc: {
-      type: DataTypes.STRING,
-    },
-    imageName: {
-      type: DataTypes.STRING,
-    },
-    imageDesc: {
-      type: DataTypes.STRING,
-    },
-  },
-  {
-    modelName: "image",
-    sequelize: db,
-    timestamps: true,
-    updatedAt: true,
   }
 );
 
@@ -186,9 +157,6 @@ WishlistItem.init(
       type: DataTypes.STRING,
     },
     city: {
-      type: DataTypes.STRING,
-    },
-    streetAddress: {
       type: DataTypes.STRING,
     },
   },
@@ -218,11 +186,8 @@ Review.belongsTo(User, { foreignKey: "userId" });
 User.hasMany(WishlistItem, { foreignKey: "userId" });
 WishlistItem.belongsTo(User, { foreignKey: "userId" });
 
-User.hasMany(Image, { foreignKey: "userId" });
-Image.belongsTo(User, { foreignKey: "userId" });
-
-User.hasMany(Tag, { foreignKey: "userId" });
-Tag.belongsTo(User, { foreignKey: "userId" });
+User.hasMany(Like, { foreignKey: "userId" });
+Like.belongsTo(User, { foreignKey: "userId" });
 
 User.hasMany(WishlistReview, { foreignKey: "userId" });
 WishlistReview.belongsTo(User, { foreignKey: "userId" });
@@ -233,8 +198,5 @@ WishlistReview.belongsTo(Review, { foreignKey: "reviewId" });
 WishlistItem.hasMany(WishlistReview, { foreignKey: "itemId" });
 WishlistReview.belongsTo(WishlistItem, { foreignKey: "itemId" });
 
-Review.hasMany(Tag, { foreignKey: "reviewId" });
-Tag.belongsTo(Review, { foreignKey: "reviewId" });
-
-Review.hasMany(Image, { foreignKey: "reviewId" });
-Image.belongsTo(Review, { foreignKey: "reviewId" });
+Review.hasMany(Like, { foreignKey: "reviewId" });
+Like.belongsTo(Review, { foreignKey: "reviewId" });

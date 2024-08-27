@@ -9,9 +9,10 @@ import {
   Image,
   WishlistItem,
   WishlistReview,
+  Like,
 } from "./src/model.js";
 import { Op, Sequelize } from "sequelize";
-import AWS from 'aws-sdk';
+import AWS from "aws-sdk";
 
 const app = express();
 const port = 8000;
@@ -19,8 +20,8 @@ const port = 8000;
 // AWS image hosting
 // TODO finish
 // Pulls access keys from .env file
-const ACCESS = process.env.REACT_APP_ACCESS
-const SECRET = process.env.REACT_APP_SECRET
+const ACCESS = process.env.REACT_APP_ACCESS;
+const SECRET = process.env.REACT_APP_SECRET;
 
 const uploadFile = async () => {
   const S3_BUCKET = "groupprojectdm";
@@ -57,7 +58,6 @@ const uploadFile = async () => {
 };
 // ***************** /AWS
 
-
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extend: false }));
 app.use(express.json());
@@ -87,6 +87,8 @@ app.post("/api/auth", async (req, res) => {
   });
   if (user && user.password === password) {
     req.session.userId = user.userId;
+    console.log(req.session);
+
     res.json({ success: true, userId: req.session.userId });
   } else {
     res.json({ success: false });
@@ -95,10 +97,17 @@ app.post("/api/auth", async (req, res) => {
 
 //session user
 app.get("/api/auth", async (req, res) => {
-  const userId = req.session.userId;
+  const { userId } = req.session;
   const user = await User.findByPk(userId);
   console.log(user);
+  res.json({ user: user });
+});
 
+//view user data
+app.get("/api/user/:userId", async (req, res) => {
+  const { userId } = req.params;
+  const user = await User.findByPk(userId);
+  console.log(user);
   res.json({ user: user });
 });
 
@@ -267,6 +276,46 @@ app.get("/api/images/:reviewId", async (req, res) => {
     order: [["createdAt", "DESC"]],
   });
   res.json(images);
+});
+
+//check liked status
+app.get("/api/like/:reviewId", async (req, res) => {
+  const { userId } = req.session;
+  const { reviewId } = req.params;
+  const like = await Like.findOne({
+    where: {
+      userId: userId,
+      reviewId: reviewId,
+    },
+  });
+  if (like) {
+    res.json({ status: true });
+  } else {
+    res.json({ status: false });
+  }
+});
+
+//like a review
+app.post("/api/like/:reviewId", async (req, res) => {
+  const { userId } = req.session;
+  const { reviewId } = req.params;
+  await Like.create({
+    userId: userId,
+    reviewId: reviewId,
+  });
+  res.json({ success: "true" });
+});
+
+//increase like count
+app.put("/api/reviews/:reviewId/like", async (req, res) => {
+  const { reviewId } = req.params;
+  const review = await Review.findOne({
+    where: {
+      reviewId: reviewId,
+    },
+  });
+  review.likeCount += 1;
+  res.json({ success: true });
 });
 
 //----------Creating, editing, and deleting---------//

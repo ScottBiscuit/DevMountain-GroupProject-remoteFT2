@@ -16,6 +16,7 @@ for (let i = 1; i < 3; i++) {
       username: `johndoe${i}`,
       email,
       password: "test",
+      bio: "Hey there! I’m John Doe, a passionate globetrotter with a never-ending curiosity for the world. From the bustling streets of Tokyo to the serene landscapes of Patagonia, I share my adventures, travel tips, and cultural insights on this blog. When I’m not exploring new destinations, you can find me planning my next journey, savoring local cuisine, or getting lost in a good book. Join me as I navigate the world one adventure at a time!",
     })
   );
 }
@@ -24,40 +25,24 @@ const usersInDB = await Promise.all(usersToCreate);
 
 const reviewsInDb = await Promise.all(
   reviewData.map((review) => {
-    const { locationName, reviewContent, markReview, country, city, userId, likeCount } = review;
+    const {
+      locationName,
+      reviewContent,
+      markReview,
+      country,
+      city,
+      userId,
+      likeCount,
+    } = review;
     const newReview = Review.create({
       locationName: locationName,
       reviewContent: reviewContent,
-      markReview: markReview,
       country: country,
       city: city,
       userId: userId,
-      likeCount: likeCount
+      likeCount: likeCount,
     });
     return newReview;
-  })
-);
-
-const imagesInDb = await Promise.all(
-  imageData.map((image) => {
-    const { imageName, imageSrc, imageDesc, reviewId } = image;
-    const newImage = Image.create({
-      imageName: imageName,
-      imageSrc: imageSrc,
-      imageDesc: imageDesc,
-      reviewId: reviewId
-    });
-    return newImage;
-  })
-);
-
-const tagsInDb = await Promise.all(
-  tagData.map((tag) => {
-    const { tagName } = tag;
-    const newTag = Tag.create({
-      tagName: tagName,
-    });
-    return newTag;
   })
 );
 

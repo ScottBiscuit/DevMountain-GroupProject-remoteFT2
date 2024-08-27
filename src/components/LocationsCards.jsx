@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card } from "react-bootstrap";
 import NewWishlistReviewModal from "./NewWishlistReviewModal";
+import ReviewDetailsPage from "../pages/ReviewDetailsPage";
 
 function LocationsCards({ review, user }) {
-  const [show, setShow] = useState(false);
   const { reviewId, userId } = review;
-
-  console.log(review);
 
   return user ? (
     <Card className="p-3">
@@ -19,10 +17,13 @@ function LocationsCards({ review, user }) {
         <Card.Subtitle className="text-muted">
           {review.streetAddress}
         </Card.Subtitle>
-        <Card.Text>{review.reviewContent}</Card.Text>
+        {/* <Card.Text>{review.reviewContent}</Card.Text> */}
         <Card.Text>{review.likeCount}</Card.Text>
         <NewWishlistReviewModal userId={userId} reviewId={reviewId} />
       </Card.Body>
+      <Card.Footer>
+        <ReviewDetailsPage review={review} userId={userId} />
+      </Card.Footer>
     </Card>
   ) : (
     <Card>
@@ -38,6 +39,9 @@ function LocationsCards({ review, user }) {
         <Card.Text>{review.reviewContent}</Card.Text>
         <Card.Text>Likes: {review.likeCount}</Card.Text>
       </Card.Body>
+      <Card.Footer>
+        <ReviewDetailsPage review={review} userId={userId} />
+      </Card.Footer>
     </Card>
   );
 }

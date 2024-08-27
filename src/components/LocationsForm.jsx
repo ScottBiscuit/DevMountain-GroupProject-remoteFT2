@@ -12,12 +12,6 @@ export default function LocationsForm({ reviews, user }) {
   const [city, setCity] = useState(null);
   const [searchResults, setSearchResults] = useState(reviews.data.reviews);
 
-  console.log(reviews);
-
-  // useEffect(() => {
-  //   allReviews();
-  // }, []);
-
   const handleClose = () => {
     setCountry("");
     setState("");
@@ -28,11 +22,6 @@ export default function LocationsForm({ reviews, user }) {
   const handleShow = () => {
     setShow(true);
   };
-
-  // const allReviews = async () => {
-  //   const allResults = await axios.get("/api/reviews");
-  //   setSearchResults(allResults.data.reviews);
-  // };
 
   const handleClearFilter = () => setSearchResults(reviews.data.reviews);
 
@@ -53,12 +42,9 @@ export default function LocationsForm({ reviews, user }) {
         city: city,
       });
     }
-    console.log(results);
-
     setSearchResults(results.data);
     handleClose();
   };
-  console.log(searchResults);
 
   const reviewResults = searchResults.map((review) => (
     <LocationsCards key={review.reviewId} review={review} user={user} />
