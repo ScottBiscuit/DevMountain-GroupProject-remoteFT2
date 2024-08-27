@@ -12,51 +12,9 @@ import {
   Like,
 } from "./src/model.js";
 import { Op, Sequelize } from "sequelize";
-import AWS from "aws-sdk";
 
 const app = express();
 const port = 8000;
-
-// AWS image hosting
-// TODO finish
-// Pulls access keys from .env file
-const ACCESS = process.env.REACT_APP_ACCESS;
-const SECRET = process.env.REACT_APP_SECRET;
-
-const uploadFile = async () => {
-  const S3_BUCKET = "groupprojectdm";
-  const REGION = "us-east-2";
-
-  AWS.config.update({
-    accessKeyId: ACCESS,
-    secretAccessKey: SECRET,
-  });
-  const s3 = new AWS.S3({
-    params: { Bucket: S3_BUCKET },
-    region: REGION,
-  });
-
-  const params = {
-    Bucket: S3_BUCKET,
-    Key: file.name,
-    Body: file,
-  };
-
-  var upload = s3
-    .putObject(params)
-    .on("httpUploadProgress", (evt) => {
-      console.log(
-        "Uploading " + parseInt((evt.loaded * 100) / evt.total) + "%"
-      );
-    })
-    .promise();
-
-  await upload.then((err, data) => {
-    console.log(err);
-    alert("File uploaded successfully.");
-  });
-};
-// ***************** /AWS
 
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extend: false }));

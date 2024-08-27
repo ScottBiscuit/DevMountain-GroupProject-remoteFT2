@@ -25,6 +25,8 @@ const reviewsInDb = await Promise.all(
   reviewData.map((review) => {
     const { locationName, reviewContent, country, city, userId, likeCount } =
       review;
+    const { locationName, reviewContent, country, city, userId, likeCount } =
+      review;
     const newReview = Review.create({
       locationName: locationName,
       reviewContent: reviewContent,
