@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Row } from "react-bootstrap";
+import { Button, Card, Row } from "react-bootstrap";
 import WishlistCard from "./WishlistCard";
 import CreateWishlistItem from "./CreateWishlistItem";
 
@@ -22,7 +22,9 @@ export default function MyWishlist({ user }) {
   ));
 
   return (
-    <>
+    <Card>
+      <Card.Title className="p-3">My Wishlists</Card.Title>
+      <Card.Body>
       <Row>
         <CreateWishlistItem
           wishlist={wishlist}
@@ -31,6 +33,7 @@ export default function MyWishlist({ user }) {
         />
       </Row>
       <Row>{wishlistCards}</Row>
-    </>
+      </Card.Body>
+    </Card>
   );
 }
