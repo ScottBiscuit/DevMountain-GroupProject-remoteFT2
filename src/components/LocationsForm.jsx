@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Modal, Card } from "react-bootstrap";
+import { Button, Modal, Card, CardGroup } from "react-bootstrap";
 import LocationSearchModal from "./LocationSearchModal";
 import axios from "axios";
 import ReviewCard from "./ReviewCard";
@@ -51,7 +51,9 @@ export default function LocationsForm({ reviews, user }) {
   ));
 
   return (
-    <>
+    <Card className="bg-info-subtle">
+      <Card.Title className="p-3">Looking for some inspiration?</Card.Title>
+      <Card.Body>
       <Button onClick={handleShow}>Filter Reviews</Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
@@ -74,7 +76,10 @@ export default function LocationsForm({ reviews, user }) {
         </Modal.Footer>
       </Modal>
       <Button onClick={handleClearFilter}>Reset Filter</Button>
+      <CardGroup>
       {reviewResults}
-    </>
+      </CardGroup>
+      </Card.Body>
+    </Card>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card } from "react-bootstrap";
+import { Card, CardGroup } from "react-bootstrap";
 import NewWishlistReviewModal from "./NewWishlistReviewModal";
 import ReviewDetailsPage from "../pages/ReviewDetailsPage";
 useState;
@@ -9,7 +9,7 @@ function LocationsCards({ review, user }) {
 
   return user ? (
     <Card className="p-3">
-      <Card.Img variant="top" src="holder.js/100px160" />
+      <Card.Img variant="top" src={review.image} className="w-25"/>
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
         <Card.Subtitle className="text-muted">
@@ -30,8 +30,9 @@ function LocationsCards({ review, user }) {
       </Card.Footer>
     </Card>
   ) : (
-    <Card>
-      <Card.Img variant="top" src="holder.js/100px160" />
+    <CardGroup>
+      <Card>
+      <Card.Img variant="top" src={review.image} className="w-25"/>
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
         <Card.Subtitle className="text-muted">
@@ -50,6 +51,9 @@ function LocationsCards({ review, user }) {
         />
       </Card.Footer>
     </Card>
+    {/* <Card className="">
+    </Card> */}
+    </CardGroup>
   );
 }
 
