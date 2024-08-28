@@ -99,6 +99,50 @@ app.post("/api/user", async (req, res) => {
   }
 });
 
+//edit user bio
+app.put("/api/user/editBio", async (req, res) => {
+  const { bio } = req.body;
+  const { userId } = req.session;
+  const user = await User.findByPk(userId);
+  user.bio = bio || user.bio;
+  await user.save();
+  res.json({ success: true });
+});
+
+//change password
+app.put("/api/user/editPassword", async (req, res) => {
+  const { password, password2, currentPassword } = req.body;
+  const { userId } = req.session;
+  const user = await User.findByPk(userId);
+  if (currentPassword === user.password) {
+    if (currentPassword !== password) {
+      if (password === password2) {
+        user.password = password || user.password;
+        await user.save();
+        console.log("success");
+        res.json({ success: true });
+      } else {
+        res.json({
+          success: false,
+          error: "New password doesn't match in both fields",
+        });
+      }
+    } else {
+      res.json({
+        success: false,
+        error:
+          "New password is the same as your current password. Please pick a different password.",
+      });
+    }
+  } else {
+    res.json({
+      success: false,
+      error:
+        "Password entered doesn't match current password, check your spelling and try again. If you continue to have problems, please contact an administator to reset your password.",
+    });
+  }
+});
+
 //__________Finding Reviews__________//
 
 //find all reviews
@@ -214,8 +258,10 @@ app.get("/api/like/:reviewId", async (req, res) => {
       reviewId: reviewId,
     },
   });
+  console.log(like);
+
   if (like) {
-    res.json({ status: true });
+    res.json({ status: true, likeId: like.likeId });
   } else {
     res.json({ status: false });
   }
@@ -225,11 +271,29 @@ app.get("/api/like/:reviewId", async (req, res) => {
 app.post("/api/like/:reviewId", async (req, res) => {
   const { userId } = req.session;
   const { reviewId } = req.params;
-  await Like.create({
+  // check for existing like
+  const like = await Like.create({
     userId: userId,
     reviewId: reviewId,
   });
-  res.json({ success: "true" });
+  res.json({ success: true, likeId: like.likeId });
+});
+
+//unlike a review
+app.delete("/api/like/:likeId/delete", async (req, res) => {
+  const { likeId } = req.params;
+  const { userId } = req.session;
+  const like = await Like.findOne({
+    where: {
+      likeId: likeId,
+    },
+  });
+  if (userId === like.userId) {
+    await like.destroy();
+    res.json({ success: true });
+  } else {
+    res.json({ success: false });
+  }
 });
 
 //increase like count
@@ -241,6 +305,20 @@ app.put("/api/reviews/:reviewId/like", async (req, res) => {
     },
   });
   review.likeCount += 1;
+  await review.save();
+  res.json({ success: true });
+});
+
+//decrease like count
+app.put("/api/reviews/:reviewId/unlike", async (req, res) => {
+  const { reviewId } = req.params;
+  const review = await Review.findOne({
+    where: {
+      reviewId: reviewId,
+    },
+  });
+  review.likeCount -= 1;
+  await review.save();
   res.json({ success: true });
 });
 

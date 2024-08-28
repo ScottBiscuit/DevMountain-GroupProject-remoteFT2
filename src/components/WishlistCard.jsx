@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, Card, Col } from "react-bootstrap";
 import ReviewCard from "./ReviewCard";
+import { useNavigate } from "react-router-dom";
 
 function WishlistCard({ wish }) {
   const [wishReviews, setWishReviews] = useState([]);
@@ -18,6 +19,9 @@ function WishlistCard({ wish }) {
   const wishlistReviews = wishReviews.map((review) => (
     <ReviewCard key={review.reviewId} review={review} />
   ));
+
+  const navigate = useNavigate();
+  const handleNav = () => navigate("/locations");
 
   return wishReviews.length !== 0 ? (
     <Card>
@@ -45,7 +49,7 @@ function WishlistCard({ wish }) {
           {wish.streetAddress}
         </Card.Subtitle>
       </Card.Body>
-      <Button>Find Reviews</Button>
+      <Button onClick={handleNav}>Find Reviews</Button>
     </Card>
   );
 }

@@ -118,7 +118,7 @@ function ReviewCard({ review, user, reviews, setReviews }) {
         <Card.Text>Likes: {review.likeCount}</Card.Text>
         <NewWishlistReviewModal userId={userId} reviewId={reviewId} />
       </Card.Body>
-      <Card.Footer>
+      {/* <Card.Footer>
         <Link
           to="/reviewDetails"
           className="btn btn-primary"
@@ -126,7 +126,7 @@ function ReviewCard({ review, user, reviews, setReviews }) {
         >
           View Details
         </Link>
-      </Card.Footer>
+      </Card.Footer> */}
     </Card>
   );
 }
