@@ -41,6 +41,8 @@ function ChangeUserBio({ userBio, setUserBio }) {
                 <Form.Control
                   onChange={handleEditContent}
                   value={userBio}
+                  as="textarea"
+                  rows={6}
                 ></Form.Control>
               </Form>
             </Card.Body>
