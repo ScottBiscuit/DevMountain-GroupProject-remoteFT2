@@ -71,10 +71,11 @@ const wishlistsInDb = await Promise.all(
 
 const wishlistLinksInDb = await Promise.all(
   wishlistLinkData.map((reviewLink) => {
-    const { itemId, reviewId } = reviewLink;
+    const { itemId, reviewId, userId } = reviewLink;
     const newWishlistLink = WishlistReview.create({
       itemId: itemId,
       reviewId: reviewId,
+      userId: userId,
     });
     return newWishlistLink;
   })

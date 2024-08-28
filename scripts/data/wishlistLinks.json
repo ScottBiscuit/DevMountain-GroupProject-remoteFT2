@@ -1,26 +1,32 @@
 [
   {
     "itemId": 2,
-    "reviewId": 2
+    "reviewId": 2,
+    "userId": 1
   },
   {
     "itemId": 9,
-    "reviewId": 4
+    "reviewId": 4,
+    "userId": 2
   },
   {
     "itemId": 5,
-    "reviewId": 6
+    "reviewId": 6,
+    "userId": 2
   },
   {
     "itemId": 10,
-    "reviewId": 1
+    "reviewId": 3,
+    "userId": 1
   },
   {
     "itemId": 10,
-    "reviewId": 5
+    "reviewId": 1,
+    "userId": 1
   },
   {
     "itemId": 10,
-    "reviewId": 6
+    "reviewId": 6,
+    "userId": 1
   }
 ]
