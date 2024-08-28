@@ -28,22 +28,22 @@ export default function MainNav({ brand }) {
   };
   return user ? (
     // return (
-    <Navbar expand="lg" className="bg-primary navbar-dark" sticky="top">
-      <Container fluid>
+    <Navbar className="bg-primary navbar-dark" sticky="top">
+      {/* <Container fluid> */}
         <Navbar.Brand href="/">{brand}</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="justify-content-end ms-auto text-end">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/locations">Locations</Nav.Link>
-            <Nav.Link href="/user" >My Page</Nav.Link>
+            <Nav.Link href="/user" >User Info</Nav.Link>
             <Nav.Link onClick={handleLogout}>Log Out</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-      </Container>
+      {/* </Container> */}
     </Navbar>
   ) : (
-    <Navbar expand="lg" className="bg-primary navbar-dark" sticky="top">
+    <Navbar  className="bg-primary navbar-dark" sticky="top">
       <Container fluid>
         <Navbar.Brand href="/">{brand}</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
