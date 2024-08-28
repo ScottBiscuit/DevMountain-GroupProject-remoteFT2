@@ -22,11 +22,11 @@ export default function User() {
   const handleNav = () => navigate("/login");
 
   return user ? (
-    <Card className="vh-100">
+    <Card className="">
       <Card.Img
         src="../images/bgportrait_beach.jpg"
         alt="World map with location pins"
-        className="opacity-50 vh-100"
+        className="opacity-50"
       />
       <Card.ImgOverlay>
         <MyInfoCard user={user} />

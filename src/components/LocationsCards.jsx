@@ -9,17 +9,20 @@ function LocationsCards({ review, user }) {
 
   return user ? (
     <Card className="p-3">
-      <Card.Img variant="top" src={review.image} className="w-25"/>
+      <Card.Img variant="top" src={review.image} style={{ height: '250px', textAlign: 'center', objectFit: 'fill'}}/>
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
-        <Card.Subtitle className="text-muted">
+        <Card.Subtitle className="text-muted mb-2">
           {review.city}, {review.state} {review.country}
         </Card.Subtitle>
-        <Card.Text>{reviewContent.slice(0, 50)}...</Card.Text>
+        <Card.Text>{reviewContent.slice(0, 70)}...</Card.Text>
         <Card.Text>Likes: {likes}</Card.Text>
-        <NewWishlistReviewModal userId={userId} reviewId={reviewId} />
       </Card.Body>
-      <Card.Footer>
+      <Card.Footer className="text-center">
+        <NewWishlistReviewModal 
+          userId={userId} 
+          reviewId={reviewId} 
+        />
         <ReviewDetailsPage
           currentUser={user}
           review={review}
@@ -30,18 +33,17 @@ function LocationsCards({ review, user }) {
       </Card.Footer>
     </Card>
   ) : (
-    <CardGroup>
-      <Card>
-      <Card.Img variant="top" src={review.image} className="w-25"/>
+    <Card className="p-3">
+      <Card.Img variant="top" src={review.image}/>
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
-        <Card.Subtitle className="text-muted">
+        <Card.Subtitle className="text-muted mb-2">
           {review.city}, {review.state} {review.country}
         </Card.Subtitle>
         <Card.Text>{reviewContent.slice(0, 50)}...</Card.Text>
         <Card.Text>Likes: {likes}</Card.Text>
       </Card.Body>
-      <Card.Footer>
+      <Card.Footer className="text-center">
         <ReviewDetailsPage
           currentUser={user}
           review={review}
@@ -51,9 +53,6 @@ function LocationsCards({ review, user }) {
         />
       </Card.Footer>
     </Card>
-    {/* <Card className="">
-    </Card> */}
-    </CardGroup>
   );
 }
 

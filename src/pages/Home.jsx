@@ -12,12 +12,12 @@ export default function Home() {
       useLoaderData().reviewsRand);
 
   return (
-    <Card className="vh-100">
-      <Card.Img
+    <Card>
+      {/* <Card.Img
         src="../images/bgportrait_beach.jpg"
         alt="beach with sun umbrellas"
         className="opacity-50 vh-100"
-      />
+      /> */}
       <Card.ImgOverlay>
         <ReviewCarousel 
           reviewsPop={reviewsPop} 
