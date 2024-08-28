@@ -17,16 +17,16 @@
   {
     "itemId": 10,
     "reviewId": 3,
-    "userId": 1
+    "userId": 2
   },
   {
     "itemId": 10,
     "reviewId": 1,
-    "userId": 1
+    "userId": 2
   },
   {
     "itemId": 10,
     "reviewId": 6,
-    "userId": 1
+    "userId": 2
   }
 ]
