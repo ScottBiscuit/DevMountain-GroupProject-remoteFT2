@@ -63,7 +63,7 @@ function ReviewCard({ review, user, reviews, setReviews }) {
 
   return user && user.userId === review.userId ? (
     <Card className="p-3">
-      <Card.Img variant="top" src={currentReview.image} style={{ height: '250px', textAlign: 'center', objectFit: 'fill' }}/>
+      <Card.Img variant="top" src={currentReview.image} style={{ height: '250px', textAlign: 'center', objectFit: 'cover' }}/>
       <Card.Body>
         <Card.Title>{currentReview.locationName}</Card.Title>
         <Card.Subtitle className="text-muted mb-2">

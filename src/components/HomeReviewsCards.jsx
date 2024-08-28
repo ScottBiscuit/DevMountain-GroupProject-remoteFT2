@@ -9,7 +9,7 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
         variant="top"
         src={review.image}
         className="rounded"
-        style={{ height: '250px', textAlign: 'center', objectFit: 'fill' }}
+        style={{ height: '250px', textAlign: 'center', objectFit: 'cover' }}
         />
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
@@ -28,7 +28,7 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
         variant="top"
         src={review.image}
         className="rounded"
-        style={{ height: '250px', textAlign: 'center', objectFit: 'fill' }}
+        style={{ height: '250px', textAlign: 'center', objectFit: 'cover' }}
       />
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
@@ -46,7 +46,7 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
         variant="top"
         src={review.image}
         className="rounded"
-        style={{ height: '250px', textAlign: 'center', objectFit: 'fill' }}
+        style={{ height: '250px', textAlign: 'center', objectFit: 'cover' }}
       />
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>

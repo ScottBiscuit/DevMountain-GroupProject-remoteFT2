@@ -16,7 +16,7 @@ export default function ReviewCarousel({ reviewsPop }) {
       <Image 
         src={review.image} 
         // className="h-100 w-100"
-        style={{ height: '400px', textAlign: 'center', objectFit: 'fill' }}
+        style={{ height: '400px', textAlign: 'center', objectFit: 'cover' }}
       />
       <Carousel.Caption className="bg-secondary opacity-75">
         <div>{review.city}, {review.country} - {review.locationName}</div>
