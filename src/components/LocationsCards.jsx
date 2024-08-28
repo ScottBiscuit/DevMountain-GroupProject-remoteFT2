@@ -9,7 +9,7 @@ function LocationsCards({ review, user }) {
 
   return user ? (
     <Card className="p-3">
-      <Card.Img variant="top" src={review.image} style={{ height: '250px', textAlign: 'center', objectFit: 'fill'}}/>
+      <Card.Img variant="top" src={review.image} style={{ height: '250px', textAlign: 'center', objectFit: 'cover'}}/>
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
         <Card.Subtitle className="text-muted mb-2">
