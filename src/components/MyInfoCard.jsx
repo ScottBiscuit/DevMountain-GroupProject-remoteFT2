@@ -31,8 +31,6 @@ export default function MyInfoCard({ user }) {
         <Card.Title className="p-3">My Info</Card.Title>
         <CardGroup>
           <Card className="p-3">
-            {/* TODO - change to src={user.userImgSrc} inside Card.Img ? */}
-            <Card.Img>{user.userImgSrc}</Card.Img>
             <Card.Body>
               <Card.Title>Welcome back!</Card.Title>
 
@@ -43,18 +41,19 @@ export default function MyInfoCard({ user }) {
                   My Review Total: {reviews.length}
                 </ListGroup.Item>
               </ListGroup>
+            </Card.Body>
+            <Card.Footer>
               <ChangePassword />
-            </Card.Body>
-            <Card.Body>
-              <Card.Img src="../images/user_passport.jpg" />
-            </Card.Body>
+            </Card.Footer>
           </Card>
           <Card className="p-3">
             <Card.Body>
-              <Card.Subtitle>My Bio: </Card.Subtitle>
+              <Card.Subtitle className="mb-2">My Bio: </Card.Subtitle>
               <Card.Text>{userBio}</Card.Text>
-              <ChangeUserBio userBio={userBio} setUserBio={setUserBio} />
             </Card.Body>
+            <Card.Footer>
+              <ChangeUserBio userBio={userBio} setUserBio={setUserBio} />
+            </Card.Footer>
           </Card>
         </CardGroup>
       </Card>

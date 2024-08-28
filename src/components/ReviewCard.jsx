@@ -69,12 +69,8 @@ function ReviewCard({ review, user, reviews, setReviews }) {
         <Card.Subtitle className="text-muted">
           {currentReview.city}, {currentReview.state} {currentReview.country}
         </Card.Subtitle>
-        <Card.Subtitle className="text-muted">
-          {currentReview.streetAddress}
-        </Card.Subtitle>
         <Card.Text>{currentReview.reviewContent.slice(0, 100)}...</Card.Text>
-        <Card.Text>{currentReview.likeCount}</Card.Text>
-        <Button onClick={handleShow}>Edit Review</Button>
+        <Card.Text>Likes: {currentReview.likeCount}</Card.Text>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header>
             <Modal.Title>Edit/Delete Review</Modal.Title>
@@ -102,6 +98,9 @@ function ReviewCard({ review, user, reviews, setReviews }) {
           </Modal.Footer>
         </Modal>
       </Card.Body>
+      <Card.Footer>
+        <Button onClick={handleShow}>Edit Review</Button>
+      </Card.Footer>
     </Card>
   ) : (
     <Card>
@@ -118,15 +117,6 @@ function ReviewCard({ review, user, reviews, setReviews }) {
         <Card.Text>Likes: {review.likeCount}</Card.Text>
         <NewWishlistReviewModal userId={userId} reviewId={reviewId} />
       </Card.Body>
-      {/* <Card.Footer>
-        <Link
-          to="/reviewDetails"
-          className="btn btn-primary"
-          state={{ reviewId: reviewId, userId: userId }}
-        >
-          View Details
-        </Link>
-      </Card.Footer> */}
     </Card>
   );
 }
