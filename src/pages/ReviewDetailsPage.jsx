@@ -74,7 +74,9 @@ function ReviewDetailsPage({ review, userId, likes, setLikes, currentUser }) {
             </Modal.Header>
             <Modal.Body>
               <Card>
-                <Card.Img />
+                <Card.Img src={review.image} />
+              </Card>
+              <Card>
                 <Card.Body>
                   <Card.Title>{review.locationName}</Card.Title>
                   <Card.Subtitle>
@@ -110,7 +112,9 @@ function ReviewDetailsPage({ review, userId, likes, setLikes, currentUser }) {
             </Modal.Header>
             <Modal.Body>
               <Card>
-                <Card.Img />
+                <Card.Img src={review.image} />
+              </Card>
+              <Card>
                 <Card.Body>
                   <Card.Title>{review.locationName}</Card.Title>
                   <Card.Subtitle>
@@ -147,7 +151,9 @@ function ReviewDetailsPage({ review, userId, likes, setLikes, currentUser }) {
           </Modal.Header>
           <Modal.Body>
             <Card>
-              <Card.Img />
+              <Card.Img src={review.image} />
+            </Card>
+            <Card>
               <Card.Body>
                 <Card.Title>{review.locationName}</Card.Title>
                 <Card.Subtitle>
