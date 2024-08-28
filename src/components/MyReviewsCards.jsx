@@ -30,10 +30,10 @@ export default function MyReviewsCards({ user }) {
     user &&
     reviews && (
       <>
-        <CreateReview user={user} reviews={reviews} setReviews={setReviews} />
         <Card className="m-2">
-          <Card.Title className="p-3">My Reviews</Card.Title>
+          {/* <Card.Title className="p-3">My Reviews</Card.Title> */}
           <Card.Body>
+        <CreateReview user={user} reviews={reviews} setReviews={setReviews} className=""/>
           <Row xs={1} md={2} lg={3} className="g-3">
             {reviewCards}
           </Row>

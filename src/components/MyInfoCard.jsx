@@ -27,8 +27,8 @@ export default function MyInfoCard({ user }) {
   return (
     reviews &&
     user && (
-      <Card className="m-2">
-        <Card.Title className="p-3">My Info</Card.Title>
+      <Card className="m-3">
+        {/* <Card.Title className="p-3">My Info</Card.Title> */}
         <CardGroup>
           <Card className="p-3">
             <Card.Body>
