@@ -5,8 +5,8 @@ import { type } from "os";
 
 //change to your own database file path
 export const db = await connectToDB(
-  // "postgres://josep:admin@localhost:5432/travelBlog"
-  "postgres://scottjohnstone:admin@localhost:5432/travelBlog"
+  "postgres://josep:admin@localhost:5432/travelBlog"
+  // "postgres://scottjohnstone:admin@localhost:5432/travelBlog"
 );
 
 export class User extends Model {
@@ -135,7 +135,6 @@ WishlistItem.init(
     },
     country: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     itemName: {
       type: DataTypes.STRING,
