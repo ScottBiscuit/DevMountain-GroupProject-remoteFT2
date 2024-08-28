@@ -25,7 +25,6 @@ function WishlistCard({ wish }) {
 
   return wishReviews.length !== 0 ? (
     <Card>
-      <Card.Img variant="top" src="holder.js/100px160" />
       <Card.Body>
         <Card.Title>{wish.itemName}</Card.Title>
         <Card.Subtitle className="text-muted">
@@ -39,7 +38,6 @@ function WishlistCard({ wish }) {
     </Card>
   ) : (
     <Card>
-      <Card.Img variant="top" src="holder.js/100px160" />
       <Card.Body>
         <Card.Title>{wish.itemName}</Card.Title>
         <Card.Subtitle className="text-muted">
