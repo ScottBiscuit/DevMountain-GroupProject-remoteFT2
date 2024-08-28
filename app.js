@@ -465,12 +465,42 @@ app.get("/api/wishlist/reviews/:itemId", async (req, res) => {
 });
 
 //remove a review from a wishlist item
-app.delete("/api/wishlist/reviews/:wishId", async (req, res) => {
+app.delete(
+  "/api/wishlist/reviews/:itemId/:reviewId/delete",
+  async (req, res) => {
+    const { userId } = req.session;
+    const { itemId, reviewId } = req.params;
+    const wishReview = await WishlistReview.findOne({
+      where: {
+        itemId: itemId,
+        reviewId: reviewId,
+      },
+    });
+
+    if (wishReview.userId === userId) {
+      await wishReview.destroy();
+      res.json({ success: true });
+    } else {
+      res.json({ success: false });
+    }
+  }
+);
+
+//remove all reviews from a wishlist item and delete wishlist
+app.delete("/api/wishlist/:itemId/delete", async (req, res) => {
   const { userId } = req.session;
-  const { wishId } = req.params;
-  const wish = await WishlistReview.findByPk(wishId);
+  const { itemId } = req.params;
+  const wish = await WishlistItem.findByPk(itemId);
+  const wishReviews = await WishlistReview.findAll({
+    where: {
+      itemId: itemId,
+    },
+  });
 
   if (wish.userId === userId) {
+    if (wishReviews.length > 0) {
+      await wishReviews.destroy();
+    }
     await wish.destroy();
     res.json({ success: true });
   } else {

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Row } from "react-bootstrap";
+import { Button, Row } from "react-bootstrap";
 import WishlistCard from "./WishlistCard";
 import CreateWishlistItem from "./CreateWishlistItem";
 

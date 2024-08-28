@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Card, Col } from "react-bootstrap";
-import ReviewCard from "./ReviewCard";
+import { Button, Card } from "react-bootstrap";
+import WishlistReviewCard from "./WishlistReviewCard";
 import { useNavigate } from "react-router-dom";
 
 function WishlistCard({ wish }) {
   const [wishReviews, setWishReviews] = useState([]);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
     generateWishReviews();
@@ -17,38 +18,59 @@ function WishlistCard({ wish }) {
   };
 
   const wishlistReviews = wishReviews.map((review) => (
-    <ReviewCard key={review.reviewId} review={review} />
+    <WishlistReviewCard key={review.reviewId} review={review} wish={wish} />
   ));
 
   const navigate = useNavigate();
   const handleNav = () => navigate("/locations");
 
-  return wishReviews.length !== 0 ? (
-    <Card>
-      <Card.Body>
-        <Card.Title>{wish.itemName}</Card.Title>
-        <Card.Subtitle className="text-muted">
-          {wish.city}, {wish.country}
-        </Card.Subtitle>
-        <Card.Subtitle className="text-muted">
-          {wish.streetAddress}
-        </Card.Subtitle>
-      </Card.Body>
-      {wishlistReviews}
-    </Card>
-  ) : (
-    <Card>
-      <Card.Body>
-        <Card.Title>{wish.itemName}</Card.Title>
-        <Card.Subtitle className="text-muted">
-          {wish.city}, {wish.country}
-        </Card.Subtitle>
-        <Card.Subtitle className="text-muted">
-          {wish.streetAddress}
-        </Card.Subtitle>
-      </Card.Body>
-      <Button onClick={handleNav}>Find Reviews</Button>
-    </Card>
+  const handleDelete = async () => {
+    const res = await axios.delete(`/api/wishlist/${wish.itemId}/delete`);
+    if (res.data.success) {
+      setIsDeleted(true);
+    }
+  };
+
+  //To Do:
+  //delete wishlist button
+  //remove review from wishlist button
+  //create wishlist review card without add to wishlist button
+
+  return (
+    !isDeleted &&
+    (wishReviews.length !== 0 ? (
+      <Card>
+        <Card.Body>
+          <Card.Title>{wish.itemName}</Card.Title>
+          <Card.Subtitle className="text-muted">
+            {wish.city}, {wish.country}
+          </Card.Subtitle>
+          <Card.Subtitle className="text-muted">
+            {wish.streetAddress}
+          </Card.Subtitle>
+          {wishlistReviews}
+        </Card.Body>
+        <Card.Footer>
+          <Button onClick={handleDelete}>Delete Wishlist</Button>
+        </Card.Footer>
+      </Card>
+    ) : (
+      <Card>
+        <Card.Body>
+          <Card.Title>{wish.itemName}</Card.Title>
+          <Card.Subtitle className="text-muted">
+            {wish.city}, {wish.country}
+          </Card.Subtitle>
+          <Card.Subtitle className="text-muted">
+            {wish.streetAddress}
+          </Card.Subtitle>
+        </Card.Body>
+        <Card.Footer>
+          <Button onClick={handleDelete}>Delete Wishlist</Button>
+          <Button onClick={handleNav}>Find Reviews</Button>
+        </Card.Footer>
+      </Card>
+    ))
   );
 }
 
