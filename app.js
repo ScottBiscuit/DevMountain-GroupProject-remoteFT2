@@ -499,10 +499,13 @@ app.delete("/api/wishlist/:itemId/delete", async (req, res) => {
 
   if (wish.userId === userId) {
     if (wishReviews.length > 0) {
-      await wishReviews.destroy();
+      await WishlistReview.destroy({ where: { itemId: itemId } });
+      await wish.destroy();
+      res.json({ success: true });
+    } else {
+      await wish.destroy();
+      res.json({ success: true });
     }
-    await wish.destroy();
-    res.json({ success: true });
   } else {
     res.json({ success: false });
   }

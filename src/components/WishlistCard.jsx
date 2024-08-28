@@ -26,6 +26,8 @@ function WishlistCard({ wish }) {
 
   const handleDelete = async () => {
     const res = await axios.delete(`/api/wishlist/${wish.itemId}/delete`);
+    console.log(res);
+
     if (res.data.success) {
       setIsDeleted(true);
     }

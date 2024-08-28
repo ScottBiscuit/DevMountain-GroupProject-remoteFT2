@@ -5,7 +5,7 @@ import { Button, Form, Modal } from "react-bootstrap";
 function NewWishlistReviewModal({ reviewId, userId }) {
   const [show, setShow] = useState(false);
   const [wishlistDropdown, setWishlistDropdown] = useState([]);
-  const [wishId, setWishId] = useState([]);
+  const [wishId, setWishId] = useState(null);
 
   useEffect(() => {
     generateWishlist();
@@ -33,12 +33,17 @@ function NewWishlistReviewModal({ reviewId, userId }) {
   };
 
   const handleSubmit = async () => {
-    await axios.post(`/api/wishlist/${reviewId}`, {
-      itemId: wishId,
-      reviewId: reviewId,
-      userId: userId,
-    });
-    handleClose();
+    if (wishId) {
+      await axios.post(`/api/wishlist/${reviewId}`, {
+        itemId: wishId,
+        reviewId: reviewId,
+        userId: userId,
+      });
+      alert(`Review added to wishlist.`);
+      handleClose();
+    } else {
+      alert("No wishlist selected, please select a wishlist.");
+    }
   };
 
   const changeWishId = (e) => setWishId(e.target.value);
