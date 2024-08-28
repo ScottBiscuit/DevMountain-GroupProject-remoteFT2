@@ -55,7 +55,8 @@ const wishlistsInDb = await Promise.all(
       itemName,
       country,
       state,
-      city
+      city,
+      userId
     } = wishlist;
     const newWishlist = WishlistItem.create({
       itemId: itemId,
@@ -63,6 +64,7 @@ const wishlistsInDb = await Promise.all(
       country: country,
       state: state,
       city: city,
+      userId: userId
     });
     return newWishlist;
   })

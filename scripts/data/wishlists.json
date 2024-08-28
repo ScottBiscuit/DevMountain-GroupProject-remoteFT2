@@ -2,49 +2,58 @@
     {
       "country": "Greece",
       "city": "Athens",
-      "itemName": "See Athens and then some islands"
+      "itemName": "See Athens and then some islands",
+      "userId": 1
     },
     {
       "country": "United Kingdom",
       "city": "Manchester",
-      "itemName": "Watch Manchester United Game"
+      "itemName": "Watch Manchester United Game",
+      "userId": 1
     },
     {
       "country": "Mexico",
       "city": "Cancun",
-      "itemName": "All Inclusive Beach Resorts"
+      "itemName": "All Inclusive Beach Resorts",
+      "userId": 2
     },
     {
       "country": "United States",
       "state": "Utah",
       "city": "Lehi",
-      "itemName": "I heard there was a sweet boot camp there"
+      "itemName": "I heard there was a sweet boot camp there",
+      "userId": 1
     },
     {
       "country": "United States",
       "state": "New York",
       "city": "New York City",
-      "itemName": "New York!"
+      "itemName": "New York!",
+      "userId": 2
     },
     {
       "country": "Spain",
       "city": "Barcelona",
-      "itemName": "Tapas and football"
+      "itemName": "Tapas and football",
+      "userId": 1
     },
     {
       "country": "United States",
       "state": "Hawaii",
-      "itemName": "Surf and Chill somewhere in Hawaii"
+      "itemName": "Surf and Chill somewhere in Hawaii",
+      "userId": 1
     },
     {
       "country": "Italy",
       "city": "Naples",
-      "itemName": "Napoli has the PIZZAAAAAA"
+      "itemName": "Napoli has the PIZZAAAAAA",
+      "userId": 1
     },
     {
       "country": "Germany",
       "city": "Darmstadt",
-      "itemName": "Visit family and test my German"
+      "itemName": "Visit family and test my German",
+      "userId": 2
     }
   ]
   
