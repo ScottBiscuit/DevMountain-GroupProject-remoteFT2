@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Row } from "react-bootstrap";
 import WishlistReviewCard from "./WishlistReviewCard";
 import { useNavigate } from "react-router-dom";
 
@@ -42,15 +42,16 @@ function WishlistCard({ wish }) {
     !isDeleted &&
     (wishReviews.length !== 0 ? (
       <Card>
-        <Card.Body>
+        <Card.Header>
           <Card.Title>{wish.itemName}</Card.Title>
           <Card.Subtitle className="text-muted">
-            {wish.city}, {wish.country}
+            {wish.city} {wish.country}
           </Card.Subtitle>
-          <Card.Subtitle className="text-muted">
-            {wish.streetAddress}
-          </Card.Subtitle>
-          {wishlistReviews}
+        </Card.Header>
+        <Card.Body>
+          <Row xs={1} sm={2} md={3} lg={4}>
+            {wishlistReviews}
+          </Row>
         </Card.Body>
         <Card.Footer>
           <Button onClick={handleDelete}>Delete Wishlist</Button>
@@ -58,18 +59,17 @@ function WishlistCard({ wish }) {
       </Card>
     ) : (
       <Card>
-        <Card.Body>
+        <Card.Header>
           <Card.Title>{wish.itemName}</Card.Title>
           <Card.Subtitle className="text-muted">
-            {wish.city}, {wish.country}
+            {wish.city} {wish.country}
           </Card.Subtitle>
-          <Card.Subtitle className="text-muted">
-            {wish.streetAddress}
-          </Card.Subtitle>
+        </Card.Header>
+        <Card.Body>
+          <Button onClick={handleNav}>Find Reviews</Button>
         </Card.Body>
         <Card.Footer>
           <Button onClick={handleDelete}>Delete Wishlist</Button>
-          <Button onClick={handleNav}>Find Reviews</Button>
         </Card.Footer>
       </Card>
     ))

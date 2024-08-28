@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Row } from "react-bootstrap";
 
 function WishlistReviewCard({ review, wish }) {
   const [isDeleted, setIsDeleted] = useState(false);
@@ -19,7 +19,13 @@ function WishlistReviewCard({ review, wish }) {
   return (
     !isDeleted && (
       <Card>
-        <Card.Img variant="top" src={review.image} />
+        <Card>
+          <Card.Img
+            variant="top"
+            src={review.image}
+            style={{ height: "225px", textAlign: "center", objectFit: "cover" }}
+          />
+        </Card>
         <Card.Body>
           <Card.Title>{review.locationName}</Card.Title>
           <Card.Subtitle className="text-muted">
