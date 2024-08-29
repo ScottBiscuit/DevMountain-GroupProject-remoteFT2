@@ -60,7 +60,7 @@ function NewWishlistReviewModal({ reviewId, userId }) {
             <Form.Group>
               <Form.Label>Choose the wishlist to connect to:</Form.Label>
               <Form.Select onChange={changeWishId} value={wishId}>
-                <option>Choose a Wishlist</option>
+                <option value={null}>Choose a Wishlist</option>
                 {wishlistDropdown}
               </Form.Select>
             </Form.Group>
