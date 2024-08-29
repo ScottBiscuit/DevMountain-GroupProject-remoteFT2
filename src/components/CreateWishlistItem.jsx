@@ -38,7 +38,7 @@ function CreateWishlistItem({ user, wishlist, setWishlist }) {
 
   return (
     <>
-      <Button onClick={handleShow}>Make a new Wishlist Entry</Button>
+      <Button onClick={handleShow}>Create a new Wishlist</Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
           <Modal.Title>Add New Wishlist Item</Modal.Title>

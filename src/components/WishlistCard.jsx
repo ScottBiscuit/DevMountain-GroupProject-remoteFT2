@@ -41,7 +41,7 @@ function WishlistCard({ wish }) {
   return (
     !isDeleted &&
     (wishReviews.length !== 0 ? (
-      <Card>
+      <Card className="p-2 mb-2">
         <Card.Header>
           <Card.Title>{wish.itemName}</Card.Title>
           <Card.Subtitle className="text-muted">
@@ -58,7 +58,7 @@ function WishlistCard({ wish }) {
         </Card.Footer>
       </Card>
     ) : (
-      <Card>
+      <Card className="p-2 mb-2">
         <Card.Header>
           <Card.Title>{wish.itemName}</Card.Title>
           <Card.Subtitle className="text-muted">

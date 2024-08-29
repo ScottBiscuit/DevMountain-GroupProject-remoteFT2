@@ -27,10 +27,10 @@ export default function MyInfoCard({ user }) {
   return (
     reviews &&
     user && (
-      <Card className="m-3">
+      <Card className="m-2 p-2 bg-secondary-subtle">
         {/* <Card.Title className="p-3">My Info</Card.Title> */}
         <CardGroup>
-          <Card className="p-3">
+          <Card className="m-2 p-3">
             <Card.Body>
               <Card.Title>Welcome back!</Card.Title>
 
@@ -46,7 +46,7 @@ export default function MyInfoCard({ user }) {
               <ChangePassword />
             </Card.Footer>
           </Card>
-          <Card className="p-3">
+          <Card className="m-2 p-3">
             <Card.Body>
               <Card.Subtitle className="mb-2">My Bio: </Card.Subtitle>
               <Card.Text>{userBio}</Card.Text>
