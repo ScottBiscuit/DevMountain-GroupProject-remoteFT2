@@ -30,7 +30,7 @@ export default function MainNav({ brand }) {
     // return (
     <Navbar className="bg-primary navbar-dark" sticky="top">
       {/* <Container fluid> */}
-        <Navbar.Brand href="/">{brand}</Navbar.Brand>
+        <Navbar.Brand href="/" className="p-2">{brand}</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="justify-content-end ms-auto text-end">

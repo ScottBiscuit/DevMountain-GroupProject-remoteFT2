@@ -79,7 +79,7 @@ function ReviewDetailsPage({ review, userId, likes, setLikes, currentUser }) {
               <Card>
                 <Card.Body>
                   <Card.Title>{review.locationName}</Card.Title>
-                  <Card.Subtitle>
+                  <Card.Subtitle className="mb-2">
                     {review.country} {review.state}, {review.city}
                   </Card.Subtitle>
                   <Card.Text>{review.reviewContent}</Card.Text>
@@ -117,7 +117,7 @@ function ReviewDetailsPage({ review, userId, likes, setLikes, currentUser }) {
               <Card>
                 <Card.Body>
                   <Card.Title>{review.locationName}</Card.Title>
-                  <Card.Subtitle>
+                  <Card.Subtitle className="mb-2">
                     {review.country} {review.state}, {review.city}
                   </Card.Subtitle>
                   <Card.Text>{review.reviewContent}</Card.Text>
