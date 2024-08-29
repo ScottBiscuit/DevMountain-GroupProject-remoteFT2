@@ -1,7 +1,12 @@
 [
   {
-    "itemId": 2,
+    "itemId": 3,
     "reviewId": 2,
+    "userId": 1
+  },
+  {
+    "itemId": 2,
+    "reviewId": 9,
     "userId": 1
   },
   {

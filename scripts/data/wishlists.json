@@ -1,8 +1,15 @@
 [
   {
-    "country": "Greece",
-    "city": "Athens",
-    "itemName": "See Athens and then some islands",
+    "country": "United States",
+    "state": "Utah",
+    "city": "Lehi",
+    "itemName": "I heard there was a sweet boot camp there",
+    "userId": 1
+  },
+  {
+    "country": "Italy",
+    "city": "Naples",
+    "itemName": "Napoli has the PIZZAAAAAA",
     "userId": 1
   },
   {
@@ -12,17 +19,16 @@
     "userId": 1
   },
   {
+    "country": "Greece",
+    "city": "Athens",
+    "itemName": "See Athens and then some islands",
+    "userId": 1
+  },
+  {
     "country": "Mexico",
     "city": "Cancun",
     "itemName": "All Inclusive Beach Resorts",
     "userId": 2
-  },
-  {
-    "country": "United States",
-    "state": "Utah",
-    "city": "Lehi",
-    "itemName": "I heard there was a sweet boot camp there",
-    "userId": 1
   },
   {
     "country": "United States",
@@ -41,12 +47,6 @@
     "country": "United States",
     "state": "Hawaii",
     "itemName": "Surf and Chill somewhere in Hawaii",
-    "userId": 1
-  },
-  {
-    "country": "Italy",
-    "city": "Naples",
-    "itemName": "Napoli has the PIZZAAAAAA",
     "userId": 1
   },
   {
