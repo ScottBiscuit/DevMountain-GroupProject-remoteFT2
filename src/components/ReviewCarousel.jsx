@@ -44,8 +44,8 @@ export default function ReviewCarousel({ reviewsPop }) {
                   <div className="mb-3">
                     Thank you for visiting our happy travel site. Our mission is to help travelers like you realize their travel dreams!
                   </div>
-                  <div>
-                    Our community are traveling all over the world and sharing their amazing adventures so you can know before you go!
+                  <div className="mb-3">
+                    Our community has been traveling all over the world and sharing their amazing adventures so you can know before you go!
                   </div>
                 </Card.Text>
               </Card.Body>
@@ -63,8 +63,10 @@ export default function ReviewCarousel({ reviewsPop }) {
                     Click below to search some locations and see what your fellow travelers have done there!
                   </div>
                 </Card.Text>
-                <Link to="/locations" className="btn btn-primary">Locations</Link>
               </Card.Body>
+              <Card.Footer>
+                <Link to="/locations" className="btn btn-primary">Locations</Link>
+              </Card.Footer>
             </Card>
           </Tab>
           <Tab eventKey="contact" title="Join In!">
@@ -79,9 +81,11 @@ export default function ReviewCarousel({ reviewsPop }) {
                     Ready to join in the Fun? Click below to sign in or register and share your travels with others.
                   </div>
                 </Card.Text>
-                <Link to="/login" className="btn btn-primary">Login</Link>
-                <Link to="/register" className="btn btn-primary">Register</Link>
               </Card.Body>
+              <Card.Footer>
+                <Link to="/login" className="btn btn-primary m-1">Login</Link>
+                <Link to="/register" className="btn btn-primary m-1">Register</Link>
+              </Card.Footer>
             </Card>
           </Tab>
         </Tabs>
