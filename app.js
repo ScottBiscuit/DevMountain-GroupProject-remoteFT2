@@ -329,8 +329,7 @@ app.put("/api/reviews/:reviewId/unlike", async (req, res) => {
 //create a review
 app.post("/api/reviews", async (req, res) => {
   const { userId } = req.session;
-  const { locationName, reviewContent, country, state, city, streetAddress } =
-    req.body;
+  const { locationName, reviewContent, country, state, city, image } = req.body;
   const review = await Review.create({
     locationName: locationName,
     reviewContent: reviewContent,
@@ -339,7 +338,7 @@ app.post("/api/reviews", async (req, res) => {
     country: country,
     state: state,
     city: city,
-    streetAdress: streetAddress,
+    image: image,
     userId: userId,
   });
   res.json(review);
@@ -348,8 +347,7 @@ app.post("/api/reviews", async (req, res) => {
 //edit a review content
 app.put("/api/reviews/:reviewId", async (req, res) => {
   const { reviewId } = req.params;
-  const { reviewContent, locationName, country, state, city, streetAddress } =
-    req.body;
+  const { reviewContent, locationName, country, state, city, image } = req.body;
   const review = await Review.findByPk(reviewId);
 
   review.locationName = locationName || review.locationName;
@@ -357,7 +355,7 @@ app.put("/api/reviews/:reviewId", async (req, res) => {
   review.country = country || review.country;
   review.state = state || review.state;
   review.city = city || review.city;
-  review.streetAddress = streetAddress || review.streetAddress;
+  review.image = image || review.image;
   await review.save();
   res.json(review);
 });

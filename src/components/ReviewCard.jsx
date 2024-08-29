@@ -12,10 +12,12 @@ function ReviewCard({ review, user, reviews, setReviews }) {
   const [city, setCity] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [image, setImage] = useState("");
   const [currentReview, setCurrentReview] = useState(review);
   const { reviewId, userId } = review;
 
-  console.log(currentReview);
+  // console.log(currentReview);
+  console.log(image);
 
   const handleClose = () => {
     setShow(false);
@@ -24,6 +26,7 @@ function ReviewCard({ review, user, reviews, setReviews }) {
     setCity("");
     setTitle("");
     setContent("");
+    setImage("");
   };
 
   const handleShow = () => {
@@ -32,6 +35,7 @@ function ReviewCard({ review, user, reviews, setReviews }) {
     setCity(currentReview.city);
     setTitle(currentReview.locationName);
     setContent(currentReview.reviewContent);
+    setImage(currentReview.image);
     setShow(true);
   };
 
@@ -55,15 +59,21 @@ function ReviewCard({ review, user, reviews, setReviews }) {
       city: city || currentReview.city,
       locationName: title || currentReview.locationName,
       reviewContent: content || currentReview.reviewContent,
-      image: image || currentReview.image
+      image: image || currentReview.image,
     });
+    console.log(updatedReview.data);
+
     setCurrentReview(updatedReview.data);
     handleClose();
   };
 
   return user && user.userId === review.userId ? (
     <Card className="p-3">
-      <Card.Img variant="top" src={currentReview.image} style={{ height: '250px', textAlign: 'center', objectFit: 'cover' }}/>
+      <Card.Img
+        variant="top"
+        src={currentReview.image}
+        style={{ height: "250px", textAlign: "center", objectFit: "cover" }}
+      />
       <Card.Body>
         <Card.Title>{currentReview.locationName}</Card.Title>
         <Card.Subtitle className="text-muted mb-2">
@@ -82,16 +92,22 @@ function ReviewCard({ review, user, reviews, setReviews }) {
               state={state}
               title={title}
               content={content}
+              image={image}
               setCity={setCity}
               setCountry={setCountry}
               setState={setState}
               setTitle={setTitle}
               setContent={setContent}
+              setImage={setImage}
             />
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={handleClose} variant="secondary">Cancel</Button>
-            <Button onClick={handleDelete} variant="secondary">Delete Review</Button>
+            <Button onClick={handleClose} variant="secondary">
+              Cancel
+            </Button>
+            <Button onClick={handleDelete} variant="secondary">
+              Delete Review
+            </Button>
             <Button type="submit" onClick={handleSubmit}>
               Save Changes
             </Button>
