@@ -10,6 +10,7 @@ function CreateReview({ user, reviews, setReviews }) {
   const [city, setCity] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [image, setImage] = useState("");
   const { userId } = user;
 
   const handleClose = () => {
@@ -19,6 +20,7 @@ function CreateReview({ user, reviews, setReviews }) {
     setCity("");
     setTitle("");
     setContent("");
+    setImage("");
   };
 
   const handleShow = () => setShow(true);
@@ -31,6 +33,7 @@ function CreateReview({ user, reviews, setReviews }) {
       locationName: title,
       reviewContent: content,
       userId: userId,
+      image: image,
     });
     console.log(newReview);
 
@@ -54,6 +57,7 @@ function CreateReview({ user, reviews, setReviews }) {
             setState={setState}
             setTitle={setTitle}
             setContent={setContent}
+            setImage={setImage}
           />
         </Modal.Body>
         <Modal.Footer>
