@@ -13,6 +13,7 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
         />
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{review.city}, {review.country}</Card.Subtitle>
         <Card.Text>{review.reviewContent}
         </Card.Text>
       </Card.Body>
@@ -32,6 +33,7 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
       />
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{review.city}, {review.country}</Card.Subtitle>
         <Card.Text>{review.reviewContent}</Card.Text>
       </Card.Body>
       <Card.Footer>
@@ -50,6 +52,7 @@ export default function HomeReviewsCards({ reviewsRecCr, setReviewsRecCr, review
       />
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{review.city}, {review.country}</Card.Subtitle>
         <Card.Text>{review.reviewContent}</Card.Text>
       </Card.Body>
       <Card.Footer>

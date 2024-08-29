@@ -7,7 +7,7 @@ export default function App() {
 
   return (
     <>
-      <MainNav />
+      <MainNav brand={'TRAVELING PANTS'}/>
       <Outlet />
     </>
   )
