@@ -34,7 +34,7 @@ function LocationsCards({ review, user }) {
     </Card>
   ) : (
     <Card className="p-3">
-      <Card.Img variant="top" src={review.image}/>
+      <Card.Img variant="top" src={review.image} style={{ height: '250px', textAlign: 'center', objectFit: 'cover'}}/>
       <Card.Body>
         <Card.Title>{review.locationName}</Card.Title>
         <Card.Subtitle className="text-muted mb-2">

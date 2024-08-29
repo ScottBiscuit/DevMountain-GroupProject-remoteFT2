@@ -19,7 +19,7 @@ function WishlistReviewCard({ review, wish }) {
   return (
     !isDeleted && (
       <Card>
-        <Card>
+        <Card className="mt-2">
           <Card.Img
             variant="top"
             src={review.image}

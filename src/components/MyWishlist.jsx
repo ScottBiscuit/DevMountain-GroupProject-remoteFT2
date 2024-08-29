@@ -22,16 +22,13 @@ export default function MyWishlist({ user }) {
   ));
 
   return (
-    <Card>
-      <Card.Title className="p-3">My Wishlists</Card.Title>
-      <Card.Body>
-      <Row>
+    <Card className="m-2 p-2 bg-secondary-subtle">
+      <Card.Body >
         <CreateWishlistItem
           wishlist={wishlist}
           setWishlist={setWishlist}
           user={user}
         />
-      </Row>
       <Row>{wishlistCards}</Row>
       </Card.Body>
     </Card>

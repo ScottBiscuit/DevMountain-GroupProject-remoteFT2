@@ -12,13 +12,7 @@ export default function Home() {
       useLoaderData().reviewsRand);
 
   return (
-    <Card>
-      {/* <Card.Img
-        src="../images/bgportrait_beach.jpg"
-        alt="beach with sun umbrellas"
-        className="opacity-50 vh-100"
-      /> */}
-      <Card.ImgOverlay>
+    <Card className="m-2 p-2 bg-secondary-subtle">
         <ReviewCarousel 
           reviewsPop={reviewsPop} 
         />
@@ -27,7 +21,6 @@ export default function Home() {
           reviewsPop={reviewsPop} 
           reviewsRand={reviewsRand}
         />
-      </Card.ImgOverlay>
     </Card>
   );
 }
