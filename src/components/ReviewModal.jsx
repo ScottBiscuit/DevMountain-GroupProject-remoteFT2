@@ -8,11 +8,13 @@ function ReviewModal({
   state,
   title,
   content,
+  image,
   setCity,
   setCountry,
   setState,
   setTitle,
   setContent,
+  setImage,
 }) {
   const [countriesDropdown, setCountriesDropdown] = useState(null);
   const [statesDropdown, setStatesDropdown] = useState(null);
@@ -159,6 +161,7 @@ function ReviewModal({
   const changeCity = (e) => setCity(e.target.value);
   const changeTitle = (e) => setTitle(e.target.value);
   const changeContent = (e) => setContent(e.target.value);
+  const changeImage = (e) => setImage(e.target.value);
 
   return (
     // countriesList &&
@@ -193,7 +196,16 @@ function ReviewModal({
       </Form.Group>
       <Form.Group>
         <Form.Label>What do you want to say about this place?</Form.Label>
-        <Form.Control onChange={changeContent} value={content} as='textarea' rows={6}/>
+        <Form.Control
+          onChange={changeContent}
+          value={content}
+          as="textarea"
+          rows={6}
+        />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Attach an image source</Form.Label>
+        <Form.Control onChange={changeImage} value={image} />
       </Form.Group>
     </Form>
   );
