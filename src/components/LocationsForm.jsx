@@ -52,7 +52,7 @@ export default function LocationsForm({ reviews, user }) {
 
   return (
     <Card className="bg-secondary-subtle">
-      <Card.Title className="p-3">Looking for some inspiration?</Card.Title>
+      {/* <Card.Title className="p-3">Looking for some inspiration?</Card.Title> */}
       <Card.Body>
         <Button onClick={handleShow} className="m-1">Filter Reviews</Button>
         <Modal show={show} onHide={handleClose}>
@@ -76,7 +76,7 @@ export default function LocationsForm({ reviews, user }) {
           </Modal.Footer>
         </Modal>
         <Button onClick={handleClearFilter}>Reset Filter</Button>
-        <Row xs={1} md={2} lg={3} className="g-3 p-3">
+        <Row xs={1} md={2} lg={3} className="g-3 p-2">
           {reviewResults}
         </Row>
       </Card.Body>
