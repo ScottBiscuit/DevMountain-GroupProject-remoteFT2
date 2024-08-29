@@ -19,7 +19,7 @@ export default function Locations() {
 
   return (
       <Card>
-        <Card.Title className="text-center m-3">Locations</Card.Title>
+        <Card.Title className="text-center m-2">Locations</Card.Title>
         <LocationsForm reviews={allReviews} user={user} />
       </Card>
   );
