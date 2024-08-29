@@ -62,5 +62,23 @@
     "userId": 1,
     "likeCount": 15,
     "image": "https://groupprojectdm.s3.us-east-2.amazonaws.com/louvre_paris.jpg"
+  },
+  {
+    "locationName": "Unique French/German mix",
+    "reviewContent": "This picturesque village is one of the stops along the Alsatian Wine Route. It offers a storybook-like setting; cobblestone streets, stone bridges and colorful half-timbered houses are the norm here. It is surrounded by scenic vineyards and rolling hills. Try the Alsatian wines and local specialties, including foie gras and kouglof, a sweet raisin brioche.",
+    "country": "France",
+    "city": "Kaysersberg",
+    "userId": 1,
+    "likeCount": 15,
+    "image": "https://groupprojectdm.s3.us-east-2.amazonaws.com/kaysersberg_france.jpg"
+  },
+  {
+    "locationName": "Beautiful Isle of Capri",
+    "reviewContent": "The Isle of Capri, nestled in the Tyrrhenian Sea, boasts stunning cliffs, crystal-clear waters, and charming villages. Renowned for its dramatic landscapes, luxury boutiques, and vibrant blue grotto, it’s a picturesque retreat for travelers seeking both beauty and relaxation.",
+    "country": "Italy",
+    "city": "Capri",
+    "userId": 2,
+    "likeCount": 40,
+    "image": "https://groupprojectdm.s3.us-east-2.amazonaws.com/capri_italy.jpg"
   }
 ]
